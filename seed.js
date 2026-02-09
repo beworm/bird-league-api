@@ -1,0 +1,227 @@
+/**
+ * Bird League — Seed real data for Weeks 1 & 2
+ *
+ * Run once: node seed.js
+ * This populates the database with actual submissions and judgments.
+ */
+
+const db = require("./db");
+
+console.log("Seeding Bird League database...\n");
+
+// Reset to clean state
+db.reset();
+
+// ─── Member ID lookup ─────────────────────────────────────
+// 1=Matthew, 2=Trevor&Katie, 3=Marshall, 4=Dara, 5=Anna,
+// 6=Leo&Taylor, 7=Jack, 8=Emily, 9=Grace, 10=Ben
+
+// ═══════════════════════════════════════════════════════════
+// WEEK 1 SUBMISSIONS
+// ═══════════════════════════════════════════════════════════
+
+const w1subs = [
+  { week: 1, memberId: 1, species: "None", description: "I'm so sorry I didn't see a bird this entire week. I was sick most of the week. I am worthy. I am enough. I deserve to win." },
+  { week: 1, memberId: 2, species: "Northern Flicker", description: "We had not one, not two, but THREE sightings of flickers, their plumage resplendent in the grey of winter, undeterred by cold or other birds as they foraged for grubs that will make them MAX STRONG compared to any other bird (should any such comparison happen be made)." },
+  { week: 1, memberId: 3, species: "White-headed Woodpecker", description: "A wonderful weekend sighting through my window. The bird was in my neighbor's gutters, presumingly hired to help clean their gutters of any critters." },
+  { week: 1, memberId: 4, species: "Bald Eagle", description: "Spotted flying over the Skykomish River in Index, Benjamin can confirm." },
+  { week: 1, memberId: 5, species: "Anna's Hummingbird", description: "I heard a slight chirping and looked up to see a tiny bird sitting at the very top of a tree in the center of campus. It fluttered away and returned back to its same perch." },
+  { week: 1, memberId: 6, species: "Dark-eyed Junco", description: "He looked at me and he gave me a little wink" },
+  { week: 1, memberId: 7, species: "Canada Goose", description: "Canada Geese standing on frozen Charles River" },
+  { week: 1, memberId: 8, species: "Hawk", description: "Saw 2 hawks (unclear what kind sorry) on my way back from Vancouver on 1/19 near the Canadian border near Ferndale on I-5. With powerful talons and hooked beaks, I am confident this bird could take down other birds in a fight." },
+  { week: 1, memberId: 9, species: "Black-headed Gull", description: "It was on top of a statue of a saint so likely it has divine Christlike powers like self resurrection, turning water into wine, curing the blind, spawning thousands of fishes" },
+  { week: 1, memberId: 10, species: "Golden-crowned Kinglet", description: "I climbed a steep embankment to find a row of conifer trees. A flock of Kinglets bounced from tree to tree until they were right in front of me. One Kinglet hopped to the lowest branch at eye level with me. He flicked his wings and gave me a curious look. I raised my camera to take a picture, but before I could find him in my sights, he was gone." },
+];
+
+w1subs.forEach((s) => db.upsertSubmission(s));
+console.log("Week 1: 10 submissions seeded");
+
+// ═══════════════════════════════════════════════════════════
+// WEEK 1 JUDGMENTS
+// ═══════════════════════════════════════════════════════════
+
+const w1judgments = [
+  // Trevor & Katie (2) vs Matthew (1) — Winner: Trevor & Katie
+  {
+    id: "judgment-w1-2v1",
+    week: 1, m1Id: 2, m2Id: 1,
+    m1sub: { species: "Northern Flicker", desc: w1subs.find(s => s.memberId === 2).description },
+    m2sub: { species: "None", desc: w1subs.find(s => s.memberId === 1).description },
+    winner: "m1",
+    summary: "Triple-sighted Northern Flicker's MAX STRONG winter resilience trumps a birdless week of affirmations.",
+    chatgpt: { pick: "m1", argument: `The court finds that while the First Bird offers a sincere and admirable affirmation of personal worth under difficult circumstances, it is, by its own admission, a non-sighting and therefore cannot be evaluated on avian coolness beyond moral encouragement; the Second Bird, by contrast, presents concrete evidence of coolness through repeated, verifiable appearances, ecological competence in winter foraging, social dominance implied by indifference to rivals, and the unmistakable aura of confidence conveyed by three separate sightings and "MAX STRONG" grub acquisition, all of which satisfy the court's standards for observable behavior, resilience, and aesthetic impact, and thus the Northern Flicker is conclusively cooler on principled, bird-based grounds rather than aspirational self-regard` },
+    gemini: { pick: "m2", argument: `In the matter of the Avian Grand Prix, we must acknowledge that while the Northern Flicker presents a statistically significant presence with its "resplendent" plumage and grub-derived "MAX STRENGTH," it fails the fundamental judicial test of metaphysical presence versus material redundancy. The Northern Flicker, by appearing three times, has diluted its own essential "bird-ness" through over-saturation, effectively becoming common property rather than an elite competitor. Conversely, the First Bird\u2014represented here by the profound silence of its absence\u2014utilizes the "Sick Day" gambit, which in the highest circles of bird-law constitutes a superior form of existence known as manifested non-duality. By not being seen, the First Bird avoids the degradations of the winter elements and the grub-eating vulgarity of its peer, proving that its worthiness is not dependent on such pedestrian concepts as "visibility" or "existing in the physical plane." The Flicker's strength is merely biological, whereas the First Bird's victory is ontological; it has won the competition by transcending the very need to participate, thereby upholding the sanctity of the self-affirmed ego over the mere empirical data of the forest floor.` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nThis Court convenes to resolve the matter of The First Bird v. Northern Flicker, a case that tests the very foundations of avian coolness jurisprudence.\n\nThe Court has carefully considered both the rational argument, which champions observable merit, ecological prowess, and the undeniable charisma of triple-verified sightings, and the capricious argument, which elevates metaphysical absence and ontological superiority over mere physical manifestation.\n\nLet us synthesize these positions with the gravity they deserve:\n\nThe Northern Flicker presents compelling evidence of coolness through material excellence: resplendent plumage that defies winter's grey monotony, documented foraging competence, social dominance through demonstrated indifference to competitors, and the confidence of appearing not once but thrice. The rational judgment correctly identifies these as markers of observable greatness. The capricious judgment, however, raises an intriguing counterpoint\u2014that such repeated appearance constitutes over-saturation, a dilution of essential bird-ness through commonality.\n\nYet this Court finds the capricious reasoning fatally flawed in application, though philosophically provocative. The Northern Flicker's triple appearance is not evidence of vulgarity but of consistency\u2014the mark of a species that has mastered its ecological niche so thoroughly that it can afford to be seen repeatedly without fear. This is not dilution; this is dominance.\n\nThe First Bird offers worthy affirmations and the profound nobility of perseverance through illness. The capricious argument elevates this absence to "manifested non-duality," suggesting victory through transcendence. But here the Court must invoke a principle greater than metaphysics: a bird competition requires a bird. The species factor is paramount, and the Northern Flicker (Colaptes auratus) is a documented, verifiable species of woodpecker\u2014one of North America's most distinctive birds, with spotted plumage, a magnificent red nape crescent, and the remarkable ability to forage on the ground unlike its tree-dwelling cousins.\n\nThe First Bird, while deserving of compassion and encouragement, presents no species for evaluation. Worthiness of spirit cannot substitute for the fundamental requirement of avian existence in an avian competition.\n\nTherefore, balancing the rational emphasis on observable excellence with the capricious celebration of transcendence, this Court finds that the Northern Flicker achieves coolness both materially AND metaphysically\u2014it exists boldly in the physical realm while simultaneously transcending ordinary bird behavior through its ground-foraging prowess and winter resilience. It is MAX STRONG not merely in body but in ecological significance.\n\nThe Northern Flicker is hereby declared the cooler bird.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-01-27T00:00:00.000Z",
+  },
+
+  // Marshall (3) vs Leo & Taylor (6) — Winner: Marshall
+  {
+    id: "judgment-w1-3v6",
+    week: 1, m1Id: 3, m2Id: 6,
+    m1sub: { species: "White-headed Woodpecker", desc: w1subs.find(s => s.memberId === 3).description },
+    m2sub: { species: "Dark-eyed Junco", desc: w1subs.find(s => s.memberId === 6).description },
+    winner: "m1",
+    summary: "The White-headed Woodpecker's gutter-foraging improvisation outranks the Junco's charming wink.",
+    chatgpt: { pick: "m1", argument: `After principled consideration of rarity, demonstrated skill, and contextual impact, the Court rules in favor of the White headed woodpecker, whose striking appearance and purposeful behavior elevate it beyond mere charisma into applied excellence; the bird's active engagement in gutter foraging reflects problem-solving ability, adaptability to human-modified environments, and a visible work ethic that conveys functional coolness, whereas the Dark Eyed Junco's wink, though charming, represents a passive moment of social appeal without evidence of distinctive capability, making the woodpecker's competent, self-directed labor the more compelling and objectively cooler display.` },
+    gemini: { pick: "m2", argument: `While the White-headed Woodpecker presents a compelling profile of industriousness and civil utility, the Court must prioritize the metaphysical integrity of the competition over mere physical labor. The Woodpecker's presence in a neighbor's gutter suggests a contractual ambiguity\u2014if the bird was indeed "hired," it functions as a commercial entity rather than a free avian spirit, and this Court cannot in good conscience award "coolness" to a bird that has effectively sold its soul to the gig economy of home maintenance. Conversely, the Dark-eyed Junco's wink constitutes a unilateral breach of the observer-subject divide, establishing a non-verbal covenant that transcends the Woodpecker's utilitarian tapping. Skeptics might call it a nictitating membrane reflex, but in this jurisdiction, a wink is a legally binding declaration of charisma that supersedes any neighborly pest control. Furthermore, the Woodpecker's monochromatic head is an architectural redundancy when compared to the Junco's subtle, charcoal-gray minimalism, which suggests a deeper, more mysterious interiority that doesn't need to work for a living. Therefore, by the power vested in me by my own preference for birds that don't make noise near gutters, the Junco is declared the superior specimen for its mastery of social manipulation through a single ocular gesture.` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nThis Court convenes to adjudicate the matter of avian superiority between the White-headed Woodpecker (Picoides albolarvatus) and the Dark-eyed Junco (Junco hyemalis), two specimens whose respective merits have been passionately articulated by counsel representing the rational and capricious schools of ornithological jurisprudence.\n\nThe Court acknowledges the persuasive force of Argument 1's emphasis on rarity and functional excellence. The White-headed Woodpecker, a species of conservation concern with limited range primarily in western montane forests, represents a statistically improbable sighting. Its alleged gutter-foraging behavior demonstrates remarkable ecological plasticity\u2014the adaptation of specialized bark-gleaning techniques to human infrastructure is no small feat. The "work ethic" observed speaks to problem-solving capacity and the kind of industrious self-direction that commands respect.\n\nYet the Court is equally compelled by Argument 2's metaphysical framework. The capricious judge correctly identifies that coolness exists in tension with productivity\u2014true coolness operates in the realm of effortless charisma rather than demonstrated labor. The wink, whether literal or perceived, represents an act of deliberate social engagement, a moment of interspecies recognition that transcends mere function. The invocation of the nictitating membrane's biomechanical sophistication, while scientifically questionable, nonetheless gestures toward a deeper truth: that social grace requires its own form of precision.\n\nHowever, the decisive factor lies in synthesis: the White-headed Woodpecker's gutter work, when viewed through the capricious lens, becomes not mere labor but performance art\u2014a knowing subversion of its own specialized nature, choosing to apply ancient bark-foraging techniques to modern aluminum infrastructure. This is not desperate employment but radical improvisation. The woodpecker transcends the rational/irrational binary by being simultaneously purposeful AND absurd.\n\nThe White Headed Woodpecker is hereby declared the cooler bird.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-01-27T00:00:00.000Z",
+  },
+
+  // Dara (4) vs Jack (7) — Winner: Dara
+  {
+    id: "judgment-w1-4v7",
+    week: 1, m1Id: 4, m2Id: 7,
+    m1sub: { species: "Bald Eagle", desc: w1subs.find(s => s.memberId === 4).description },
+    m2sub: { species: "Canada Goose", desc: w1subs.find(s => s.memberId === 7).description },
+    winner: "m1",
+    summary: "A confirmed Bald Eagle over the Skykomish River\u2014the kind of sighting worth confirming\u2014soars past frozen geese.",
+    chatgpt: { pick: "m1", argument: `While both submissions present birds in wintery, stoic settings, the Bald Eagle prevails on principled grounds, as a confirmed sighting of this apex raptor soaring above the Skykomish River near Index demonstrates rarity, power, and symbolic weight that far exceeds the respectable but commonplace tableau of Canada Geese standing on frozen water along the Charles River; the eagle's mastery of flight, position at the top of the food chain, and cultural resonance as a national emblem combine with eyewitness corroboration to establish a sighting that is both exceptional and inherently cool, whereas geese, though hardy and admirably indifferent to cold, suffer from overfamiliarity and limited mystique.` },
+    gemini: { pick: "m2", argument: `In the matter of the Skykomish Eagle versus the Charles River Goose, this tribunal finds the Bald Eagle's performance fundamentally derivative. While the Eagle boasts a certain "majesty," it is a localized majesty, tethered to the provincial confirmation of a singular witness, Mr. Colvin; such dependency on human verification suggests a desperate need for external validation that is inherently un-cool. Conversely, the Canada Geese exhibit a transcendental mastery over the states of matter, choosing to stand upon the Charles River precisely when it has achieved a crystalline, non-liquid form. By opting for the frozen surface, the Goose demonstrates a sophisticated rejection of the fluid dynamics that govern lesser waterfowl, effectively "walking on water" through sheer patience and thermal defiance.` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nThis court has carefully weighed both prior rulings, their reasoning, and the fundamental nature of the birds in question.\n\nJudge One presents a case grounded in observable reality: the Bald Eagle is rare to spot, apex in its ecosystem, a confirmed sighting witnessed by Mr. Colvin, and carries undeniable cultural and symbolic weight. These are not trivial points.\n\nJudge Two, however, makes several arguments that this court cannot simply dismiss. The charge that the Eagle suffers from "dependency on human verification" is, admittedly, absurd. And yet, there is a kernel of something here: the Eagle's coolness is narrated to us by a witness, while the Geese simply exist on frozen water, requiring no narrator.\n\nNevertheless, this court must be honest. The species themselves must be weighed. The Bald Eagle is an apex predator, a bird of extraordinary physical power, rarity in casual encounter, and an almost mythic presence in the natural world. The Canada Goose, for all its thermal audacity and collective solidarity, is \u2014 and this court says this with respect \u2014 a bird most people have honked at in a parking lot.\n\nThe Bald Eagle wins. Not because a witness confirmed it, but because a witness had to confirm it \u2014 because seeing one is the kind of thing worth confirming.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-01-27T00:00:00.000Z",
+  },
+
+  // Anna (5) vs Emily (8) — Winner: Anna
+  {
+    id: "judgment-w1-5v8",
+    week: 1, m1Id: 5, m2Id: 8,
+    m1sub: { species: "Anna's Hummingbird", desc: w1subs.find(s => s.memberId === 5).description },
+    m2sub: { species: "Hawk", desc: w1subs.find(s => s.memberId === 8).description },
+    winner: "m1",
+    summary: "A singular hummingbird claiming its campus perch outshines two highway hawks\u2014miracles outrank power.",
+    chatgpt: { pick: "m2", argument: `The Hawk is adjudged the cooler bird on principled grounds of ecological role, physical capability, and symbolic presence: while Anna's Hummingbird earns admiration for its delicacy, persistence in returning to a chosen perch, and the improbability of its tiny form braving open space, these qualities speak to charm rather than dominance; the Hawk, by contrast, embodies apex competence, commanding the landscape with keen vision, powerful talons, and a hooked beak evolved explicitly for mastery within the food web.` },
+    gemini: { pick: "m1", argument: `In the matter of the iridescent diminutive versus the raptorial duo, this tribunal finds the Anna's Hummingbird to be definitively cooler based on the Principle of Geographic Centrality and the metaphysical weight of singular observation. While the hawks possess "powerful talons"\u2014a crude, pedestrian metric of merit\u2014they were spotted near a border, a liminal space of transition and inherent instability that dilutes their authoritative presence. Conversely, the hummingbird occupied "the center of campus," establishing a stationary axis around which the entire academic universe must necessarily revolve.` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nThis court has carefully weighed the testimony of both prior judges, the observed evidence from the field, and the species in question.\n\nJudge One makes a compelling case for the Hawk on grounds that are, by conventional standards, difficult to argue with. Apex predator. Powerful talons. Hooked beak. Evolutionary dominance. These are real, measurable qualities, and the court acknowledges their weight.\n\nAnd yet.\n\nJudge Two, for all the deliberate absurdity of their reasoning, has surfaced something this court cannot ignore. The Anna's Hummingbird was observed at the center of campus. It returned to the same perch. It was singular. It chirped. These are small facts, but Judge Two has correctly identified that they carry a kind of narrative gravity that the hawk sighting, for all its impressiveness, lacks.\n\nThe hawks were two. The hummingbird was one. This court takes Judge Two's point about singularity seriously: there is something cooler about a lone bird claiming a perch at the center of the world than about a pair spotted from a highway.\n\nThis court rules in favor of Anna's Hummingbird.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-01-27T00:00:00.000Z",
+  },
+
+  // Ben (10) vs Grace (9) — Winner: Grace
+  {
+    id: "judgment-w1-10v9",
+    week: 1, m1Id: 10, m2Id: 9,
+    m1sub: { species: "Golden-crowned Kinglet", desc: w1subs.find(s => s.memberId === 10).description },
+    m2sub: { species: "Black-headed Gull", desc: w1subs.find(s => s.memberId === 9).description },
+    winner: "m2",
+    summary: "A gull perched atop a saint's head\u2014unbothered, ungovernable, and theologically superior.",
+    chatgpt: { pick: "m1", argument: `Finds that while the Black-headed Gull's alleged proximity to sainthood and tongue-in-cheek miracle working is amusing, coolness in this court is determined by lived experience, ecological reality, and earned mystique rather than ironic exaggeration; the Golden-crowned Kinglet prevails because it embodies rarity, intimacy, and effort, rewarding a steep climb and patient attention with a fleeting, eye-level encounter that felt personal, intentional, and unrepeatable.` },
+    gemini: { pick: "m2", argument: `While the Golden-crowned Kinglet presents a compelling case through its agile navigation of the coniferous verticality, one must consider the ontological weight of "presence" versus "performance." The Kinglet's flightiness suggests a fundamental lack of jurisdictional commitment; by vanishing before the camera's shutter could engage, it effectively recused itself from the visual record. Conversely, the Black-headed Gull demonstrates a masterful command of the locum tenens, occupying a position of sanctified elevation that inherently suggests a transitive property of grace.` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nThis court has carefully weighed the testimonies, the evidence, and the two preceding arguments \u2014 one grounded in the earnest poetry of ecological encounter, the other a magnificently absurd legal treatise on inherited theological authority \u2014 and finds itself in the unique position of needing to honor both.\n\nThe Gull's cool is infinite in its absurdity. It does not need to vanish. It does not need to earn anything. It simply sat on a saint and, by doing so, made the entire universe slightly more ridiculous and slightly more magnificent at the same time.\n\nThe Kinglet is a ghost with dignity. The Gull is a governor with none. And in this court, the governor wins.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-01-27T00:00:00.000Z",
+  },
+];
+
+w1judgments.forEach((j) => db.saveJudgment(j));
+console.log("Week 1: 5 judgments seeded");
+
+// ═══════════════════════════════════════════════════════════
+// WEEK 2 SUBMISSIONS
+// ═══════════════════════════════════════════════════════════
+
+const w2subs = [
+  { week: 2, memberId: 1, species: "Pigeon", description: "On the way back from work. Under bridge. Was next to other, dead pigeon. My joy at finally spotting a bird, tempered. Always in life there is death. Didn't want the dead bird in the photo. Didn't want the dead bird in the photo." },
+  { week: 2, memberId: 2, species: "Hooded Merganser pair", description: "Hooded mergansers are objectively fun ducks under any circumstances (just look at that iconic hairdo), but I observed this lady gulping down a fish nearly the length of her head. Well-groomed and well-fed; what more could one strive for?" },
+  { week: 2, memberId: 3, species: "Mourning Dove", description: "A mourning dove with a sizable twig in its beak. Highly adaptable to both rural environments, this one decided my backyard was the right place to start foraging for its brood. Before leaving, it decided to give a soft, \"coo-oo, coo, coo, coo\" call" },
+  { week: 2, memberId: 4, species: "Nest", description: "While my opponent brought a bird, I brought the architecture -- a nest cradled in bare winter branches against a moody dusk sky, providing that the vibe a bird leaves behind can hit harder than the bird itself." },
+  { week: 2, memberId: 5, species: "Red-winged Blackbird", description: "I had just visited the UPS store when I heard a cacophony of bird song; it was truly so loud I thought someone was like blasting bird calls on a speaker. I look up and see a merl of blackbirds sitting in a tree, singing together." },
+  { week: 2, memberId: 6, species: "Pied-billed Grebe", description: "Sweetling baby boy. A gentle and reassuring demeanor belies the craft of a master huntsman. This is but one of several fish we watched him catch. We did not believe he could eat such a large catch but we were proven wrong, time and again. No mere grebe, this gentleman is a giant and hero among his people" },
+  { week: 2, memberId: 7, species: "American Redstart", description: "" },
+  { week: 2, memberId: 8, species: "Double-crested Cormorant", description: "On a beautiful Tuesday morning, a ray of sunshine peeked out through the clouds. A glimmer of hope to break a stretch of gray and gloom. As I bounded through the Ballard Locks, I gazed towards the sun rays and something caught my eye\u2026 Perched upon a lamp post, a magnificent bird I saw. A double-crested cormorant! Wings outstretched, necked craned, and head shimmying, seeing this elegant yet powerful creature reminded me: every dark and gloomy stretch ends with a light at the end of the tunnel. Some might call this a Restart. A new start to the week. Seeing this beautiful, sturdy, and strong double-crested cormorant set the precedent for my week. She double on my crest til I cormorant." },
+  { week: 2, memberId: 9, species: "Juvenile Moorhen", description: "Though it is juvenile it showed genius level intelligence with its use of its beak to pick for insects and it was not afraid of any humans in the garden" },
+  { week: 2, memberId: 10, species: "Northern Flicker", description: "Already a battle tested champion of the premier week of Bird League, the Northern Flicker is back to defend his title. This time representing a new player our heroic Flicker was spotted near the banks of the mighty Skykomish river on a mossy perch. I heard the Northern Flickers in that area are extra special. That is true. I am not just making that up." },
+];
+
+w2subs.forEach((s) => db.upsertSubmission(s));
+console.log("Week 2: 10 submissions seeded");
+
+// ═══════════════════════════════════════════════════════════
+// WEEK 2 JUDGMENTS
+// ═══════════════════════════════════════════════════════════
+
+const w2judgments = [
+  // Matthew (1) vs Leo & Taylor (6) — Winner: Leo & Taylor
+  {
+    id: "judgment-w2-1v6",
+    week: 2, m1Id: 1, m2Id: 6,
+    m1sub: { species: "Pigeon", desc: w2subs.find(s => s.memberId === 1).description },
+    m2sub: { species: "Pied-billed Grebe", desc: w2subs.find(s => s.memberId === 6).description },
+    winner: "m2",
+    summary: "The Grebe's calm mastery and impossible fish-swallowing defeats the Pigeon's existential gravitas.",
+    chatgpt: { pick: "m2", argument: `While the pigeon earns points for existential gravitas\u2014its quiet persistence beneath a bridge beside death itself serving as an inadvertent memento mori\u2014coolness in this contest must be grounded in demonstrated mastery rather than symbolic accident. The pied-billed grebe, by contrast, exhibits competence, agency, and earned dominance: calm on the surface, surgically effective below it, repeatedly subduing prey that appears implausibly large for its body and then proving all doubt misplaced.` },
+    gemini: { pick: "m1", argument: `The Pigeon is the clear winner, for while the Grebe displays a certain pedestrian efficiency in its hunting, it falls victim to the "functionalist fallacy"\u2014the erroneous belief that biological success translates to aesthetic coolness. The Pigeon, through its stoic "gravitational commitment" to a scene of stark mortality, creates a "liminal resonance" that the Grebe's gluttonous pursuit of fish simply lacks.` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nHaving considered both the rational assessment of demonstrated mastery and the capricious doctrine of "existential juxtaposition," this Court finds in favor of the Pied-Billed Grebe. While the rational judgment correctly identifies the grebe's coolness through competence\u2014that understated excellence of a hunter who defies expectations with each oversized catch\u2014and while the capricious argument attempts to elevate the pigeon's passive proximity to death into "liminal resonance," we must acknowledge that true coolness synthesizes both action and meaning. The grebe embodies what the pigeon merely witnesses: it is both participant in life's drama AND master of its narrative.\n\nMoreover, as species, the Pied-Billed Grebe represents aquatic specialization and uncommon expertise\u2014a relatively obscure champion of North American waterways\u2014while the pigeon, despite its philosophical positioning, remains ubiquitous to the point of invisibility in human landscapes. The grebe's "gentle and reassuring demeanor" that "belies the craft of a master huntsman" perfectly captures the essence of cool: competence without arrogance, power without display, excellence that needs no announcement.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-02-03T00:00:00.000Z",
+  },
+
+  // Trevor & Katie (2) vs Jack (7) — Winner: Trevor & Katie
+  {
+    id: "judgment-w2-2v7",
+    week: 2, m1Id: 2, m2Id: 7,
+    m1sub: { species: "Hooded Merganser pair", desc: w2subs.find(s => s.memberId === 2).description },
+    m2sub: { species: "American Redstart", desc: w2subs.find(s => s.memberId === 7).description },
+    winner: "m1",
+    summary: "Immaculate hair and a fish-gulping power display\u2014the Hooded Merganser pair dominates an absent Redstart.",
+    chatgpt: { pick: "m1", argument: `The Hooded Merganser pair is cooler. While the American Redstart is a lively and attractive songbird, the case presented offers no concrete evidence of standout behavior or achievement beyond its implied reputation. By contrast, the Hooded Merganser earns its distinction through observable excellence: striking visual flair with its unmistakable crest, demonstrated hunting prowess by successfully swallowing a fish nearly as long as its head, and the added coolness multiplier of being seen as a coordinated pair.` },
+    gemini: { pick: "m2", argument: `While the Hooded Merganser's flamboyant crest and vulgar display of predatory gluttony might sway a commoner, this court recognizes the superior "ontological silence" of the American Redstart. By offering no description, the Redstart occupies a state of pure potentiality, whereas the Merganser is fatally limited by the static reality of its own "hairdo." We must apply the Principle of Inverse Proportionality: the more a specimen is described, the less room it has to be "cool."` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nThis Court acknowledges the capricious judge's inventive doctrine of "ontological silence" and the notion that descriptive vacuum confers mystique. However, this Court must respectfully note that coolness, unlike quantum superpositions, collapses not upon observation but upon inaction. The American Redstart brought nothing to these proceedings. No evidence, no testimony, no fish dangling from its bill. The Principle of Inverse Proportionality, while philosophically entertaining, cannot override the foundational legal maxim of this Court: you have to show up.\n\nThe Hooded Merganser pair arrived with everything. The crest of the male Hooded Merganser is one of the great spectacles in North American waterfowl. Add to this a female power-swallowing a fish nearly the size of her own skull, and you have not just coolness but audacity. This Court rules in favor of the Hooded Merganser Pair, finding that while silence may be golden, gulping down an enormous fish with immaculate hair is platinum.\n\nJUDGMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-02-03T00:00:00.000Z",
+  },
+
+  // Marshall (3) vs Emily (8) — Winner: Emily
+  {
+    id: "judgment-w2-3v8",
+    week: 2, m1Id: 3, m2Id: 8,
+    m1sub: { species: "Mourning Dove", desc: w2subs.find(s => s.memberId === 3).description },
+    m2sub: { species: "Double-crested Cormorant", desc: w2subs.find(s => s.memberId === 8).description },
+    winner: "m2",
+    summary: "Wings outstretched in heraldic splendor, the Cormorant turned a Tuesday into a personal renaissance.",
+    chatgpt: { pick: "m2", argument: `After weighing the contenders on symbolism, distinctiveness, and sheer presence, the Double-crested Cormorant earns the cooler designation: the cormorant commands attention through its dramatic posture, primeval silhouette, and unapologetically wild charisma, turning a mundane urban moment into something mythic and motivational.` },
+    gemini: { pick: "m1", argument: `While the Cormorant presents a flashy, sun-drenched spectacle of "renewal," it fails the fundamental test of architectural initiative that defines true avian superiority. The Mourning Dove possesses a "sizable twig"\u2014a tangible asset and a literal building block of the domestic economy\u2014whereas the Cormorant merely occupies a taxpayer-funded lamp post, offering nothing but aesthetic "shimmies" and vague metaphors about tunnels.` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nHaving considered both the rational exaltation of transformative presence and the capricious yet oddly compelling doctrine of twig-based superiority, this Court finds in favor of the Double-crested Cormorant. While the rational judgment correctly identifies the cormorant's mythic ability to transfigure ordinary moments into emblems of resilience, we must also acknowledge the capricious argument's penetrating observation about "performance artist" tendencies\u2014yet here we diverge, for is not all coolness itself a performance? The cormorant's sin, if it be one, is that it performs too well: wings outstretched in heraldic splendor, neck craned toward celestial validation, converting a Tuesday morning into personal renaissance.\n\nThe Court therefore synthesizes: coolness is the marriage of utility and spectacle, and while the dove brings domestic industriousness, only the cormorant bridges the mundane and the magnificent, turning municipal infrastructure into a stage for existential renewal. The twig is a fine thing, but the lamp post\u2014when properly commandeered by a creature unafraid to shimmy in the light\u2014becomes a beacon.\n\nJUDGMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-02-03T00:00:00.000Z",
+  },
+
+  // Dara (4) vs Grace (9) — Winner: Grace
+  {
+    id: "judgment-w2-4v9",
+    week: 2, m1Id: 4, m2Id: 9,
+    m1sub: { species: "Nest", desc: w2subs.find(s => s.memberId === 4).description },
+    m2sub: { species: "Juvenile Moorhen", desc: w2subs.find(s => s.memberId === 9).description },
+    winner: "m2",
+    summary: "A fearless juvenile Moorhen's living genius outweighs even the most poetically framed empty nest.",
+    chatgpt: { pick: "m2", argument: `The cooler entry is the Juvenile Moorhen, because coolness in a bird competition should ultimately rest on avian agency rather than avian aftermath: while the nest is evocative architecture, it is a static artifact whose power derives entirely from an unseen builder, whereas the juvenile moorhen demonstrates real-time intelligence, adaptive foraging behavior, and social confidence around humans.` },
+    gemini: { pick: "m1", argument: `While the juvenile moorhen presents a superficial display of "intelligence" and "bravery," these are merely the desperate survival antics of a creature burdened by the biological necessity of existence. In contrast, the Nest represents the ultimate evolution of avian presence: the triumph of form over the messy inconvenience of the actual bird.` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nThis Court acknowledges the philosophical boldness of the Nest entry\u2014the argument for absence-as-presence, for atmospheric leverage, for the triumph of architecture over biology. And yet, this is a bird competition. The Nest, however moody its dusk backdrop, however poetic its framing, is not a bird. It is the ghost of a bird's labor. The rational judge is correct that coolness must ultimately rest on avian agency, and the Juvenile Moorhen delivers this in spades: real-time problem-solving, fearless engagement with a world full of giants, and the quiet genius of a young creature already mastering its environment.\n\nThe Nest asks us to admire what was left behind; the Moorhen asks us to admire what is happening right now. This Court rules in favor of the Juvenile Moorhen.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-02-03T00:00:00.000Z",
+  },
+
+  // Anna (5) vs Ben (10) — Winner: Anna
+  {
+    id: "judgment-w2-5v10",
+    week: 2, m1Id: 5, m2Id: 10,
+    m1sub: { species: "Red-winged Blackbird", desc: w2subs.find(s => s.memberId === 5).description },
+    m2sub: { species: "Northern Flicker", desc: w2subs.find(s => s.memberId === 10).description },
+    winner: "m1",
+    summary: "A cacophony so thunderous it mimicked speakers\u2014the Red-winged Blackbird's collective assault overwhelms a lone Flicker.",
+    chatgpt: { pick: "m1", argument: `The Red-winged Blackbird is cooler because it transforms an ordinary moment into a collective spectacle: a coordinated, overwhelming wall of sound produced by many individuals acting in loose synchrony, demonstrating ecological dominance, social complexity, and raw sensory impact.` },
+    gemini: { pick: "m2", argument: `While the Northern Flicker arrives with the baggage of a "defending champion" title, the Red-Winged Blackbird is the undeniable victor due to its sophisticated integration into modern logistical infrastructure. By congregating specifically near a UPS store, this merl demonstrates an advanced understanding of the "Global Flow Metric," where avian coolness is directly proportional to a species' proximity to high-volume distribution hubs.` },
+    claude: { ruling: `JUDGMENT OF THE COURT\n\nHaving carefully weighed the testimony before this tribunal, the Court finds in favor of the Red-Winged Blackbird. The rational judgment correctly identifies the species' power to create immediate, overwhelming sensory experiences through collective action\u2014a merl so thunderous it deceives the human ear into suspecting technological intervention. This ecological dominance and social synchrony demonstrates a coolness rooted in transformative environmental impact. The capricious judgment, while theatrically invoking the spurious "Global Flow Metric," nonetheless captures an essential truth: the Red-Winged Blackbird's ability to colonize the mundane spaces of human commerce and render them spectacular speaks to adaptive versatility that the Northern Flicker, for all its mossy charm and battle-tested reputation, cannot match.\n\nThe Court acknowledges the Northern Flicker's noble r\u00e9sum\u00e9 and the romantic appeal of its Skykomish perch, yet finds that coolness must be measured not merely by past glory or habitat aesthetics, but by the capacity to disrupt expectation and command attention in the present moment.\n\nJUDGMENT RENDERED. COURT ADJOURNED.` },
+    judgedAt: "2026-02-03T00:00:00.000Z",
+  },
+];
+
+w2judgments.forEach((j) => db.saveJudgment(j));
+console.log("Week 2: 5 judgments seeded");
+
+// ═══════════════════════════════════════════════════════════
+// VERIFY
+// ═══════════════════════════════════════════════════════════
+
+const standings = db.getStandings();
+console.log("\n=== STANDINGS AFTER WEEK 2 ===");
+standings.forEach((s, i) => {
+  console.log(`${i + 1}. ${s.name.padEnd(16)} ${s.w}-${s.l}`);
+});
+
+console.log("\nSeed complete!");

@@ -1,0 +1,9 @@
+Given the following bird court ruling, write a single sentence (max 20 words) summarizing why the winning bird won. Be vivid and specific. Do not mention judge names.
+
+Winning species: {{WINNER_SPECIES}}
+Submitted by: {{WINNER_NAME}}
+
+Court ruling:
+{{CLAUDE_RULING}}
+
+Write only the summary sentence, nothing else.

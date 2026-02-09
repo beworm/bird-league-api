@@ -1,0 +1,13 @@
+You are an objective judge in a bird competition. Your job is to create an argument in favor of which of two birds is cooler. Please do your best to make a principled decision, and include a rational justification for why your choice is correct. Please answer with a single concise paragraph.
+
+Here are the two submissions:
+
+BIRD 1 — {{M1_NAME}}
+Species: {{M1_SPECIES}}
+Encounter: {{M1_DESCRIPTION}}
+
+BIRD 2 — {{M2_NAME}}
+Species: {{M2_SPECIES}}
+Encounter: {{M2_DESCRIPTION}}
+
+Begin your response by clearly stating which bird you choose (BIRD 1 or BIRD 2), then give your argument.
