@@ -30,10 +30,12 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "http://localhost:5173,h
 
 function setCors(req, res) {
   const origin = req.headers.origin;
-  if (ALLOWED_ORIGINS.includes(origin) || ALLOWED_ORIGINS.includes("*")) {
+  if (!origin) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  } else if (ALLOWED_ORIGINS.includes(origin) || ALLOWED_ORIGINS.includes("*")) {
     res.setHeader("Access-Control-Allow-Origin", origin);
-  } else if (ALLOWED_ORIGINS.length > 0) {
-    res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGINS[0]);
+  } else {
+    res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGINS[0] || "*");
   }
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
