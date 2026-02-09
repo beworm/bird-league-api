@@ -20,7 +20,7 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const db = require("./db");
-const { parseMultipart } = require("./multipart");
+const { parseMultipart, parseJson } = require("./multipart");
 
 const PORT = process.env.PORT || 3001;
 
@@ -30,12 +30,10 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "http://localhost:5173,h
 
 function setCors(req, res) {
   const origin = req.headers.origin;
-  if (!origin) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-  } else if (ALLOWED_ORIGINS.includes(origin) || ALLOWED_ORIGINS.includes("*")) {
+  if (ALLOWED_ORIGINS.includes(origin) || ALLOWED_ORIGINS.includes("*")) {
     res.setHeader("Access-Control-Allow-Origin", origin);
-  } else {
-    res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGINS[0] || "*");
+  } else if (ALLOWED_ORIGINS.length > 0) {
+    res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGINS[0]);
   }
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
@@ -75,6 +73,7 @@ const MIME = {
 // ─── Route handler ────────────────────────────────────────
 
 async function handleRequest(req, res) {
+  try {
   setCors(req, res);
 
   if (req.method === "OPTIONS") {
@@ -184,27 +183,30 @@ async function handleRequest(req, res) {
     const contentType = req.headers["content-type"] || "";
     let species = "", description = "", mediaFiles = [];
 
-    if (contentType.includes("multipart/form-data")) {
-      const body = await readBody(req);
-      const parts = parseMultipart(body, contentType);
-      for (const part of parts) {
-        if (part.name === "species") species = part.data.toString("utf8");
-        else if (part.name === "description") description = part.data.toString("utf8");
-        else if (part.filename) {
-          const safeName = member.name.replace(/[^a-zA-Z0-9]/g, "_");
-          const dir = path.join(__dirname, "submissions", `week-${weekNum}`, safeName);
-          fs.mkdirSync(dir, { recursive: true });
-          const ext = path.extname(part.filename).toLowerCase();
-          const filename = `${Date.now()}${ext}`;
-          fs.writeFileSync(path.join(dir, filename), part.data);
-          mediaFiles.push(`/api/media/${weekNum}/${memberId}/${filename}`);
-        }
+    try {
+      if (contentType.includes("multipart/form-data")) {
+        const safeName = member.name.replace(/[^a-zA-Z0-9]/g, "_");
+        const uploadDir = path.join(__dirname, "submissions", `week-${weekNum}`, safeName);
+        const { fields, files } = await parseMultipart(req, uploadDir);
+        species = fields.species || "";
+        description = fields.description || "";
+        mediaFiles = files.map(f => `/api/media/${weekNum}/${memberId}/${f.savedName}`);
+      } else if (contentType.includes("application/json")) {
+        const data = await parseJson(req);
+        species = data.species || "";
+        description = data.description || "";
+      } else {
+        // Try reading as JSON anyway
+        const body = await readBody(req);
+        try {
+          const data = JSON.parse(body.toString("utf8"));
+          species = data.species || "";
+          description = data.description || "";
+        } catch {}
       }
-    } else if (contentType.includes("application/json")) {
-      const body = await readBody(req);
-      const data = JSON.parse(body.toString("utf8"));
-      species = data.species || "";
-      description = data.description || "";
+    } catch (err) {
+      console.error("Submit parse error:", err);
+      return error(res, "Failed to parse submission: " + err.message, 400);
     }
 
     if (!species) return error(res, "Species is required", 400);
@@ -271,6 +273,7 @@ async function handleRequest(req, res) {
   }
 
   error(res, "Not found", 404);
+  } catch (err) { console.error("Request error:", err); if (!res.headersSent) error(res, "Server error", 500); }
 }
 
 // ─── Start ────────────────────────────────────────────────
