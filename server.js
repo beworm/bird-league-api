@@ -241,6 +241,39 @@ async function handleRequest(req, res) {
     return;
   }
 
+  // ── GET /api/admin/backup — download current db.json ──
+  if (req.method === "GET" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "backup") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const dbPath = path.join(__dirname, "data", "db.json");
+    if (!fs.existsSync(dbPath)) return error(res, "No database found", 404);
+    const data = fs.readFileSync(dbPath, "utf8");
+    res.writeHead(200, {
+      "Content-Type": "application/json",
+      "Content-Disposition": `attachment; filename="db-backup-${new Date().toISOString().slice(0,10)}.json"`,
+    });
+    return res.end(data);
+  }
+
+  // ── POST /api/admin/restore — upload a db.json to replace current ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "restore") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    try {
+      const body = await readBody(req);
+      const data = JSON.parse(body.toString("utf8"));
+      // Basic validation
+      if (!data.members || !data.schedule) return error(res, "Invalid db.json — missing members or schedule", 400);
+      const dbPath = path.join(__dirname, "data", "db.json");
+      fs.mkdirSync(path.join(__dirname, "data"), { recursive: true });
+      fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
+      // Reload the db module
+      delete require.cache[require.resolve("./db")];
+      Object.assign(db, require("./db"));
+      return json(res, { status: "restored", members: data.members.length, submissions: (data.submissions || []).length, judgments: (data.judgments || []).length });
+    } catch (err) {
+      return error(res, "Restore failed: " + err.message, 400);
+    }
+  }
+
   // ── POST /api/admin/judge/:week ──
   if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "judge" && seg[3]) {
     if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
