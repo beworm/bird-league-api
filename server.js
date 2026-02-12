@@ -274,6 +274,23 @@ async function handleRequest(req, res) {
     }
   }
 
+  // ── POST /api/admin/week/:week/status ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "week" && seg[3] && seg[4] === "status") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    try {
+      const body = JSON.parse((await readBody(req)).toString("utf8"));
+      const validStatuses = ["upcoming", "active", "completed"];
+      if (!body.status || !validStatuses.includes(body.status)) {
+        return error(res, "Invalid status. Must be: " + validStatuses.join(", "), 400);
+      }
+      const week = db.setWeekStatus(parseInt(seg[3]), body.status);
+      if (!week) return error(res, "Week not found", 404);
+      return json(res, { status: "ok", week: week.week, newStatus: week.status });
+    } catch (err) {
+      return error(res, err.message, 400);
+    }
+  }
+
   // ── POST /api/admin/judge/:week ──
   if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "judge" && seg[3]) {
     if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
