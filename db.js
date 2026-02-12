@@ -1,27 +1,27 @@
 /**
  * Bird League — JSON-file database layer
  *
- * All structured data in a single JSON file.
- * Media files stored on disk in /submissions.
- *
- * Judgment format (new):
- * {
- *   id, week, m1Id, m2Id,
- *   m1sub: { species, desc },
- *   m2sub: { species, desc },
- *   winner: "m1" | "m2",
- *   summary: "one-line summary",
- *   chatgpt: { pick: "m1"|"m2", argument: "..." },
- *   gemini:  { pick: "m1"|"m2", argument: "..." },
- *   claude:  { ruling: "..." },
- *   judgedAt: ISO string
- * }
+ * PERSISTENCE:
+ * - Uses RAILWAY_VOLUME_MOUNT_PATH or /data for persistent storage
+ * - Falls back to local ./data for dev
+ * - Auto-backs up on every write (keeps last 30 backups)
  */
 
 const fs = require("fs");
 const path = require("path");
 
-const DB_PATH = path.join(__dirname, "data", "db.json");
+// ─── Persistent Storage Path ─────────────────────────────
+const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || path.join(__dirname, "data");
+const DB_PATH = path.join(DATA_DIR, "db.json");
+const BACKUP_DIR = path.join(DATA_DIR, "backups");
+const MAX_BACKUPS = 30;
+
+fs.mkdirSync(DATA_DIR, { recursive: true });
+fs.mkdirSync(BACKUP_DIR, { recursive: true });
+
+console.log(`[DB] Data directory: ${DATA_DIR}`);
+console.log(`[DB] Database path: ${DB_PATH}`);
+console.log(`[DB] Backup directory: ${BACKUP_DIR}`);
 
 // ─── Members ──────────────────────────────────────────────
 
@@ -42,46 +42,46 @@ const MEMBERS = [
 
 const SCHEDULE = [
   { week: 1, status: "completed", matchups: [
-    { m1: 2, m2: 1 },   // Trevor & Katie vs Matthew
-    { m1: 3, m2: 6 },   // Marshall vs Leo & Taylor
-    { m1: 4, m2: 7 },   // Dara vs Jack
-    { m1: 5, m2: 8 },   // Anna vs Emily
-    { m1: 10, m2: 9 },  // Ben vs Grace
+    { m1: 2, m2: 1 },
+    { m1: 3, m2: 6 },
+    { m1: 4, m2: 7 },
+    { m1: 5, m2: 8 },
+    { m1: 10, m2: 9 },
   ]},
   { week: 2, status: "completed", matchups: [
-    { m1: 1, m2: 6 },   // Matthew vs Leo & Taylor
-    { m1: 2, m2: 7 },   // Trevor & Katie vs Jack
-    { m1: 3, m2: 8 },   // Marshall vs Emily
-    { m1: 4, m2: 9 },   // Dara vs Grace
-    { m1: 5, m2: 10 },  // Anna vs Ben
+    { m1: 1, m2: 6 },
+    { m1: 2, m2: 7 },
+    { m1: 3, m2: 8 },
+    { m1: 4, m2: 9 },
+    { m1: 5, m2: 10 },
   ]},
   { week: 3, status: "active", matchups: [
-    { m1: 6, m2: 7 },   // Leo & Taylor vs Jack
-    { m1: 1, m2: 8 },   // Matthew vs Emily
-    { m1: 2, m2: 9 },   // Trevor & Katie vs Grace
-    { m1: 3, m2: 10 },  // Marshall vs Ben
-    { m1: 4, m2: 5 },   // Dara vs Anna
+    { m1: 6, m2: 7 },
+    { m1: 1, m2: 8 },
+    { m1: 2, m2: 9 },
+    { m1: 3, m2: 10 },
+    { m1: 4, m2: 5 },
   ]},
   { week: 4, status: "upcoming", matchups: [
-    { m1: 1, m2: 3 },   // Matthew vs Marshall
-    { m1: 2, m2: 4 },   // Trevor & Katie vs Dara
-    { m1: 5, m2: 6 },   // Anna vs Leo & Taylor
-    { m1: 7, m2: 9 },   // Jack vs Grace
-    { m1: 8, m2: 10 },  // Emily vs Ben
+    { m1: 1, m2: 3 },
+    { m1: 2, m2: 4 },
+    { m1: 5, m2: 6 },
+    { m1: 7, m2: 9 },
+    { m1: 8, m2: 10 },
   ]},
   { week: 5, status: "upcoming", matchups: [
-    { m1: 1, m2: 4 },   // Matthew vs Dara
-    { m1: 2, m2: 3 },   // Trevor & Katie vs Marshall
-    { m1: 5, m2: 7 },   // Anna vs Jack
-    { m1: 6, m2: 10 },  // Leo & Taylor vs Ben
-    { m1: 8, m2: 9 },   // Emily vs Grace
+    { m1: 1, m2: 4 },
+    { m1: 2, m2: 3 },
+    { m1: 5, m2: 7 },
+    { m1: 6, m2: 10 },
+    { m1: 8, m2: 9 },
   ]},
   { week: 6, status: "upcoming", matchups: [
-    { m1: 1, m2: 5 },   // Matthew vs Anna
-    { m1: 2, m2: 6 },   // Trevor & Katie vs Leo & Taylor
-    { m1: 3, m2: 9 },   // Marshall vs Grace
-    { m1: 4, m2: 8 },   // Dara vs Emily
-    { m1: 7, m2: 10 },  // Jack vs Ben
+    { m1: 1, m2: 5 },
+    { m1: 2, m2: 6 },
+    { m1: 3, m2: 9 },
+    { m1: 4, m2: 8 },
+    { m1: 7, m2: 10 },
   ]},
 ];
 
@@ -94,12 +94,64 @@ function defaultDb() {
   };
 }
 
+// ─── Backup System ───────────────────────────────────────
+
+function createBackup() {
+  try {
+    if (!fs.existsSync(DB_PATH)) return;
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const backupPath = path.join(BACKUP_DIR, `db-${timestamp}.json`);
+    fs.copyFileSync(DB_PATH, backupPath);
+
+    // Prune old backups
+    const backups = fs.readdirSync(BACKUP_DIR)
+      .filter(f => f.startsWith("db-") && f.endsWith(".json"))
+      .sort()
+      .reverse();
+
+    if (backups.length > MAX_BACKUPS) {
+      backups.slice(MAX_BACKUPS).forEach(f => {
+        fs.unlinkSync(path.join(BACKUP_DIR, f));
+      });
+    }
+  } catch (err) {
+    console.error("[DB] Backup failed:", err.message);
+  }
+}
+
+function listBackups() {
+  try {
+    return fs.readdirSync(BACKUP_DIR)
+      .filter(f => f.startsWith("db-") && f.endsWith(".json"))
+      .sort()
+      .reverse()
+      .map(f => ({
+        name: f,
+        size: fs.statSync(path.join(BACKUP_DIR, f)).size,
+      }));
+  } catch {
+    return [];
+  }
+}
+
+function restoreBackup(backupName) {
+  const backupPath = path.join(BACKUP_DIR, backupName);
+  if (!fs.existsSync(backupPath)) return null;
+  createBackup(); // backup current before restoring
+  const data = fs.readFileSync(backupPath, "utf8");
+  const db = JSON.parse(data);
+  fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), "utf8");
+  console.log(`[DB] Restored from backup: ${backupName}`);
+  return db;
+}
+
 // ─── Read / Write ─────────────────────────────────────────
 
 function read() {
   try {
     return JSON.parse(fs.readFileSync(DB_PATH, "utf8"));
   } catch {
+    console.log("[DB] No existing database found, creating default...");
     const db = defaultDb();
     write(db);
     return db;
@@ -107,9 +159,24 @@ function read() {
 }
 
 function write(db) {
+  createBackup();
   fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
   fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), "utf8");
 }
+
+// ─── Migration: copy from repo if volume is empty ────────
+
+function migrateIfNeeded() {
+  const repoDbPath = path.join(__dirname, "data", "db.json");
+  if (!fs.existsSync(DB_PATH) && fs.existsSync(repoDbPath) && DATA_DIR !== path.join(__dirname, "data")) {
+    console.log("[DB] Migrating data from repo to persistent volume...");
+    const data = fs.readFileSync(repoDbPath, "utf8");
+    fs.writeFileSync(DB_PATH, data, "utf8");
+    console.log("[DB] Migration complete.");
+  }
+}
+
+migrateIfNeeded();
 
 // ─── Public API ───────────────────────────────────────────
 
@@ -118,8 +185,6 @@ module.exports = {
   getMember: (id) => read().members.find((m) => m.id === id) || null,
   getSchedule: () => read().schedule,
   getWeek: (weekNum) => read().schedule.find((w) => w.week === weekNum) || null,
-
-  // ── Submissions ──────────────────────────────────────
 
   getSubmission(week, memberId) {
     return read().submissions.find(
@@ -161,8 +226,6 @@ module.exports = {
     write(db);
   },
 
-  // ── Judgments ────────────────────────────────────────
-
   getJudgment(week, m1Id, m2Id) {
     return read().judgments.find(
       (j) => j.week === week && j.m1Id === m1Id && j.m2Id === m2Id
@@ -187,15 +250,12 @@ module.exports = {
     return judgment;
   },
 
-  // ── Standings (computed from judgments) ──────────────
-
   getStandings() {
     const db = read();
     const map = {};
     db.members.forEach((m) => {
       map[m.id] = { id: m.id, name: m.name, w: 0, l: 0 };
     });
-
     db.judgments.forEach((j) => {
       if (j.winner === "m1") {
         if (map[j.m1Id]) map[j.m1Id].w++;
@@ -205,14 +265,11 @@ module.exports = {
         if (map[j.m1Id]) map[j.m1Id].l++;
       }
     });
-
     return Object.values(map).sort((a, b) => {
       if (b.w !== a.w) return b.w - a.w;
       return a.l - b.l;
     });
   },
-
-  // ── Schedule Management ─────────────────────────────
 
   setWeekStatus(weekNum, status) {
     const db = read();
@@ -234,7 +291,11 @@ module.exports = {
     return week;
   },
 
-  // ── Reset ──────────────────────────────────────────
+  // ── Backup API ─────────────────────────────────────
+  listBackups,
+  restoreBackup,
+  getFullDb() { return read(); },
+  replaceDb(newDb) { createBackup(); write(newDb); return newDb; },
 
   reset() {
     const db = defaultDb();

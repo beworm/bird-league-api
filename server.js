@@ -242,36 +242,46 @@ async function handleRequest(req, res) {
   }
 
   // ── GET /api/admin/backup — download current db.json ──
-  if (req.method === "GET" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "backup") {
+  if (req.method === "GET" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "backup" && !seg[3]) {
     if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
-    const dbPath = path.join(__dirname, "data", "db.json");
-    if (!fs.existsSync(dbPath)) return error(res, "No database found", 404);
-    const data = fs.readFileSync(dbPath, "utf8");
-    res.writeHead(200, {
-      "Content-Type": "application/json",
-      "Content-Disposition": `attachment; filename="db-backup-${new Date().toISOString().slice(0,10)}.json"`,
-    });
-    return res.end(data);
+    try {
+      const data = JSON.stringify(db.getFullDb(), null, 2);
+      res.writeHead(200, {
+        "Content-Type": "application/json",
+        "Content-Disposition": `attachment; filename="db-backup-${new Date().toISOString().slice(0,10)}.json"`,
+      });
+      return res.end(data);
+    } catch (err) {
+      return error(res, "Backup failed: " + err.message, 500);
+    }
+  }
+
+  // ── GET /api/admin/backups — list all auto-backups ──
+  if (req.method === "GET" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "backups") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    return json(res, { backups: db.listBackups() });
   }
 
   // ── POST /api/admin/restore — upload a db.json to replace current ──
-  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "restore") {
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "restore" && !seg[3]) {
     if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
     try {
       const body = await readBody(req);
       const data = JSON.parse(body.toString("utf8"));
-      // Basic validation
       if (!data.members || !data.schedule) return error(res, "Invalid db.json — missing members or schedule", 400);
-      const dbPath = path.join(__dirname, "data", "db.json");
-      fs.mkdirSync(path.join(__dirname, "data"), { recursive: true });
-      fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
-      // Reload the db module
-      delete require.cache[require.resolve("./db")];
-      Object.assign(db, require("./db"));
+      db.replaceDb(data);
       return json(res, { status: "restored", members: data.members.length, submissions: (data.submissions || []).length, judgments: (data.judgments || []).length });
     } catch (err) {
       return error(res, "Restore failed: " + err.message, 400);
     }
+  }
+
+  // ── POST /api/admin/restore/:backupName — restore from auto-backup ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "restore" && seg[3]) {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const result = db.restoreBackup(seg[3]);
+    if (!result) return error(res, "Backup not found", 404);
+    return json(res, { status: "restored", backup: seg[3], submissions: (result.submissions || []).length, judgments: (result.judgments || []).length });
   }
 
   // ── POST /api/admin/week/:week/status ──
