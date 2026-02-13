@@ -99,6 +99,22 @@ async function handleRequest(req, res) {
     return json(res, db.getSchedule());
   }
 
+  // ── GET /api/health — verify DB and volume status ──
+  if (req.method === "GET" && url.pathname === "/api/health") {
+    const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || "local";
+    const backups = db.listBackups ? db.listBackups() : [];
+    const schedule = db.getSchedule();
+    const subs = schedule.reduce((n, w) => n + (w.matchups || []).filter(m => m.sub1 || m.sub2).length, 0);
+    return json(res, {
+      status: "ok",
+      dataDir: DATA_DIR,
+      volumeAttached: DATA_DIR !== "local",
+      backupCount: backups.length,
+      latestBackup: backups[0]?.name || null,
+      totalSubmissions: subs,
+    });
+  }
+
   // ── GET /api/standings ──
   if (req.method === "GET" && url.pathname === "/api/standings") {
     return json(res, db.getStandings());
