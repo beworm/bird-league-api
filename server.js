@@ -16,7 +16,7 @@
  *   POST /api/admin/reset        (requires ADMIN_SECRET)
  */
 
-// Bird League API v1.1 — persistent storage enabled
+// Bird League API v1.2 — persistent storage + media on volume
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
