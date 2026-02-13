@@ -21,6 +21,11 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const db = require("./db");
+
+// Media files go on the persistent volume alongside db.json
+const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || path.join(__dirname, "data");
+const MEDIA_DIR = path.join(DATA_DIR, "submissions");
+fs.mkdirSync(MEDIA_DIR, { recursive: true });
 const { parseMultipart, parseJson } = require("./multipart");
 
 const PORT = process.env.PORT || 3001;
@@ -203,7 +208,7 @@ async function handleRequest(req, res) {
     try {
       if (contentType.includes("multipart/form-data")) {
         const safeName = member.name.replace(/[^a-zA-Z0-9]/g, "_");
-        const uploadDir = path.join(__dirname, "submissions", `week-${weekNum}`, safeName);
+        const uploadDir = path.join(MEDIA_DIR, `week-${weekNum}`, safeName);
         const { fields, files } = await parseMultipart(req, uploadDir);
         species = fields.species || "";
         description = fields.description || "";
@@ -242,7 +247,7 @@ async function handleRequest(req, res) {
     if (!member) return error(res, "Not found", 404);
 
     const safeName = member.name.replace(/[^a-zA-Z0-9]/g, "_");
-    const filePath = path.join(__dirname, "submissions", `week-${weekNum}`, safeName, filename);
+    const filePath = path.join(MEDIA_DIR, `week-${weekNum}`, safeName, filename);
     if (!fs.existsSync(filePath)) return error(res, "File not found", 404);
 
     const ext = path.extname(filename).toLowerCase();
