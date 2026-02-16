@@ -63,19 +63,21 @@ function parsePick(responseText, m1Species, m2Species) {
   const lower = responseText.toLowerCase();
   const m1 = m1Species.toLowerCase();
   const m2 = m2Species.toLowerCase();
+  const m1Base = m1.replace(/\s*\(.*?\)\s*/g, "").trim();
+  const m2Base = m2.replace(/\s*\(.*?\)\s*/g, "").trim();
 
   // Check for "The [species] is the cooler bird" at the start
   const first200 = lower.slice(0, 200);
-  if (first200.includes(m1 + " is the cooler")) return "m1";
-  if (first200.includes(m2 + " is the cooler")) return "m2";
+  if (first200.includes(m1Base + " is the cooler")) return "m1";
+  if (first200.includes(m2Base + " is the cooler")) return "m2";
 
   // Fallback: "BIRD 1" / "BIRD 2" (legacy)
   if (first200.includes("bird 1")) return "m1";
   if (first200.includes("bird 2")) return "m2";
 
-  // Fallback: count species mentions
-  const m1Count = (lower.match(new RegExp(m1.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g")) || []).length;
-  const m2Count = (lower.match(new RegExp(m2.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g")) || []).length;
+  // Fallback: count base species name mentions
+  const m1Count = (lower.match(new RegExp(m1Base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g")) || []).length;
+  const m2Count = (lower.match(new RegExp(m2Base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g")) || []).length;
   if (m1Count > m2Count) return "m1";
   if (m2Count > m1Count) return "m2";
 
@@ -86,32 +88,44 @@ function parseClaudePick(responseText, m1Species, m2Species) {
   const lower = responseText.toLowerCase();
   const m1 = m1Species.toLowerCase();
   const m2 = m2Species.toLowerCase();
+  // Also try without parentheticals: "Great Egret (Ardea Alba)" → "great egret"
+  const m1Base = m1.replace(/\s*\(.*?\)\s*/g, "").trim();
+  const m2Base = m2.replace(/\s*\(.*?\)\s*/g, "").trim();
 
   // First: check for explicit "WINNER: species" line
   const winnerMatch = responseText.match(/WINNER:\s*(.+)/i);
   if (winnerMatch) {
     const winner = winnerMatch[1].trim().toLowerCase();
-    if (winner.includes(m1)) return "m1";
-    if (winner.includes(m2)) return "m2";
+    // Check both directions: winner contains species OR species contains winner
+    if (winner.includes(m1) || winner.includes(m1Base) || m1.includes(winner) || m1Base.includes(winner)) return "m1";
+    if (winner.includes(m2) || winner.includes(m2Base) || m2.includes(winner) || m2Base.includes(winner)) return "m2";
   }
 
   // Check "rules/finds in favor of"
   const favorMatch = lower.match(/(?:rules?|finds?)\s+in\s+favor\s+of\s+(?:the\s+)?(.+?)[\.\\,\n]/);
   if (favorMatch) {
     const favored = favorMatch[1].toLowerCase();
-    if (favored.includes(m1)) return "m1";
-    if (favored.includes(m2)) return "m2";
+    if (favored.includes(m1Base) || m1Base.includes(favored)) return "m1";
+    if (favored.includes(m2Base) || m2Base.includes(favored)) return "m2";
   }
 
   // Check "is hereby declared the cooler bird"
-  if (lower.includes(m1 + " is hereby declared") || lower.includes(m1 + " is the cooler") || lower.includes(m1 + " wins")) return "m1";
-  if (lower.includes(m2 + " is hereby declared") || lower.includes(m2 + " is the cooler") || lower.includes(m2 + " wins")) return "m2";
+  if (lower.includes(m1Base + " is hereby declared") || lower.includes(m1Base + " is the cooler") || lower.includes(m1Base + " wins")) return "m1";
+  if (lower.includes(m2Base + " is hereby declared") || lower.includes(m2Base + " is the cooler") || lower.includes(m2Base + " wins")) return "m2";
+
+  // Check "finds that the [species]" or "this court finds that the [species]"
+  const findsMatch = lower.match(/finds\s+that\s+(?:the\s+)?(.+?)\s+(?:represents|emerges|is|embodies|prevails|wins)/);
+  if (findsMatch) {
+    const found = findsMatch[1].toLowerCase();
+    if (found.includes(m1Base) || m1Base.includes(found)) return "m1";
+    if (found.includes(m2Base) || m2Base.includes(found)) return "m2";
+  }
 
   // Check final paragraph
   const paragraphs = responseText.split("\n\n");
   const lastPara = paragraphs[paragraphs.length - 1].toLowerCase();
-  if (lastPara.includes(m1) && !lastPara.includes(m2)) return "m1";
-  if (lastPara.includes(m2) && !lastPara.includes(m1)) return "m2";
+  if (lastPara.includes(m1Base) && !lastPara.includes(m2Base)) return "m1";
+  if (lastPara.includes(m2Base) && !lastPara.includes(m1Base)) return "m2";
 
   // Legacy fallback
   if (lower.includes("bird 1")) return "m1";
