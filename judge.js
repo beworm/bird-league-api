@@ -222,7 +222,10 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
   const claudePrompt = fillTemplate(loadPrompt("claude.txt"), claudeVars);
   const claudeResponse = await callClaude(claudePrompt);
   const claudePick = parseClaudePick(claudeResponse, m1Sub.species, m2Sub.species);
-  console.log(`  [Claude] Ruled: ${claudePick === "m1" ? m1Member.name : m2Member.name}`);
+  // Strip the WINNER: line from the display text
+  const claudeRuling = claudeResponse.replace(/\n*WINNER:.*$/i, "").trim();
+  console.log(`  [Claude] Ruled: ${claudePick === "m1" ? m1Member.name : claudePick === "m2" ? m2Member.name : "UNKNOWN"} (${claudePick})`);
+  if (!claudePick) console.log(`  [WARNING] Could not parse Claude's pick! Response ends with: ${claudeResponse.slice(-100)}`);
 
   // Step 4: Generate summary
   let summary = "";
@@ -232,7 +235,7 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
     const summaryVars = {
       WINNER_SPECIES: winnerSpecies,
       WINNER_NAME: winnerName,
-      CLAUDE_RULING: claudeResponse,
+      CLAUDE_RULING: claudeRuling,
     };
     const summaryPrompt = fillTemplate(loadPrompt("summary.txt"), summaryVars);
     summary = await callClaude(summaryPrompt);
@@ -254,7 +257,7 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
     summary: summary.trim(),
     chatgpt: { pick: chatgptPick, argument: chatgptResponse },
     gemini: { pick: geminiPick, argument: geminiResponse },
-    claude: { ruling: claudeResponse },
+    claude: { ruling: claudeRuling },
     judgedAt: new Date().toISOString(),
   };
 

@@ -324,7 +324,7 @@ async function handleRequest(req, res) {
   }
 
   // ── DELETE /api/admin/judgments/:week — clear judgments for a week ──
-  if (req.method === "DELETE" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "judgments" && seg[3]) {
+  if (req.method === "DELETE" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "judgments" && seg[3] && !seg[4]) {
     if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
     const weekNum = parseInt(seg[3]);
     const fullDb = db.getFullDb();
@@ -333,6 +333,20 @@ async function handleRequest(req, res) {
     const removed = before - fullDb.judgments.length;
     db.replaceDb(fullDb);
     return json(res, { status: "ok", week: weekNum, removed });
+  }
+
+  // ── DELETE /api/admin/judgments/:week/:m1/:m2 — clear single matchup judgment ──
+  if (req.method === "DELETE" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "judgments" && seg[3] && seg[4] && seg[5]) {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const weekNum = parseInt(seg[3]);
+    const m1Id = parseInt(seg[4]);
+    const m2Id = parseInt(seg[5]);
+    const fullDb = db.getFullDb();
+    const before = fullDb.judgments.length;
+    fullDb.judgments = fullDb.judgments.filter(j => !(j.week === weekNum && j.m1Id === m1Id && j.m2Id === m2Id));
+    const removed = before - fullDb.judgments.length;
+    db.replaceDb(fullDb);
+    return json(res, { status: "ok", week: weekNum, m1: m1Id, m2: m2Id, removed });
   }
 
   // ── POST /api/admin/judge/:week ──
