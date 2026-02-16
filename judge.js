@@ -194,10 +194,21 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
   const chatgptPick = parsePick(chatgptResponse, m1Sub.species, m2Sub.species);
   console.log(`  [ChatGPT] Picked: ${chatgptPick === "m1" ? m1Member.name : m2Member.name}`);
 
-  // Step 2: Gemini (capricious)
+  // Step 2: Gemini (capricious) — falls back to ChatGPT if no Gemini key
   console.log(`  [Gemini] Judging ${m1Member.name} vs ${m2Member.name}...`);
   const geminiPrompt = fillTemplate(loadPrompt("gemini.txt"), vars);
-  const geminiResponse = await callGemini(geminiPrompt);
+  let geminiResponse;
+  if (process.env.GOOGLE_AI_API_KEY) {
+    try {
+      geminiResponse = await callGemini(geminiPrompt);
+    } catch (err) {
+      console.log(`  [Gemini] Failed (${err.message}), falling back to ChatGPT...`);
+      geminiResponse = await callChatGPT(geminiPrompt);
+    }
+  } else {
+    console.log(`  [Gemini] No API key, using ChatGPT as fallback...`);
+    geminiResponse = await callChatGPT(geminiPrompt);
+  }
   const geminiPick = parsePick(geminiResponse, m1Sub.species, m2Sub.species);
   console.log(`  [Gemini] Picked: ${geminiPick === "m1" ? m1Member.name : m2Member.name}`);
 
