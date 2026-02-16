@@ -323,6 +323,18 @@ async function handleRequest(req, res) {
     }
   }
 
+  // ── DELETE /api/admin/judgments/:week — clear judgments for a week ──
+  if (req.method === "DELETE" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "judgments" && seg[3]) {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const weekNum = parseInt(seg[3]);
+    const fullDb = db.getFullDb();
+    const before = fullDb.judgments.length;
+    fullDb.judgments = fullDb.judgments.filter(j => j.week !== weekNum);
+    const removed = before - fullDb.judgments.length;
+    db.replaceDb(fullDb);
+    return json(res, { status: "ok", week: weekNum, removed });
+  }
+
   // ── POST /api/admin/judge/:week ──
   if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "judge" && seg[3]) {
     if (!checkAdmin(req)) return error(res, "Unauthorized", 401);

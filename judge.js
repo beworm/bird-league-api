@@ -59,41 +59,64 @@ function httpsPost(url, headers, body) {
 
 // ─── Parse which bird the judge picked ─────────────────────
 
-function parsePick(responseText) {
+function parsePick(responseText, m1Species, m2Species) {
   const lower = responseText.toLowerCase();
-  // Look for explicit "BIRD 1" or "BIRD 2" near the start
+  const m1 = m1Species.toLowerCase();
+  const m2 = m2Species.toLowerCase();
+
+  // Check for "The [species] is the cooler bird" at the start
   const first200 = lower.slice(0, 200);
+  if (first200.includes(m1 + " is the cooler")) return "m1";
+  if (first200.includes(m2 + " is the cooler")) return "m2";
+
+  // Fallback: "BIRD 1" / "BIRD 2" (legacy)
   if (first200.includes("bird 1")) return "m1";
   if (first200.includes("bird 2")) return "m2";
-  // Fallback: check anywhere
-  const bird1Count = (lower.match(/bird 1/g) || []).length;
-  const bird2Count = (lower.match(/bird 2/g) || []).length;
-  if (bird1Count > bird2Count) return "m1";
-  if (bird2Count > bird1Count) return "m2";
-  return null; // Could not determine
+
+  // Fallback: count species mentions
+  const m1Count = (lower.match(new RegExp(m1.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g")) || []).length;
+  const m2Count = (lower.match(new RegExp(m2.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g")) || []).length;
+  if (m1Count > m2Count) return "m1";
+  if (m2Count > m1Count) return "m2";
+
+  return null;
 }
 
 function parseClaudePick(responseText, m1Species, m2Species) {
   const lower = responseText.toLowerCase();
-  // Claude's ruling usually says "rules in favor of" or "finds in favor of"
-  const favorMatch = lower.match(/(?:rules?|finds?|rules?)\s+in\s+favor\s+of\s+(?:the\s+)?(.+?)[\.\,\n]/);
+  const m1 = m1Species.toLowerCase();
+  const m2 = m2Species.toLowerCase();
+
+  // First: check for explicit "WINNER: species" line
+  const winnerMatch = responseText.match(/WINNER:\s*(.+)/i);
+  if (winnerMatch) {
+    const winner = winnerMatch[1].trim().toLowerCase();
+    if (winner.includes(m1)) return "m1";
+    if (winner.includes(m2)) return "m2";
+  }
+
+  // Check "rules/finds in favor of"
+  const favorMatch = lower.match(/(?:rules?|finds?)\s+in\s+favor\s+of\s+(?:the\s+)?(.+?)[\.\\,\n]/);
   if (favorMatch) {
     const favored = favorMatch[1].toLowerCase();
-    if (favored.includes(m1Species.toLowerCase())) return "m1";
-    if (favored.includes(m2Species.toLowerCase())) return "m2";
+    if (favored.includes(m1)) return "m1";
+    if (favored.includes(m2)) return "m2";
   }
-  // Check for "BIRD 1" / "BIRD 2"
-  const first500 = lower.slice(0, 500);
-  if (first500.includes("bird 1")) return "m1";
-  if (first500.includes("bird 2")) return "m2";
-  // Check which species is mentioned more in the final paragraph
+
+  // Check "is hereby declared the cooler bird"
+  if (lower.includes(m1 + " is hereby declared") || lower.includes(m1 + " is the cooler") || lower.includes(m1 + " wins")) return "m1";
+  if (lower.includes(m2 + " is hereby declared") || lower.includes(m2 + " is the cooler") || lower.includes(m2 + " wins")) return "m2";
+
+  // Check final paragraph
   const paragraphs = responseText.split("\n\n");
   const lastPara = paragraphs[paragraphs.length - 1].toLowerCase();
-  if (lastPara.includes(m1Species.toLowerCase()) && !lastPara.includes(m2Species.toLowerCase())) return "m1";
-  if (lastPara.includes(m2Species.toLowerCase()) && !lastPara.includes(m1Species.toLowerCase())) return "m2";
-  // Check for "the [species] wins" or "declared the cooler bird"
-  if (lower.includes(m1Species.toLowerCase() + " wins") || lower.includes(m1Species.toLowerCase() + " is the cooler") || lower.includes(m1Species.toLowerCase() + " is hereby")) return "m1";
-  if (lower.includes(m2Species.toLowerCase() + " wins") || lower.includes(m2Species.toLowerCase() + " is the cooler") || lower.includes(m2Species.toLowerCase() + " is hereby")) return "m2";
+  if (lastPara.includes(m1) && !lastPara.includes(m2)) return "m1";
+  if (lastPara.includes(m2) && !lastPara.includes(m1)) return "m2";
+
+  // Legacy fallback
+  if (lower.includes("bird 1")) return "m1";
+  if (lower.includes("bird 2")) return "m2";
+
   return null;
 }
 
@@ -168,14 +191,14 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
   console.log(`  [ChatGPT] Judging ${m1Member.name} vs ${m2Member.name}...`);
   const chatgptPrompt = fillTemplate(loadPrompt("chatgpt.txt"), vars);
   const chatgptResponse = await callChatGPT(chatgptPrompt);
-  const chatgptPick = parsePick(chatgptResponse);
+  const chatgptPick = parsePick(chatgptResponse, m1Sub.species, m2Sub.species);
   console.log(`  [ChatGPT] Picked: ${chatgptPick === "m1" ? m1Member.name : m2Member.name}`);
 
   // Step 2: Gemini (capricious)
   console.log(`  [Gemini] Judging ${m1Member.name} vs ${m2Member.name}...`);
   const geminiPrompt = fillTemplate(loadPrompt("gemini.txt"), vars);
   const geminiResponse = await callGemini(geminiPrompt);
-  const geminiPick = parsePick(geminiResponse);
+  const geminiPick = parsePick(geminiResponse, m1Sub.species, m2Sub.species);
   console.log(`  [Gemini] Picked: ${geminiPick === "m1" ? m1Member.name : m2Member.name}`);
 
   // Step 3: Claude (synthesis) — sees both prior arguments
