@@ -60,46 +60,38 @@ function httpsPost(url, headers, body) {
 // ─── Parse which bird the judge picked ─────────────────────
 
 function parsePick(responseText, m1Species, m2Species) {
-  const lower = responseText.toLowerCase();
-  const m1 = m1Species.toLowerCase();
-  const m2 = m2Species.toLowerCase();
-  const m1Base = m1.replace(/\s*\(.*?\)\s*/g, "").trim();
-  const m2Base = m2.replace(/\s*\(.*?\)\s*/g, "").trim();
+  // Primary: check for "WINNER: SUBMISSION 1" or "WINNER: SUBMISSION 2"
+  const winnerMatch = responseText.match(/WINNER:\s*SUBMISSION\s*(\d)/i);
+  if (winnerMatch) {
+    if (winnerMatch[1] === "1") return "m1";
+    if (winnerMatch[1] === "2") return "m2";
+  }
 
-  // Check for "The [species] is the cooler bird" at the start
+  // Fallback: species name matching
+  const lower = responseText.toLowerCase();
+  const m1Base = m1Species.toLowerCase().replace(/\s*\(.*?\)\s*/g, "").trim();
+  const m2Base = m2Species.toLowerCase().replace(/\s*\(.*?\)\s*/g, "").trim();
+
   const first200 = lower.slice(0, 200);
   if (first200.includes(m1Base + " is the cooler")) return "m1";
   if (first200.includes(m2Base + " is the cooler")) return "m2";
 
-  // Fallback: "BIRD 1" / "BIRD 2" (legacy)
-  if (first200.includes("bird 1")) return "m1";
-  if (first200.includes("bird 2")) return "m2";
-
-  // Fallback: count base species name mentions
-  const m1Count = (lower.match(new RegExp(m1Base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g")) || []).length;
-  const m2Count = (lower.match(new RegExp(m2Base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g")) || []).length;
-  if (m1Count > m2Count) return "m1";
-  if (m2Count > m1Count) return "m2";
-
+  console.log("  [WARNING] Could not parse pick from response");
   return null;
 }
 
 function parseClaudePick(responseText, m1Species, m2Species) {
-  const lower = responseText.toLowerCase();
-  const m1 = m1Species.toLowerCase();
-  const m2 = m2Species.toLowerCase();
-  // Also try without parentheticals: "Great Egret (Ardea Alba)" → "great egret"
-  const m1Base = m1.replace(/\s*\(.*?\)\s*/g, "").trim();
-  const m2Base = m2.replace(/\s*\(.*?\)\s*/g, "").trim();
-
-  // First: check for explicit "WINNER: species" line
-  const winnerMatch = responseText.match(/WINNER:\s*(.+)/i);
+  // Primary: check for "WINNER: SUBMISSION 1" or "WINNER: SUBMISSION 2"
+  const winnerMatch = responseText.match(/WINNER:\s*SUBMISSION\s*(\d)/i);
   if (winnerMatch) {
-    const winner = winnerMatch[1].trim().toLowerCase();
-    // Check both directions: winner contains species OR species contains winner
-    if (winner.includes(m1) || winner.includes(m1Base) || m1.includes(winner) || m1Base.includes(winner)) return "m1";
-    if (winner.includes(m2) || winner.includes(m2Base) || m2.includes(winner) || m2Base.includes(winner)) return "m2";
+    if (winnerMatch[1] === "1") return "m1";
+    if (winnerMatch[1] === "2") return "m2";
   }
+
+  // Fallback: species name matching
+  const lower = responseText.toLowerCase();
+  const m1Base = m1Species.toLowerCase().replace(/\s*\(.*?\)\s*/g, "").trim();
+  const m2Base = m2Species.toLowerCase().replace(/\s*\(.*?\)\s*/g, "").trim();
 
   // Check "rules/finds in favor of"
   const favorMatch = lower.match(/(?:rules?|finds?)\s+in\s+favor\s+of\s+(?:the\s+)?(.+?)[\.\\,\n]/);
@@ -109,70 +101,79 @@ function parseClaudePick(responseText, m1Species, m2Species) {
     if (favored.includes(m2Base) || m2Base.includes(favored)) return "m2";
   }
 
-  // Check "is hereby declared the cooler bird"
-  if (lower.includes(m1Base + " is hereby declared") || lower.includes(m1Base + " is the cooler") || lower.includes(m1Base + " wins")) return "m1";
-  if (lower.includes(m2Base + " is hereby declared") || lower.includes(m2Base + " is the cooler") || lower.includes(m2Base + " wins")) return "m2";
-
-  // Check "finds that the [species]" or "this court finds that the [species]"
-  const findsMatch = lower.match(/finds\s+that\s+(?:the\s+)?(.+?)\s+(?:represents|emerges|is|embodies|prevails|wins)/);
-  if (findsMatch) {
-    const found = findsMatch[1].toLowerCase();
-    if (found.includes(m1Base) || m1Base.includes(found)) return "m1";
-    if (found.includes(m2Base) || m2Base.includes(found)) return "m2";
-  }
-
-  // Check final paragraph
-  const paragraphs = responseText.split("\n\n");
-  const lastPara = paragraphs[paragraphs.length - 1].toLowerCase();
-  if (lastPara.includes(m1Base) && !lastPara.includes(m2Base)) return "m1";
-  if (lastPara.includes(m2Base) && !lastPara.includes(m1Base)) return "m2";
-
-  // Legacy fallback
-  if (lower.includes("bird 1")) return "m1";
-  if (lower.includes("bird 2")) return "m2";
-
+  console.log("  [WARNING] Could not parse Claude's pick from response");
   return null;
 }
 
 // ─── API Callers ───────────────────────────────────────────
 
-async function callChatGPT(prompt) {
+async function callChatGPT(prompt, images) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error("OPENAI_API_KEY not set");
+
+  // Build content array: labeled images + text
+  const content = [];
+  if (images && images.length > 0) {
+    for (const img of images) {
+      content.push({ type: "text", text: `[Photo from ${img.label}'s submission:]` });
+      content.push({ type: "image_url", image_url: { url: `data:${img.mime};base64,${img.base64}` } });
+    }
+  }
+  content.push({ type: "text", text: prompt });
+
   const res = await httpsPost("https://api.openai.com/v1/chat/completions", {
     Authorization: `Bearer ${apiKey}`,
   }, {
-    model: "gpt-4o",
-    messages: [{ role: "user", content: prompt }],
-    max_tokens: 1000,
-    temperature: 0.8,
+    model: "o4-mini",
+    messages: [{ role: "user", content }],
   });
   if (res.status !== 200) throw new Error(`OpenAI error ${res.status}: ${JSON.stringify(res.body)}`);
   return res.body.choices[0].message.content;
 }
 
-async function callGemini(prompt) {
+async function callGemini(prompt, images) {
   const apiKey = process.env.GOOGLE_AI_API_KEY;
   if (!apiKey) throw new Error("GOOGLE_AI_API_KEY not set");
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+  const parts = [];
+  if (images && images.length > 0) {
+    for (const img of images) {
+      parts.push({ text: `[Photo from ${img.label}'s submission:]` });
+      parts.push({ inline_data: { mime_type: img.mime, data: img.base64 } });
+    }
+  }
+  parts.push({ text: prompt });
+
   const res = await httpsPost(url, {}, {
-    contents: [{ parts: [{ text: prompt }] }],
+    contents: [{ parts }],
     generationConfig: { temperature: 0.9, maxOutputTokens: 1000 },
   });
   if (res.status !== 200) throw new Error(`Gemini error ${res.status}: ${JSON.stringify(res.body)}`);
   return res.body.candidates[0].content.parts[0].text;
 }
 
-async function callClaude(prompt) {
+async function callClaude(prompt, images) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) throw new Error("ANTHROPIC_API_KEY not set");
+
+  // Build content array: labeled images, then text
+  const content = [];
+  if (images && images.length > 0) {
+    for (const img of images) {
+      content.push({ type: "text", text: `[Photo from ${img.label}'s submission:]` });
+      content.push({ type: "image", source: { type: "base64", media_type: img.mime, data: img.base64 } });
+    }
+  }
+  content.push({ type: "text", text: prompt });
+
   const res = await httpsPost("https://api.anthropic.com/v1/messages", {
     "x-api-key": apiKey,
     "anthropic-version": "2023-06-01",
   }, {
     model: "claude-sonnet-4-20250514",
     max_tokens: 2000,
-    messages: [{ role: "user", content: prompt }],
+    messages: [{ role: "user", content }],
   });
   if (res.status !== 200) throw new Error(`Anthropic error ${res.status}: ${JSON.stringify(res.body)}`);
   return res.body.content[0].text;
@@ -192,6 +193,46 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
   const m1Member = db.getMember(m1Sub.memberId);
   const m2Member = db.getMember(m2Sub.memberId);
 
+  // Load submission images from disk
+  const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || path.join(__dirname, "data");
+  const MEDIA_DIR = path.join(DATA_DIR, "submissions");
+  const images = [];
+
+  function loadImages(sub, label) {
+    if (!sub.mediaFiles || sub.mediaFiles.length === 0) return;
+    for (const mediaUrl of sub.mediaFiles) {
+      // mediaUrl looks like "/api/media/3/1/filename.jpeg"
+      const parts = mediaUrl.split("/");
+      const weekDir = `week-${parts[3]}`;
+      const memberDir = parts[4];
+      const filename = parts[5];
+      const filePath = path.join(MEDIA_DIR, weekDir, memberDir, filename);
+      const ext = path.extname(filename).toLowerCase();
+
+      // Only include images, skip videos (too large for API)
+      if (![".jpg", ".jpeg", ".png", ".gif", ".webp"].includes(ext)) continue;
+
+      try {
+        if (fs.existsSync(filePath)) {
+          const data = fs.readFileSync(filePath);
+          const mimeTypes = { ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".gif": "image/gif", ".webp": "image/webp" };
+          images.push({
+            base64: data.toString("base64"),
+            mime: mimeTypes[ext] || "image/jpeg",
+            label,
+          });
+          console.log(`  Loaded image for ${label}: ${filename} (${(data.length / 1024).toFixed(0)}KB)`);
+        }
+      } catch (err) {
+        console.log(`  Warning: Could not load image ${filePath}: ${err.message}`);
+      }
+    }
+  }
+
+  loadImages(m1Sub, m1Member.name);
+  loadImages(m2Sub, m2Member.name);
+  console.log(`  Total images loaded: ${images.length}`);
+
   const vars = {
     M1_NAME: m1Member.name,
     M1_SPECIES: m1Sub.species,
@@ -204,37 +245,45 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
   // Step 1: ChatGPT (rational)
   console.log(`  [ChatGPT] Judging ${m1Member.name} vs ${m2Member.name}...`);
   const chatgptPrompt = fillTemplate(loadPrompt("chatgpt.txt"), vars);
-  const chatgptResponse = await callChatGPT(chatgptPrompt);
+  console.log("  [ChatGPT PROMPT]:", chatgptPrompt.substring(0, 2000));
+  const chatgptResponse = await callChatGPT(chatgptPrompt, images);
+  console.log("  [ChatGPT RESPONSE]:", chatgptResponse.substring(0, 1000));
   const chatgptPick = parsePick(chatgptResponse, m1Sub.species, m2Sub.species);
   console.log(`  [ChatGPT] Picked: ${chatgptPick === "m1" ? m1Member.name : m2Member.name}`);
 
   // Step 2: Gemini (capricious) — falls back to ChatGPT if no Gemini key
   console.log(`  [Gemini] Judging ${m1Member.name} vs ${m2Member.name}...`);
   const geminiPrompt = fillTemplate(loadPrompt("gemini.txt"), vars);
+  console.log("  [Gemini PROMPT]:", geminiPrompt.substring(0, 2000));
   let geminiResponse;
   if (process.env.GOOGLE_AI_API_KEY) {
     try {
-      geminiResponse = await callGemini(geminiPrompt);
+      geminiResponse = await callGemini(geminiPrompt, images);
     } catch (err) {
       console.log(`  [Gemini] Failed (${err.message}), falling back to ChatGPT...`);
-      geminiResponse = await callChatGPT(geminiPrompt);
+      geminiResponse = await callChatGPT(geminiPrompt, images);
     }
   } else {
     console.log(`  [Gemini] No API key, using ChatGPT as fallback...`);
-    geminiResponse = await callChatGPT(geminiPrompt);
+    geminiResponse = await callChatGPT(geminiPrompt, images);
   }
   const geminiPick = parsePick(geminiResponse, m1Sub.species, m2Sub.species);
   console.log(`  [Gemini] Picked: ${geminiPick === "m1" ? m1Member.name : m2Member.name}`);
 
-  // Step 3: Claude (synthesis) — sees both prior arguments
+  // Strip WINNER lines from display text
+  const chatgptArgument = chatgptResponse.replace(/\n*WINNER:.*$/i, "").trim();
+  const geminiArgument = geminiResponse.replace(/\n*WINNER:.*$/i, "").trim();
+
+  // Step 3: Claude (synthesis) — sees both prior arguments (without WINNER lines)
   console.log(`  [Claude] Delivering final ruling...`);
   const claudeVars = {
     ...vars,
-    CHATGPT_ARGUMENT: chatgptResponse,
-    GEMINI_ARGUMENT: geminiResponse,
+    CHATGPT_ARGUMENT: chatgptArgument,
+    GEMINI_ARGUMENT: geminiArgument,
   };
   const claudePrompt = fillTemplate(loadPrompt("claude.txt"), claudeVars);
-  const claudeResponse = await callClaude(claudePrompt);
+  console.log("  [Claude PROMPT]:", claudePrompt.substring(0, 3000));
+  const claudeResponse = await callClaude(claudePrompt, images);
   const claudePick = parseClaudePick(claudeResponse, m1Sub.species, m2Sub.species);
   // Strip the WINNER: line from the display text
   const claudeRuling = claudeResponse.replace(/\n*WINNER:.*$/i, "").trim();
@@ -269,8 +318,8 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
     m2sub: { species: m2Sub.species, desc: m2Sub.description },
     winner: claudePick,
     summary: summary.trim(),
-    chatgpt: { pick: chatgptPick, argument: chatgptResponse },
-    gemini: { pick: geminiPick, argument: geminiResponse },
+    chatgpt: { pick: chatgptPick, argument: chatgptArgument },
+    gemini: { pick: geminiPick, argument: geminiArgument },
     claude: { ruling: claudeRuling },
     judgedAt: new Date().toISOString(),
   };
