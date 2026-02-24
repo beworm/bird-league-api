@@ -271,8 +271,8 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
   console.log(`  [Gemini] Picked: ${geminiPick === "m1" ? m1Member.name : m2Member.name}`);
 
   // Strip WINNER lines from display text
-  const chatgptArgument = chatgptResponse.replace(/\n*WINNER:.*$/i, "").trim();
-  const geminiArgument = geminiResponse.replace(/\n*WINNER:.*$/i, "").trim();
+  const chatgptArgument = chatgptResponse.replace(/\n*WINNER:\s*SUBMISSION\s*\d.*/gi, "").trim();
+  const geminiArgument = geminiResponse.replace(/\n*WINNER:\s*SUBMISSION\s*\d.*/gi, "").trim();
 
   // Step 3: Claude (synthesis) — sees both prior arguments (without WINNER lines)
   console.log(`  [Claude] Delivering final ruling...`);
@@ -286,7 +286,7 @@ async function judgeMatchup(week, m1Sub, m2Sub) {
   const claudeResponse = await callClaude(claudePrompt, images);
   const claudePick = parseClaudePick(claudeResponse, m1Sub.species, m2Sub.species);
   // Strip the WINNER: line from the display text
-  const claudeRuling = claudeResponse.replace(/\n*WINNER:.*$/i, "").trim();
+  const claudeRuling = claudeResponse.replace(/\n*WINNER:\s*SUBMISSION\s*\d.*/gi, "").trim();
   console.log(`  [Claude] Ruled: ${claudePick === "m1" ? m1Member.name : claudePick === "m2" ? m2Member.name : "UNKNOWN"} (${claudePick})`);
   if (!claudePick) console.log(`  [WARNING] Could not parse Claude's pick! Response ends with: ${claudeResponse.slice(-100)}`);
 
