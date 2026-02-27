@@ -91,6 +91,7 @@ function defaultDb() {
     schedule: SCHEDULE,
     submissions: [],
     judgments: [],
+    appeals: [],
   };
 }
 
@@ -289,6 +290,33 @@ module.exports = {
       write(db);
     }
     return week;
+  },
+
+  // ── Appeals ─────────────────────────────────────────
+  getAppeal(week, m1Id, m2Id) {
+    const db = read();
+    if (!db.appeals) db.appeals = [];
+    return db.appeals.find(a => a.week === week && a.m1Id === m1Id && a.m2Id === m2Id) || null;
+  },
+
+  getAppealsForWeek(week) {
+    const db = read();
+    if (!db.appeals) db.appeals = [];
+    return db.appeals.filter(a => a.week === week);
+  },
+
+  saveAppeal(appeal) {
+    const db = read();
+    if (!db.appeals) db.appeals = [];
+    const idx = db.appeals.findIndex(a => a.week === appeal.week && a.m1Id === appeal.m1Id && a.m2Id === appeal.m2Id);
+    if (idx >= 0) {
+      db.appeals[idx] = appeal;
+    } else {
+      db.appeals.push(appeal);
+    }
+    createBackup();
+    write(db);
+    return appeal;
   },
 
   // ── Backup API ─────────────────────────────────────

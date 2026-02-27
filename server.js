@@ -148,11 +148,16 @@ async function handleRequest(req, res) {
             m1sub: judgment.m1sub, m2sub: judgment.m2sub,
             chatgpt: judgment.chatgpt, gemini: judgment.gemini,
             claude: judgment.claude,
+            commissionerRuling: judgment.commissionerRuling || null,
           };
         }
+
+        const appeal = db.getAppeal(w.week, mu.m1, mu.m2);
+        if (appeal) result.appeal = appeal;
+
         return result;
       });
-      return { week: w.week, status: w.status, matchups };
+      return { week: w.week, status: w.status, appealsStatus: w.appealsStatus || "closed", matchups };
     });
 
     return json(res, { members, schedule: weeks, standings });
@@ -359,6 +364,139 @@ async function handleRequest(req, res) {
     } catch (err) {
       return error(res, err.message, 500);
     }
+  }
+
+  // ── DELETE /api/admin/appeal/:week/:m1/:m2 — delete an appeal ──
+  if (req.method === "DELETE" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "appeal" && seg[3] && seg[4] && seg[5]) {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const weekNum = parseInt(seg[3]), m1Id = parseInt(seg[4]), m2Id = parseInt(seg[5]);
+    const fullDb = db.getFullDb();
+    if (!fullDb.appeals) fullDb.appeals = [];
+    const before = fullDb.appeals.length;
+    fullDb.appeals = fullDb.appeals.filter(a => !(a.week === weekNum && a.m1Id === m1Id && a.m2Id === m2Id));
+    // Also clear any commissioner/appeal ruling from the judgment
+    const j = fullDb.judgments.find(j => j.week === weekNum && j.m1Id === m1Id && j.m2Id === m2Id);
+    if (j) { delete j.commissionerRuling; delete j.appealRuling; }
+    const removed = before - fullDb.appeals.length;
+    db.replaceDb(fullDb);
+    return json(res, { status: "ok", removed });
+  }
+
+  // ── POST /api/appeal/:week/:m1/:m2 — submit an appeal (loser) ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "appeal" && seg[2] && seg[3] && seg[4]) {
+    const weekNum = parseInt(seg[2]), m1Id = parseInt(seg[3]), m2Id = parseInt(seg[4]);
+    const body = await parseBody(req);
+
+    const judgment = db.getJudgment(weekNum, m1Id, m2Id);
+    if (!judgment) return error(res, "No judgment to appeal", 400);
+
+    // Check appeals are open for this week
+    const week = db.getWeek(weekNum);
+    if (!week || week.appealsStatus !== "open") return error(res, "Appeals are not open for this week", 400);
+
+    const existing = db.getAppeal(weekNum, m1Id, m2Id);
+    if (existing && existing.defenseText) return error(res, "Appeal already has defense, cannot modify", 400);
+
+    const appeal = {
+      week: weekNum, m1Id, m2Id,
+      appealBy: body.memberId,
+      appealText: (body.appealText || "").slice(0, 1000),
+      defenseText: existing?.defenseText || null,
+      status: "pending_defense",
+      submittedAt: new Date().toISOString(),
+    };
+
+    db.saveAppeal(appeal);
+    return json(res, { status: "ok", appeal });
+  }
+
+  // ── POST /api/defense/:week/:m1/:m2 — submit a defense (winner) ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "defense" && seg[2] && seg[3] && seg[4]) {
+    const weekNum = parseInt(seg[2]), m1Id = parseInt(seg[3]), m2Id = parseInt(seg[4]);
+    const body = await parseBody(req);
+
+    const appeal = db.getAppeal(weekNum, m1Id, m2Id);
+    if (!appeal) return error(res, "No appeal to defend against", 400);
+
+    appeal.defenseText = (body.defenseText || "").slice(0, 1000);
+    appeal.defenseBy = body.memberId;
+    appeal.status = "pending_review";
+    appeal.defenseAt = new Date().toISOString();
+
+    db.saveAppeal(appeal);
+    return json(res, { status: "ok", appeal });
+  }
+
+  // ── POST /api/admin/appeals/:week/open — open appeals for a week ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "appeals" && seg[3] && seg[4] === "open") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const weekNum = parseInt(seg[3]);
+    const fullDb = db.getFullDb();
+    const weekIdx = fullDb.schedule.findIndex(w => w.week === weekNum);
+    if (weekIdx < 0) return error(res, "Week not found", 404);
+    fullDb.schedule[weekIdx].appealsStatus = "open";
+    db.replaceDb(fullDb);
+    return json(res, { status: "ok", week: weekNum, appealsStatus: "open" });
+  }
+
+  // ── POST /api/admin/appeals/:week/close — close appeals for a week ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "appeals" && seg[3] && seg[4] === "close") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const weekNum = parseInt(seg[3]);
+    const fullDb = db.getFullDb();
+    const weekIdx = fullDb.schedule.findIndex(w => w.week === weekNum);
+    if (weekIdx < 0) return error(res, "Week not found", 404);
+    fullDb.schedule[weekIdx].appealsStatus = "closed";
+    db.replaceDb(fullDb);
+    return json(res, { status: "ok", week: weekNum, appealsStatus: "closed" });
+  }
+
+  // ── POST /api/admin/appeal-ruling/:week/:m1/:m2 — commissioner ruling on appeal ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "appeal-ruling" && seg[3] && seg[4] && seg[5]) {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const weekNum = parseInt(seg[3]), m1Id = parseInt(seg[4]), m2Id = parseInt(seg[5]);
+    const body = await parseBody(req);
+
+    // body.action: "commissioner_ruling" | "appeal_rejudge"
+    // body.m1Result: "win" | "loss"  body.m2Result: "win" | "loss"
+
+    const judgment = db.getJudgment(weekNum, m1Id, m2Id);
+    if (!judgment) return error(res, "No judgment found", 400);
+
+    const appeal = db.getAppeal(weekNum, m1Id, m2Id);
+
+    if (body.action === "commissioner_ruling") {
+      // Commissioner manually assigns results
+      judgment.commissionerRuling = {
+        m1Result: body.m1Result,
+        m2Result: body.m2Result,
+        reason: body.reason || "Ruled by commissioner",
+        ruledAt: new Date().toISOString(),
+      };
+      // Update winner based on commissioner ruling
+      if (body.m1Result === "win" && body.m2Result === "loss") judgment.winner = "m1";
+      else if (body.m2Result === "win" && body.m1Result === "loss") judgment.winner = "m2";
+      // W-W and L-L: keep winner as null to indicate special ruling
+      else judgment.winner = null;
+      judgment.summary = body.reason || "Ruled by commissioner.";
+      db.saveJudgment(judgment);
+      if (appeal) { appeal.status = "resolved"; appeal.resolution = "commissioner"; db.saveAppeal(appeal); }
+      return json(res, { status: "ok", judgment });
+    }
+
+    if (body.action === "appeal_rejudge") {
+      // Send to Claude with full context
+      try {
+        const judge = require("./judge");
+        const result = await judge.judgeAppeal(weekNum, m1Id, m2Id, judgment, appeal);
+        if (appeal) { appeal.status = "resolved"; appeal.resolution = "appeal_rejudge"; db.saveAppeal(appeal); }
+        return json(res, { status: "ok", judgment: result });
+      } catch (err) {
+        return error(res, err.message, 500);
+      }
+    }
+
+    return error(res, "Invalid action", 400);
   }
 
   // ── POST /api/admin/seed ──

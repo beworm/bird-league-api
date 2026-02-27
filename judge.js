@@ -363,4 +363,82 @@ async function judgeWeek(week) {
   return results;
 }
 
-module.exports = { judgeMatchup, judgeWeek };
+/**
+ * Judge an appeal — Claude reviews the full case with appeal/defense.
+ */
+async function judgeAppeal(week, m1Id, m2Id, originalJudgment, appeal) {
+  const m1Member = db.getMember(m1Id);
+  const m2Member = db.getMember(m2Id);
+
+  const loserSide = originalJudgment.winner === "m1" ? "SUBMISSION 2" : "SUBMISSION 1";
+  const winnerSide = originalJudgment.winner === "m1" ? "SUBMISSION 1" : "SUBMISSION 2";
+
+  const appealVars = {
+    M1_SPECIES: originalJudgment.m1sub.species,
+    M1_DESCRIPTION: originalJudgment.m1sub.desc,
+    M2_SPECIES: originalJudgment.m2sub.species,
+    M2_DESCRIPTION: originalJudgment.m2sub.desc,
+    CHATGPT_ARGUMENT: originalJudgment.chatgpt.argument,
+    GEMINI_ARGUMENT: originalJudgment.gemini.argument,
+    CLAUDE_RULING: originalJudgment.claude.ruling,
+    ORIGINAL_WINNER: winnerSide,
+    LOSER_SIDE: loserSide,
+    WINNER_SIDE: winnerSide,
+    APPEAL_TEXT: appeal?.appealText || "(no appeal text)",
+    DEFENSE_TEXT: appeal?.defenseText || "(no defense submitted)",
+  };
+
+  const appealPrompt = fillTemplate(loadPrompt("appeal.txt"), appealVars);
+
+  // Load images for this matchup
+  const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || path.join(__dirname, "data");
+  const MEDIA_DIR = path.join(DATA_DIR, "submissions");
+  const images = [];
+
+  function loadImagesForMember(memberId, label) {
+    const sub = db.getSubmission(week, memberId);
+    if (!sub || !sub.mediaFiles) return;
+    for (const mediaUrl of sub.mediaFiles) {
+      const parts = mediaUrl.split("/");
+      const filePath = path.join(MEDIA_DIR, `week-${parts[3]}`, parts[4], parts[5]);
+      const ext = path.extname(parts[5]).toLowerCase();
+      if (![".jpg", ".jpeg", ".png", ".gif", ".webp"].includes(ext)) continue;
+      try {
+        if (fs.existsSync(filePath)) {
+          const data = fs.readFileSync(filePath);
+          const mimeTypes = { ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".gif": "image/gif", ".webp": "image/webp" };
+          images.push({ base64: data.toString("base64"), mime: mimeTypes[ext] || "image/jpeg", label });
+        }
+      } catch (err) { /* skip */ }
+    }
+  }
+
+  loadImagesForMember(m1Id, "Submission 1");
+  loadImagesForMember(m2Id, "Submission 2");
+
+  console.log(`  [Appeal] Judging appeal for Week ${week}: ${m1Member.name} vs ${m2Member.name}`);
+  const claudeResponse = await callClaude(appealPrompt, images);
+
+  const winnerMatch = claudeResponse.match(/WINNER:\s*SUBMISSION\s*(\d)/i);
+  let newWinner = originalJudgment.winner;
+  if (winnerMatch) {
+    newWinner = winnerMatch[1] === "1" ? "m1" : "m2";
+  }
+
+  const ruling = claudeResponse.replace(/\n*WINNER:\s*SUBMISSION\s*\d.*/gi, "").trim();
+
+  // Update judgment
+  originalJudgment.appealRuling = {
+    ruling,
+    previousWinner: originalJudgment.winner,
+    newWinner,
+    ruledAt: new Date().toISOString(),
+  };
+  originalJudgment.winner = newWinner;
+  originalJudgment.summary = `[APPEAL] ${originalJudgment.summary}`;
+  db.saveJudgment(originalJudgment);
+
+  return originalJudgment;
+}
+
+module.exports = { judgeMatchup, judgeWeek, judgeAppeal };
