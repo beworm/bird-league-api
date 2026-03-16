@@ -62,6 +62,12 @@ function readBody(req) {
   });
 }
 
+async function parseBody(req) {
+  const raw = await readBody(req);
+  try { return JSON.parse(raw.toString("utf8")); }
+  catch { return {}; }
+}
+
 function checkAdmin(req) {
   const secret = process.env.ADMIN_SECRET;
   if (!secret) return false;
@@ -522,11 +528,29 @@ async function handleRequest(req, res) {
 
     const fullDb = db.getFullDb();
     fullDb.playoffSeeding = seeding;
-    const qf = fullDb.schedule.find(w => w.week === 7);
-    if (qf) {
-      qf.matchups = qfMatchups;
-      qf.byes = [{ id: seeds[1].id, seed: 1 }, { id: seeds[2].id, seed: 2 }];
+
+    // Ensure playoff weeks exist in schedule (for existing dbs that predate playoffs)
+    if (!fullDb.schedule.find(w => w.week === 7)) {
+      fullDb.schedule.push({ week: 7, status: "upcoming", playoff: "quarterfinals", matchups: [] });
     }
+    if (!fullDb.schedule.find(w => w.week === 8)) {
+      fullDb.schedule.push({ week: 8, status: "upcoming", playoff: "semifinals", matchups: [] });
+    }
+    if (!fullDb.schedule.find(w => w.week === 9)) {
+      fullDb.schedule.push({ week: 9, status: "upcoming", playoff: "finals", matchups: [] });
+    }
+
+    const qf = fullDb.schedule.find(w => w.week === 7);
+    qf.matchups = qfMatchups;
+    qf.playoff = "quarterfinals";
+    qf.byes = [{ id: seeds[1].id, seed: 1 }, { id: seeds[2].id, seed: 2 }];
+
+    const sf = fullDb.schedule.find(w => w.week === 8);
+    sf.playoff = "semifinals";
+
+    const fin = fullDb.schedule.find(w => w.week === 9);
+    fin.playoff = "finals";
+
     db.replaceDb(fullDb);
     return json(res, { status: "ok", seeding, qfMatchups });
   }
@@ -617,7 +641,7 @@ async function handleRequest(req, res) {
   }
 
   error(res, "Not found", 404);
-  } catch (err) { console.error("Request error:", err); if (!res.headersSent) error(res, "Server error", 500); }
+  } catch (err) { console.error("Request error:", err); if (!res.headersSent) error(res, "Server error: " + err.message, 500); }
 }
 
 // ─── Start ────────────────────────────────────────────────
