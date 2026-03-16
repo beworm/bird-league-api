@@ -83,6 +83,9 @@ const SCHEDULE = [
     { m1: 4, m2: 8 },
     { m1: 7, m2: 10 },
   ]},
+  { week: 7, status: "upcoming", playoff: "quarterfinals", matchups: [] },
+  { week: 8, status: "upcoming", playoff: "semifinals", matchups: [] },
+  { week: 9, status: "upcoming", playoff: "finals", matchups: [] },
 ];
 
 function defaultDb() {
@@ -92,6 +95,7 @@ function defaultDb() {
     submissions: [],
     judgments: [],
     appeals: [],
+    playoffSeeding: [],
   };
 }
 

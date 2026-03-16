@@ -157,10 +157,15 @@ async function handleRequest(req, res) {
 
         return result;
       });
-      return { week: w.week, status: w.status, appealsStatus: w.appealsStatus || "closed", matchups };
+      const weekData = { week: w.week, status: w.status, appealsStatus: w.appealsStatus || "closed", matchups };
+      if (w.playoff) weekData.playoff = w.playoff;
+      if (w.byes) weekData.byes = w.byes;
+      return weekData;
     });
 
-    return json(res, { members, schedule: weeks, standings });
+    const fullDb = db.getFullDb();
+    const playoffSeeding = fullDb.playoffSeeding || [];
+    return json(res, { members, schedule: weeks, standings, playoffSeeding });
   }
 
   // ── GET /api/week/:week ──
@@ -497,6 +502,99 @@ async function handleRequest(req, res) {
     }
 
     return error(res, "Invalid action", 400);
+  }
+
+  // ── POST /api/admin/playoff/seed — seed quarterfinals from manual seeding ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "playoff" && seg[3] === "seed") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const body = await parseBody(req);
+    if (!body.seeding || body.seeding.length < 6) return error(res, "Need seeding array with 6 entries [{seed,id,name,w,l}]", 400);
+
+    const seeding = body.seeding;
+    const seeds = {};
+    seeding.forEach(s => { seeds[s.seed] = s; });
+
+    // QF: #3 vs #6, #4 vs #5
+    const qfMatchups = [
+      { m1: seeds[3].id, m2: seeds[6].id },
+      { m1: seeds[4].id, m2: seeds[5].id },
+    ];
+
+    const fullDb = db.getFullDb();
+    fullDb.playoffSeeding = seeding;
+    const qf = fullDb.schedule.find(w => w.week === 7);
+    if (qf) {
+      qf.matchups = qfMatchups;
+      qf.byes = [{ id: seeds[1].id, seed: 1 }, { id: seeds[2].id, seed: 2 }];
+    }
+    db.replaceDb(fullDb);
+    return json(res, { status: "ok", seeding, qfMatchups });
+  }
+
+  // ── POST /api/admin/playoff/advance-sf — populate semifinals from QF results ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "playoff" && seg[3] === "advance-sf") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const fullDb = db.getFullDb();
+    const seeding = fullDb.playoffSeeding;
+    if (!seeding || seeding.length === 0) return error(res, "Playoff not seeded yet", 400);
+
+    const qf = fullDb.schedule.find(w => w.week === 7);
+    if (!qf) return error(res, "QF week not found", 400);
+
+    const qfJudgments = fullDb.judgments.filter(j => j.week === 7);
+    if (qfJudgments.length < qf.matchups.length) return error(res, "Not all QF matchups judged yet", 400);
+
+    const qfWinners = [];
+    for (const mu of qf.matchups) {
+      const j = qfJudgments.find(jj => jj.m1Id === mu.m1 && jj.m2Id === mu.m2);
+      if (!j) return error(res, `Missing judgment for ${mu.m1} vs ${mu.m2}`, 400);
+      const winnerId = j.winner === "m1" ? j.m1Id : j.m2Id;
+      const winnerSeed = seeding.find(s => s.id === winnerId)?.seed || 99;
+      qfWinners.push({ id: winnerId, seed: winnerSeed });
+    }
+
+    // Sort: highest seed number = lowest remaining seed
+    qfWinners.sort((a, b) => b.seed - a.seed);
+    const lowestRemaining = qfWinners[0];
+    const otherWinner = qfWinners[1];
+
+    const seed1 = seeding.find(s => s.seed === 1);
+    const seed2 = seeding.find(s => s.seed === 2);
+
+    const sfMatchups = [
+      { m1: seed1.id, m2: lowestRemaining.id },
+      { m1: seed2.id, m2: otherWinner.id },
+    ];
+
+    const sf = fullDb.schedule.find(w => w.week === 8);
+    if (sf) sf.matchups = sfMatchups;
+    db.replaceDb(fullDb);
+    return json(res, { status: "ok", sfMatchups, qfWinners });
+  }
+
+  // ── POST /api/admin/playoff/advance-final — populate final from SF results ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "playoff" && seg[3] === "advance-final") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const fullDb = db.getFullDb();
+
+    const sf = fullDb.schedule.find(w => w.week === 8);
+    if (!sf) return error(res, "SF week not found", 400);
+
+    const sfJudgments = fullDb.judgments.filter(j => j.week === 8);
+    if (sfJudgments.length < sf.matchups.length) return error(res, "Not all SF matchups judged yet", 400);
+
+    const sfWinners = [];
+    for (const mu of sf.matchups) {
+      const j = sfJudgments.find(jj => jj.m1Id === mu.m1 && jj.m2Id === mu.m2);
+      if (!j) return error(res, `Missing judgment for ${mu.m1} vs ${mu.m2}`, 400);
+      sfWinners.push(j.winner === "m1" ? j.m1Id : j.m2Id);
+    }
+
+    const finalMatchups = [{ m1: sfWinners[0], m2: sfWinners[1] }];
+    const fin = fullDb.schedule.find(w => w.week === 9);
+    if (fin) fin.matchups = finalMatchups;
+    db.replaceDb(fullDb);
+    return json(res, { status: "ok", finalMatchups });
   }
 
   // ── POST /api/admin/seed ──
