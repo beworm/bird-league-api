@@ -78,7 +78,6 @@ function checkAdmin(req) {
 const MIME = {
   ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png",
   ".gif": "image/gif", ".webp": "image/webp",
-  ".mp4": "video/mp4", ".mov": "video/quicktime", ".webm": "video/webm",
   ".mp3": "audio/mpeg", ".wav": "audio/wav",
 };
 
@@ -124,6 +123,8 @@ async function handleRequest(req, res) {
       backupCount: backups.length,
       latestBackup: backups[0]?.name || null,
       totalSubmissions: subs,
+      diskFreeMB: Math.round(db.getDiskFreeBytes() / 1024 / 1024),
+      systemLocked: db.isSystemLocked(),
     });
   }
 
@@ -205,6 +206,8 @@ async function handleRequest(req, res) {
 
   // ── POST /api/submit/:week/:memberId ──
   if (req.method === "POST" && seg[0] === "api" && seg[1] === "submit" && seg.length === 4) {
+    if (db.isSystemLocked()) return error(res, "System is locked due to low disk space. Contact the commissioner.", 503);
+
     const weekNum = parseInt(seg[2]);
     const memberId = parseInt(seg[3]);
 
@@ -223,12 +226,42 @@ async function handleRequest(req, res) {
 
     try {
       if (contentType.includes("multipart/form-data")) {
+        // Check disk space BEFORE accepting upload
+        const freeBeforeUpload = db.getDiskFreeBytes();
+        const MIN_FOR_UPLOAD = 50 * 1024 * 1024; // 50MB
+        if (freeBeforeUpload < MIN_FOR_UPLOAD) {
+          return error(res, "Insufficient disk space for upload. Contact the commissioner.", 503);
+        }
+
         const safeName = member.name.replace(/[^a-zA-Z0-9]/g, "_");
         const uploadDir = path.join(MEDIA_DIR, `week-${weekNum}`, safeName);
         const { fields, files } = await parseMultipart(req, uploadDir);
         species = fields.species || "";
         description = fields.description || "";
-        mediaFiles = files.map(f => `/api/media/${weekNum}/${memberId}/${f.savedName}`);
+
+        // Filter: images only, max 5MB each
+        const MAX_FILE_SIZE = 20 * 1024 * 1024;
+        const imageExts = [".jpg", ".jpeg", ".png", ".gif", ".webp"];
+        const validFiles = [];
+        for (const f of files) {
+          const ext = path.extname(f.savedName).toLowerCase();
+          const filePath = path.join(uploadDir, f.savedName);
+          if (!imageExts.includes(ext)) {
+            try { fs.unlinkSync(filePath); } catch {}
+            console.warn(`[Upload] Rejected non-image: ${f.savedName}`);
+            continue;
+          }
+          try {
+            const stat = fs.statSync(filePath);
+            if (stat.size > MAX_FILE_SIZE) {
+              fs.unlinkSync(filePath);
+              console.warn(`[Upload] Rejected oversized file: ${f.savedName} (${Math.round(stat.size/1024/1024)}MB)`);
+              continue;
+            }
+          } catch {}
+          validFiles.push(f);
+        }
+        mediaFiles = validFiles.map(f => `/api/media/${weekNum}/${memberId}/${f.savedName}`);
       } else if (contentType.includes("application/json")) {
         const data = await parseJson(req);
         species = data.species || "";
@@ -631,6 +664,14 @@ async function handleRequest(req, res) {
     } catch (err) {
       return error(res, err.message, 500);
     }
+  }
+
+  // ── POST /api/admin/unlock — unlock system after disk space issue resolved ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "unlock") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const free = db.getDiskFreeBytes();
+    db.unlockSystem();
+    return json(res, { status: "unlocked", diskFreeMB: Math.round(free / 1024 / 1024) });
   }
 
   // ── POST /api/admin/reset ──

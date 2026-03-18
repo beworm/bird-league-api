@@ -14,7 +14,7 @@ const path = require("path");
 const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || path.join(__dirname, "data");
 const DB_PATH = path.join(DATA_DIR, "db.json");
 const BACKUP_DIR = path.join(DATA_DIR, "backups");
-const MAX_BACKUPS = 30;
+const MAX_BACKUPS = 5;
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
 fs.mkdirSync(BACKUP_DIR, { recursive: true });
@@ -163,10 +163,46 @@ function read() {
   }
 }
 
+function getDiskFreeBytes() {
+  try {
+    const { execSync } = require("child_process");
+    const output = execSync(`df --output=avail "${DATA_DIR}" 2>/dev/null || echo "999999"`).toString().trim();
+    const lines = output.split("\n");
+    return parseInt(lines[lines.length - 1]) * 1024; // df reports in 1K blocks
+  } catch { return 999999999; } // assume plenty if check fails
+}
+
+// Minimum free space required before any write (50MB)
+const MIN_FREE_BYTES = 50 * 1024 * 1024;
+let systemLocked = false;
+let writeLock = false;
+
+function checkDiskOrLock() {
+  const free = getDiskFreeBytes();
+  if (free < MIN_FREE_BYTES) {
+    systemLocked = true;
+    console.error(`[DB] SYSTEM LOCKED — only ${Math.round(free / 1024 / 1024)}MB free (minimum ${MIN_FREE_BYTES / 1024 / 1024}MB). No writes allowed until admin resolves.`);
+    return false;
+  }
+  return true;
+}
+
+function isSystemLocked() { return systemLocked; }
+function unlockSystem() { systemLocked = false; console.log("[DB] System unlocked by admin"); }
+
 function write(db) {
-  createBackup();
-  fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
-  fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), "utf8");
+  if (systemLocked) throw new Error("System is locked due to low disk space. Admin must resolve before any writes.");
+  if (writeLock) throw new Error("Another write is in progress. Please try again.");
+  if (!checkDiskOrLock()) throw new Error("Disk space critically low. System locked. Admin must free space.");
+
+  writeLock = true;
+  try {
+    createBackup();
+    fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+    fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), "utf8");
+  } finally {
+    writeLock = false;
+  }
 }
 
 // ─── Migration: copy from repo if volume is empty ────────
@@ -186,6 +222,9 @@ migrateIfNeeded();
 // ─── Public API ───────────────────────────────────────────
 
 module.exports = {
+  isSystemLocked,
+  unlockSystem,
+  getDiskFreeBytes,
   getMembers: () => read().members,
   getMember: (id) => read().members.find((m) => m.id === id) || null,
   getSchedule: () => read().schedule,
