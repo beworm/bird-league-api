@@ -110,6 +110,56 @@ async function handleRequest(req, res) {
     return json(res, db.getSchedule());
   }
 
+  // ── GET /api/admin/volume — list all files on volume with sizes ──
+  if (req.method === "GET" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "volume" && !seg[3]) {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || path.join(__dirname, "data");
+    function listDir(dir, prefix = "") {
+      let results = [];
+      try {
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        for (const e of entries) {
+          const fullPath = path.join(dir, e.name);
+          const relPath = prefix ? `${prefix}/${e.name}` : e.name;
+          if (e.isDirectory()) {
+            const sub = listDir(fullPath, relPath);
+            results.push({ path: relPath, type: "dir", children: sub.length });
+            results = results.concat(sub);
+          } else {
+            const stat = fs.statSync(fullPath);
+            results.push({ path: relPath, type: "file", sizeKB: Math.round(stat.size / 1024), modified: stat.mtime.toISOString() });
+          }
+        }
+      } catch (err) { results.push({ error: err.message }); }
+      return results;
+    }
+    return json(res, { dataDir: DATA_DIR, files: listDir(DATA_DIR) });
+  }
+
+  // ── GET /api/admin/volume/:path — download a specific file from volume ──
+  if (req.method === "GET" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "volume" && seg[3]) {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || path.join(__dirname, "data");
+    const filePath = path.join(DATA_DIR, seg.slice(3).join("/"));
+    // Security: make sure we're not escaping the data dir
+    if (!filePath.startsWith(DATA_DIR)) return error(res, "Invalid path", 400);
+    try {
+      const stat = fs.statSync(filePath);
+      if (stat.isDirectory()) return error(res, "Cannot download a directory", 400);
+      const data = fs.readFileSync(filePath);
+      const ext = path.extname(filePath).toLowerCase();
+      const mimeTypes = { ".json": "application/json", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".gif": "image/gif", ".webp": "image/webp" };
+      res.writeHead(200, {
+        "Content-Type": mimeTypes[ext] || "application/octet-stream",
+        "Content-Disposition": `attachment; filename="${path.basename(filePath)}"`,
+        "Content-Length": data.length,
+      });
+      return res.end(data);
+    } catch (err) {
+      return error(res, "File not found: " + err.message, 404);
+    }
+  }
+
   // ── GET /api/health — verify DB and volume status ──
   if (req.method === "GET" && url.pathname === "/api/health") {
     const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || "local";
@@ -228,7 +278,7 @@ async function handleRequest(req, res) {
       if (contentType.includes("multipart/form-data")) {
         // Check disk space BEFORE accepting upload
         const freeBeforeUpload = db.getDiskFreeBytes();
-        const MIN_FOR_UPLOAD = 50 * 1024 * 1024; // 50MB
+        const MIN_FOR_UPLOAD = 10 * 1024 * 1024; // 10MB
         if (freeBeforeUpload < MIN_FOR_UPLOAD) {
           return error(res, "Insufficient disk space for upload. Contact the commissioner.", 503);
         }
@@ -663,6 +713,118 @@ async function handleRequest(req, res) {
       return json(res, { status: "seeded" });
     } catch (err) {
       return error(res, err.message, 500);
+    }
+  }
+
+  // ── GET /api/admin/disk — show volume contents and disk usage ──
+  if (req.method === "GET" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "disk") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const { execSync } = require("child_process");
+    try {
+      const du = execSync(`du -sh ${DATA_DIR}/* 2>/dev/null || echo "du failed"`).toString().trim();
+      const df = execSync(`df -h ${DATA_DIR} 2>/dev/null || echo "df failed"`).toString().trim();
+      const files = fs.readdirSync(DATA_DIR).map(f => {
+        const fp = path.join(DATA_DIR, f);
+        const stat = fs.statSync(fp);
+        return { name: f, isDir: stat.isDirectory(), sizeKB: Math.round(stat.size / 1024) };
+      });
+      let backups = [];
+      const backupDir = path.join(DATA_DIR, "backups");
+      if (fs.existsSync(backupDir)) {
+        backups = fs.readdirSync(backupDir).map(f => {
+          const stat = fs.statSync(path.join(backupDir, f));
+          return { name: f, sizeKB: Math.round(stat.size / 1024) };
+        });
+      }
+      let submissions = [];
+      const subDir = path.join(DATA_DIR, "submissions");
+      if (fs.existsSync(subDir)) {
+        submissions = fs.readdirSync(subDir).map(f => {
+          const fp = path.join(subDir, f);
+          const stat = fs.statSync(fp);
+          if (stat.isDirectory()) {
+            const size = execSync(`du -sh "${fp}" 2>/dev/null`).toString().split("\t")[0];
+            return { name: f, size };
+          }
+          return { name: f, sizeKB: Math.round(stat.size / 1024) };
+        });
+      }
+      return json(res, { du, df, files, backups, submissions, systemLocked: db.isSystemLocked(), diskFreeMB: Math.round(db.getDiskFreeBytes() / 1024 / 1024) });
+    } catch (err) {
+      return error(res, "Disk check failed: " + err.message, 500);
+    }
+  }
+
+  // ── POST /api/admin/backup-db — copy db.json to a safe recovery file ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "backup-db") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    try {
+      const src = path.join(DATA_DIR, "db.json");
+      const dest = path.join(DATA_DIR, "db-recovery-backup.json");
+      fs.copyFileSync(src, dest);
+      const stat = fs.statSync(dest);
+      return json(res, { status: "ok", file: dest, sizeKB: Math.round(stat.size / 1024) });
+    } catch (err) {
+      return error(res, "Backup failed: " + err.message, 500);
+    }
+  }
+
+  // ── POST /api/admin/cleanup — delete old backups and video files to free space ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "cleanup") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    let freedBytes = 0;
+    const details = [];
+
+    // Delete all but latest 2 backups
+    try {
+      const backupDir = path.join(DATA_DIR, "backups");
+      if (fs.existsSync(backupDir)) {
+        const backups = fs.readdirSync(backupDir).filter(f => f.endsWith(".json")).sort().reverse();
+        backups.slice(2).forEach(f => {
+          const fp = path.join(backupDir, f);
+          const size = fs.statSync(fp).size;
+          fs.unlinkSync(fp);
+          freedBytes += size;
+          details.push(`Deleted backup: ${f} (${Math.round(size/1024)}KB)`);
+        });
+      }
+    } catch (err) { details.push("Backup cleanup error: " + err.message); }
+
+    // Delete video files from submissions
+    try {
+      const subDir = path.join(DATA_DIR, "submissions");
+      if (fs.existsSync(subDir)) {
+        const videoExts = [".mp4", ".mov", ".webm", ".avi", ".mkv"];
+        const walkDir = (dir) => {
+          fs.readdirSync(dir).forEach(f => {
+            const fp = path.join(dir, f);
+            const stat = fs.statSync(fp);
+            if (stat.isDirectory()) { walkDir(fp); return; }
+            if (videoExts.includes(path.extname(f).toLowerCase())) {
+              freedBytes += stat.size;
+              fs.unlinkSync(fp);
+              details.push(`Deleted video: ${fp.replace(DATA_DIR, "")} (${Math.round(stat.size/1024/1024)}MB)`);
+            }
+          });
+        };
+        walkDir(subDir);
+      }
+    } catch (err) { details.push("Video cleanup error: " + err.message); }
+
+    return json(res, { status: "ok", freedMB: Math.round(freedBytes / 1024 / 1024), freedBytes, details, diskFreeMB: Math.round(db.getDiskFreeBytes() / 1024 / 1024) });
+  }
+
+  // ── GET /api/admin/download-db — download the full db.json ──
+  if (req.method === "GET" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "download-db") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    try {
+      const src = path.join(DATA_DIR, "db.json");
+      const data = fs.readFileSync(src, "utf8");
+      res.writeHead(200, { "Content-Type": "application/json", "Content-Disposition": "attachment; filename=db-backup.json" });
+      res.end(data);
+      return;
+    } catch (err) {
+      return error(res, "Download failed: " + err.message, 500);
     }
   }
 
