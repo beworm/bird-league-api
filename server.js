@@ -828,6 +828,22 @@ async function handleRequest(req, res) {
     }
   }
 
+  // ── GET /api/admin/download-media — download all submissions as zip ──
+  if (req.method === "GET" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "download-media") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const archiver = require("archiver");
+    if (!fs.existsSync(MEDIA_DIR)) return error(res, "No submissions directory", 404);
+    res.writeHead(200, {
+      "Content-Type": "application/zip",
+      "Content-Disposition": `attachment; filename="bird-league-media-${new Date().toISOString().slice(0,10)}.zip"`,
+    });
+    const archive = archiver("zip", { zlib: { level: 1 } }); // fast compression for images
+    archive.pipe(res);
+    archive.directory(MEDIA_DIR, "submissions");
+    archive.finalize();
+    return;
+  }
+
   // ── POST /api/admin/cleanup-videos — delete all video files from submissions ──
   if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "cleanup-videos") {
     if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
