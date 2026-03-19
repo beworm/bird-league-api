@@ -828,6 +828,32 @@ async function handleRequest(req, res) {
     }
   }
 
+  // ── POST /api/admin/cleanup-videos — delete all video files from submissions ──
+  if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "cleanup-videos") {
+    if (!checkAdmin(req)) return error(res, "Unauthorized", 401);
+    const videoExts = [".mp4", ".mov", ".webm", ".avi"];
+    let deleted = 0, freedKB = 0;
+    function walkAndDelete(dir) {
+      try {
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        for (const e of entries) {
+          const full = path.join(dir, e.name);
+          if (e.isDirectory()) { walkAndDelete(full); }
+          else if (videoExts.includes(path.extname(e.name).toLowerCase())) {
+            try {
+              const stat = fs.statSync(full);
+              freedKB += Math.round(stat.size / 1024);
+              fs.unlinkSync(full);
+              deleted++;
+            } catch {}
+          }
+        }
+      } catch {}
+    }
+    walkAndDelete(MEDIA_DIR);
+    return json(res, { status: "ok", deleted, freedMB: Math.round(freedKB / 1024) });
+  }
+
   // ── POST /api/admin/unlock — unlock system after disk space issue resolved ──
   if (req.method === "POST" && seg[0] === "api" && seg[1] === "admin" && seg[2] === "unlock") {
     if (!checkAdmin(req)) return error(res, "Unauthorized", 401);

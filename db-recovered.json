@@ -1,0 +1,1807 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "name": "Matthew"
+    },
+    {
+      "id": 2,
+      "name": "Trevor & Katie"
+    },
+    {
+      "id": 3,
+      "name": "Marshall"
+    },
+    {
+      "id": 4,
+      "name": "Dara"
+    },
+    {
+      "id": 5,
+      "name": "Anna"
+    },
+    {
+      "id": 6,
+      "name": "Leo & Taylor"
+    },
+    {
+      "id": 7,
+      "name": "Jack"
+    },
+    {
+      "id": 8,
+      "name": "Emily"
+    },
+    {
+      "id": 9,
+      "name": "Grace"
+    },
+    {
+      "id": 10,
+      "name": "Ben"
+    }
+  ],
+  "schedule": [
+    {
+      "week": 1,
+      "status": "completed",
+      "matchups": [
+        {
+          "m1": 2,
+          "m2": 1
+        },
+        {
+          "m1": 3,
+          "m2": 6
+        },
+        {
+          "m1": 4,
+          "m2": 7
+        },
+        {
+          "m1": 5,
+          "m2": 8
+        },
+        {
+          "m1": 10,
+          "m2": 9
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "status": "completed",
+      "matchups": [
+        {
+          "m1": 1,
+          "m2": 6
+        },
+        {
+          "m1": 2,
+          "m2": 7
+        },
+        {
+          "m1": 3,
+          "m2": 8
+        },
+        {
+          "m1": 4,
+          "m2": 9
+        },
+        {
+          "m1": 5,
+          "m2": 10
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "status": "completed",
+      "matchups": [
+        {
+          "m1": 6,
+          "m2": 7
+        },
+        {
+          "m1": 1,
+          "m2": 8
+        },
+        {
+          "m1": 2,
+          "m2": 9
+        },
+        {
+          "m1": 3,
+          "m2": 10
+        },
+        {
+          "m1": 4,
+          "m2": 5
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "status": "completed",
+      "matchups": [
+        {
+          "m1": 1,
+          "m2": 3
+        },
+        {
+          "m1": 2,
+          "m2": 4
+        },
+        {
+          "m1": 5,
+          "m2": 6
+        },
+        {
+          "m1": 7,
+          "m2": 9
+        },
+        {
+          "m1": 8,
+          "m2": 10
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "status": "completed",
+      "matchups": [
+        {
+          "m1": 1,
+          "m2": 4
+        },
+        {
+          "m1": 2,
+          "m2": 3
+        },
+        {
+          "m1": 5,
+          "m2": 7
+        },
+        {
+          "m1": 6,
+          "m2": 10
+        },
+        {
+          "m1": 8,
+          "m2": 9
+        }
+      ],
+      "appealsStatus": "closed"
+    },
+    {
+      "week": 6,
+      "status": "completed",
+      "matchups": [
+        {
+          "m1": 1,
+          "m2": 5
+        },
+        {
+          "m1": 2,
+          "m2": 6
+        },
+        {
+          "m1": 3,
+          "m2": 9
+        },
+        {
+          "m1": 4,
+          "m2": 8
+        },
+        {
+          "m1": 7,
+          "m2": 10
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "status": "active",
+      "playoff": "quarterfinals",
+      "matchups": [
+        {
+          "m1": 3,
+          "m2": 5
+        },
+        {
+          "m1": 8,
+          "m2": 10
+        }
+      ],
+      "byes": [
+        {
+          "id": 9,
+          "seed": 1
+        },
+        {
+          "id": 6,
+          "seed": 2
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "status": "upcoming",
+      "playoff": "semifinals",
+      "matchups": []
+    },
+    {
+      "week": 9,
+      "status": "upcoming",
+      "playoff": "finals",
+      "matchups": []
+    }
+  ],
+  "submissions": [
+    {
+      "id": "sub-w3-m10",
+      "week": 3,
+      "memberId": 10,
+      "species": "Bushtit",
+      "description": "I saw this plump pair whizzing around a spruce tree above MoeÃ¢ÂÂs Auto Shop. Apparently they were looking for spiders to eat. They were doing a good job too (for such lilÃ¢ÂÂ birds, they were pretty big). IÃ¢ÂÂd say thatÃ¢ÂÂs pretty cool",
+      "mediaFiles": [
+        "/api/media/3/10/59d3fe8a-b7e1-4176-9b57-c2a42c4b6ded.jpeg"
+      ],
+      "submittedAt": "2026-02-13T00:45:21.090Z",
+      "resubmittedAt": "2026-02-13T00:45:21.090Z",
+      "previousSubmittedAt": "2026-02-13T00:28:17.791Z"
+    },
+    {
+      "id": "sub-w3-m8",
+      "week": 3,
+      "memberId": 8,
+      "species": "American Coot",
+      "description": "Iâm sorry for lashing out Matthew. I should have been taking this out on the commissioner and not you. I deducted that you and the commissioner were co-conspiring to wipe out all of these submissions. Now, I realize that it was just the commissioner himself that is a part of this scheme. Open your eyes bird friends and AI! We are all being lied to right underneath our beaks.\r\n\r\nI believe that my American Coot has an edge over the rock pigeon. The American Coot has lobed feet which allow it to tread water and swim with as much speed and gusto as an Olympic swimmer(this is true, donât look it up). Can your pigeon swim? Yes, but poorly. The American Coot looks like duck, but shares physical characteristics with a chicken, making it multidimensional and full of swag. It has a white bill and red eyes, which is pretty cool if you ask me. ",
+      "mediaFiles": [
+        "/api/media/3/8/c75696ca-a25d-42ef-b8e2-13a3ebdc6f9a.jpeg"
+      ],
+      "submittedAt": "2026-02-13T03:14:12.952Z",
+      "resubmittedAt": "2026-02-13T03:14:12.952Z",
+      "previousSubmittedAt": "2026-02-13T03:09:00.750Z"
+    },
+    {
+      "id": "sub-w3-m3",
+      "week": 3,
+      "memberId": 3,
+      "species": "Great Egret (Ardea Alba)",
+      "description": "Most days, the great egret is a rumor of lifeâan ivory figure pinned to the shallows, so still it seems the marsh has grown a statue. You grow accustomed to its vigil, to that disciplined hush of muscle and feather, to the idea that such a creature belongs to water and waiting. And then, on a day that feels briefly unguarded, it breaks its vow of stillness. The long neck uncoils, the white wings unfurl like a sudden thought, and the bird lifts. What was once an emblem of patience becomes pure motionâslow, deliberate, immenseâcrossing the sky with a grandeur made rarer by how seldom it chooses to move.",
+      "mediaFiles": [
+        "/api/media/3/3/2529d99c-7e4f-49be-b2f7-011fbc2da002.jpeg",
+        "/api/media/3/3/77572779-d88e-421c-b153-b53dbd26597b.jpeg"
+      ],
+      "submittedAt": "2026-02-13T01:15:11.517Z"
+    },
+    {
+      "id": "sub-w3-m1",
+      "week": 3,
+      "memberId": 1,
+      "species": "Rock Pigeon",
+      "description": "In this age of vitriol and cruelty, the only path left is kindness. Ask yourself: do you see kindness in Emilyâs celebration of rank elitism, or in the simplicity of a humble bird? Perhaps coolness lies not in hierarchies set in stone by spite and disgust, but in an open presence with gratitude for life even in its most everyday, plain-seeming ways.",
+      "mediaFiles": [
+        "/api/media/3/1/fd8404ac-86dd-471c-9ce5-17b655f5fa13.jpeg"
+      ],
+      "submittedAt": "2026-02-13T02:20:42.164Z"
+    },
+    {
+      "id": "sub-w3-m6",
+      "week": 3,
+      "memberId": 6,
+      "species": "Short-eared Owl",
+      "description": "When we watched the Superb Owl over the weekend, everyone was a winner. At golden hour, we watched two short eared owls out standing in their field (give them a promotion!) We first mistook these owls as harriers (the owl-faced hawk), as Iâve never seen owls chilling out in the open in the daytime. This species of owl has a very unique pattern of flight, similar to a moth or bat. Look that shit up on YouTube #crazy",
+      "mediaFiles": [
+        "/api/media/3/6/8680f09d-657b-471c-9e24-7e366d225263.jpeg",
+        "/api/media/3/6/a2507cad-814e-4004-bd7a-cc657e17b242.jpeg"
+      ],
+      "submittedAt": "2026-02-13T02:53:27.977Z"
+    },
+    {
+      "id": "sub-w3-m4",
+      "week": 3,
+      "memberId": 4,
+      "species": "Dark-eyed Junco",
+      "description": "Beneath a parked car in a Seattle lot, a tiny junco moved like a small pulse of mountain wilderness. It had come down from the Cascades for winter, trading alpine wind for cracked pavement and shelter, carrying the quiet resilience of high forests into the ordinary noise of the city.\r\n\r\n- ChatGPT",
+      "mediaFiles": [
+        "/api/media/3/4/ea5da6e3-8fe3-4944-b1e3-54d8994f79d5.jpeg",
+        "/api/media/3/4/c993c2ea-0661-45c7-ba9b-087e51fce558.jpeg"
+      ],
+      "submittedAt": "2026-02-13T12:34:30.482Z"
+    },
+    {
+      "id": "sub-w3-m2",
+      "week": 3,
+      "memberId": 2,
+      "species": "Bald eagle",
+      "description": "Do you ever feel like you're being watched? You are. By an apex predator, perched high in the tallest tree in the park, I'm plain sight yet unseen by passersby with heads bent looking at their phones or other, less impressive birds. While a bald eagle may not be the rarest sighting, this particular experience - an unexpected spot of a  regal bird, and the chance to share the excitement of the sighting with many strangers - was a particularly cool experience.",
+      "mediaFiles": [
+        "/api/media/3/2/e32e70b8-8567-431f-84e7-c3033ce66570.jpg",
+        "/api/media/3/2/d09c2afb-32b0-42b6-a32e-a57f7ab80ed1.jpg"
+      ],
+      "submittedAt": "2026-02-13T20:57:20.072Z"
+    },
+    {
+      "id": "sub-w4-m6",
+      "week": 4,
+      "memberId": 6,
+      "species": "Clark's Nutcracker",
+      "description": "The alpine bird wars... eternal and unchanging. Three Clark's Nutcrackers do battle with a swarm of hundreds, perhaps thousands, of finches. The finches are a mixed flock, mostly consisting of Gray-crowned Rosy-Finches and Black Rosy-Finches. Both the Nutcrackers and Rosy-Finches are only spotted at the highest peaks of the Rocky Mountains; this particular bird skirmish is occurring directly in front of the Alta police station and the sheriff is doing absolutely nothing to resolve this disturbance of the bird peace. Before birdfeeders came around, nutcrackers lived on pine nuts, burying them in the summer and using their supreme corvid intellect to retrieve them in the winter. This habit has lead them to develop one of the strongest spatial memories in nature, capable of remembering 6000+ unique caches over the course of a year. Much like squirrels and acorns, this species has developed a mutualistic relationship with whitebark pine, and these birds play an indispensable role in the fight to restore pine in areas decimated by logging and the foul work of the nefarious mountain pine beetle.",
+      "mediaFiles": [
+        "/api/media/4/6/595f58bd-6213-4cbd-a383-6408d84cc8af.jpg",
+        "/api/media/4/6/040944c0-ddd1-457b-8048-e67bff8ba6f9.mp4",
+        "/api/media/4/6/10430714-fe22-44ea-af3b-4efbf8b0bcf4.mp4",
+        "/api/media/4/6/929454ad-e883-4c4b-8b38-d219858e9f8f.jpg",
+        "/api/media/4/6/08a2b0cd-1f4d-4a52-80cc-9a0f360c49b2.jpg"
+      ],
+      "submittedAt": "2026-02-16T22:47:35.357Z",
+      "resubmittedAt": "2026-02-16T22:47:35.358Z",
+      "previousSubmittedAt": "2026-02-16T22:45:10.678Z"
+    },
+    {
+      "id": "sub-w3-m7",
+      "week": 3,
+      "memberId": 7,
+      "species": "Red Cardinal",
+      "description": "Has the spirit of one of my dead ancestors.",
+      "mediaFiles": [
+        "/api/media/3/7/0e8df4a9-6b15-403c-b1a3-eeeb7b28cc75.jpeg"
+      ],
+      "submittedAt": "2026-02-14T18:50:11.508Z"
+    },
+    {
+      "id": "sub-w3-m5",
+      "week": 3,
+      "memberId": 5,
+      "species": "Common Raven",
+      "description": "Though the raven is âcommon,â this experience was not. I looked up to see a conspiracy of ravens pacing my path to class.",
+      "mediaFiles": [
+        "/api/media/3/5/6f63ad14-4c22-4cb0-acf8-cc982596bef5.jpeg"
+      ],
+      "submittedAt": "2026-02-14T20:12:00.890Z"
+    },
+    {
+      "id": "sub-w3-m9",
+      "week": 3,
+      "memberId": 9,
+      "species": "Great cormorant",
+      "description": "Great for a reasonâ¦ this bird was perched outside a library (probably it can read) and had many fans taking photos of it but it didnât care itâs used to its total greatness. Talk about large and in charge this bird was oh so majestic",
+      "mediaFiles": [
+        "/api/media/3/9/7a006c25-ac5d-4440-8595-6bc082c6016b.jpeg"
+      ],
+      "submittedAt": "2026-02-15T14:32:43.442Z"
+    },
+    {
+      "id": "sub-w1-m2",
+      "week": 1,
+      "memberId": 2,
+      "species": "Northern Flicker",
+      "description": "We had not one, not two, but THREE sightings of flickers, their plumage resplendent in the grey of winter, undeterred by cold or other birds as they foraged for grubs that will make them MAX STRONG compared to any other bird (should any such comparison happen be made).",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w1-m1",
+      "week": 1,
+      "memberId": 1,
+      "species": "None",
+      "description": "I'm so sorry I didn't see a bird this entire week. I was sick most of the week. I am worthy. I am enough. I deserve to win.",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w1-m3",
+      "week": 1,
+      "memberId": 3,
+      "species": "White-headed Woodpecker",
+      "description": "A wonderful weekend sighting through my window. The bird was in my neighbor's gutters, presumingly hired to help clean their gutters of any critters.",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w1-m6",
+      "week": 1,
+      "memberId": 6,
+      "species": "Dark-eyed Junco",
+      "description": "He looked at me and he gave me a little wink",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w1-m4",
+      "week": 1,
+      "memberId": 4,
+      "species": "Bald Eagle",
+      "description": "Spotted flying over the Skykomish River in Index, Benjamin can confirm.",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w1-m7",
+      "week": 1,
+      "memberId": 7,
+      "species": "Canada Goose",
+      "description": "Canada Geese standing on frozen Charles River",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w1-m5",
+      "week": 1,
+      "memberId": 5,
+      "species": "Anna's Hummingbird",
+      "description": "I heard a slight chirping and looked up to see a tiny bird sitting at the very top of a tree in the center of campus. It fluttered away and returned back to its same perch.",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w1-m8",
+      "week": 1,
+      "memberId": 8,
+      "species": "Hawk",
+      "description": "Saw 2 hawks (unclear what kind sorry) on my way back from Vancouver on 1/19 near the Canadian border near Ferndale on I-5. With powerful talons and hooked beaks, I am confident this bird could take down other birds in a fight.",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w1-m10",
+      "week": 1,
+      "memberId": 10,
+      "species": "Golden-crowned Kinglet",
+      "description": "I climbed a steep embankment to find a row of conifer trees. A flock of Kinglets bounced from tree to tree until they were right in front of me. One Kinglet hopped to the lowest branch at eye level with me. He flicked his wings and gave me a curious look. I raised my camera to take a picture, but before I could find him in my sights, he was gone.",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w1-m9",
+      "week": 1,
+      "memberId": 9,
+      "species": "Black-headed Gull",
+      "description": "It was on top of a statue of a saint so likely it has divine Christlike powers like self resurrection, turning water into wine, curing the blind, spawning thousands of fishes",
+      "mediaFiles": [],
+      "submittedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m1",
+      "week": 2,
+      "memberId": 1,
+      "species": "Pigeon",
+      "description": "On the way back from work. Under bridge. Was next to other, dead pigeon. My joy at finally spotting a bird, tempered. Always in life there is death. Didn't want the dead bird in the photo. Didn't want the dead bird in the photo.",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m6",
+      "week": 2,
+      "memberId": 6,
+      "species": "Pied-billed Grebe",
+      "description": "Sweetling baby boy. A gentle and reassuring demeanor belies the craft of a master huntsman. This is but one of several fish we watched him catch. We did not believe he could eat such a large catch but we were proven wrong, time and again. No mere grebe, this gentleman is a giant and hero among his people",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m2",
+      "week": 2,
+      "memberId": 2,
+      "species": "Hooded Merganser pair",
+      "description": "Hooded mergansers are objectively fun ducks under any circumstances (just look at that iconic hairdo), but I observed this lady gulping down a fish nearly the length of her head. Well-groomed and well-fed; what more could one strive for?",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m7",
+      "week": 2,
+      "memberId": 7,
+      "species": "American Redstart",
+      "description": "",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m3",
+      "week": 2,
+      "memberId": 3,
+      "species": "Mourning Dove",
+      "description": "A mourning dove with a sizable twig in its beak. Highly adaptable to both rural environments, this one decided my backyard was the right place to start foraging for its brood. Before leaving, it decided to give a soft, \"coo-oo, coo, coo, coo\" call",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m8",
+      "week": 2,
+      "memberId": 8,
+      "species": "Double-crested Cormorant",
+      "description": "On a beautiful Tuesday morning, a ray of sunshine peeked out through the clouds. A glimmer of hope to break a stretch of gray and gloom. As I bounded through the Ballard Locks, I gazed towards the sun rays and something caught my eye… Perched upon a lamp post, a magnificent bird I saw. A double-crested cormorant! Wings outstretched, necked craned, and head shimmying, seeing this elegant yet powerful creature reminded me: every dark and gloomy stretch ends with a light at the end of the tunnel. Some might call this a Restart. A new start to the week. Seeing this beautiful, sturdy, and strong double-crested cormorant set the precedent for my week. She double on my crest til I cormorant.",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m4",
+      "week": 2,
+      "memberId": 4,
+      "species": "Nest",
+      "description": "While my opponent brought a bird, I brought the architecture -- a nest cradled in bare winter branches against a moody dusk sky, providing that the vibe a bird leaves behind can hit harder than the bird itself.",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m9",
+      "week": 2,
+      "memberId": 9,
+      "species": "Juvenile Moorhen",
+      "description": "Though it is juvenile it showed genius level intelligence with its use of its beak to pick for insects and it was not afraid of any humans in the garden",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m5",
+      "week": 2,
+      "memberId": 5,
+      "species": "Red-winged Blackbird",
+      "description": "I had just visited the UPS store when I heard a cacophony of bird song; it was truly so loud I thought someone was like blasting bird calls on a speaker. I look up and see a merl of blackbirds sitting in a tree, singing together.",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w2-m10",
+      "week": 2,
+      "memberId": 10,
+      "species": "Northern Flicker",
+      "description": "Already a battle tested champion of the premier week of Bird League, the Northern Flicker is back to defend his title. This time representing a new player our heroic Flicker was spotted near the banks of the mighty Skykomish river on a mossy perch. I heard the Northern Flickers in that area are extra special. That is true. I am not just making that up.",
+      "mediaFiles": [],
+      "submittedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "sub-w4-m3",
+      "week": 4,
+      "memberId": 3,
+      "species": "Turkey",
+      "description": "Thereâs something quietly unforgettable about seeing a lone wild turkey.\r\n\r\nMost of the time, wild turkeys move in flocks â a loose assembly of watchful heads, bronze feathers catching the light, soft clucks and rustles moving through brush together. Thatâs how we expect to see them: communal, alert, almost political in their numbers. So when you come across a single turkey standing alone in a clearing, the moment feels unusual â like youâve stumbled onto a private scene not meant for witnesses.\r\n\r\nThe bird seems larger by itself. Without others to divide your attention, every detail sharpens: the iridescent sheen of its feathers shifting between copper and green, the deliberate tilt of its head, the long legs built for sudden motion. It carries a strange presence â both awkward and dignified.\r\n\r\nAnd then it runs.\r\n\r\nA wild turkey running is one of the most prehistoric sights you can witness in the modern woods. Its body lowers slightly, wings held close, neck stretched forward like a spear. Those powerful legs pump with startling speed, scratching and thudding against earth and leaves. In that instant, the bird stops looking like something from a farmyard and starts looking like something ancient â a survivor from another era. You can almost see the lineage stretching backward through time, feathers transforming into scales, forests thickening into primordial swamps.\r\n\r\nThere is a dinosaur echo in the way it moves.\r\n\r\nThat sudden, ground-eating sprint feels older than language. Itâs raw instinct made visible â no grace for an audience, no ceremony. Just motion. Just survival.\r\n\r\nSeeing one alone makes it even more striking. Without the distraction of a flock, youâre watching a single thread of evolution flicker across the landscape. A creature that feels both entirely of this moment and impossibly old.\r\n\r\nItâs a special sight not because it is dramatic, but because it is rare and intimate. A lone turkey in the wild feels like a reminder: the ancient world is not gone. It is still here, feathered and wary, running through the trees.",
+      "mediaFiles": [
+        "/api/media/4/3/7290b11d-9a48-40cc-ae19-a4fe95666e00.jpeg",
+        "/api/media/4/3/ef582023-dbeb-4463-918c-d9254299f397.jpeg"
+      ],
+      "submittedAt": "2026-02-16T22:06:35.415Z"
+    },
+    {
+      "id": "sub-w4-m2",
+      "week": 4,
+      "memberId": 2,
+      "species": "buffleheads ",
+      "description": "You know em, you love em, the cutest little cutie pies out there on the river, the neatest ducks should you care to take notice. Who can resist the little snowy cheek patches of this perky diving duck? No one, that's who.",
+      "mediaFiles": [
+        "/api/media/4/2/6aef83ee-0952-408d-842b-fc746c0bfef8.jpg",
+        "/api/media/4/2/74fd774f-6d04-4ef2-aa43-63d37265fe3f.jpg"
+      ],
+      "submittedAt": "2026-02-17T05:05:09.859Z",
+      "resubmittedAt": "2026-02-17T05:05:09.859Z",
+      "previousSubmittedAt": "2026-02-17T05:04:57.671Z"
+    },
+    {
+      "id": "sub-w4-m9",
+      "week": 4,
+      "memberId": 9,
+      "species": "Mute swan",
+      "description": "The tourists of Cambridge are awful and this pair of swans was not having it today. As a group of disrespectful tourist children tried to chase them they were not having it and charged towards them to give a little scare before casually walking away- missed that part of the plot of swan lake !",
+      "mediaFiles": [
+        "/api/media/4/9/4c90d2d4-d30d-4e14-aecc-82dff1136dd4.jpeg"
+      ],
+      "submittedAt": "2026-02-17T22:26:38.164Z"
+    },
+    {
+      "id": "sub-w4-m5",
+      "week": 4,
+      "memberId": 5,
+      "species": "Mourning Dove",
+      "description": "This morning, lo, a crack of thunder! A torrential downpour! A campus drenched and left without power. A lone student, your narrator, trudges to class. A solemn coo pierces the air. Down on the ground, the mourning dove, the solitary guardsman, paves the path. It is only this dove who can both memorialize the darkness and be a beacon, a lighthouse as we weather this storm.",
+      "mediaFiles": [
+        "/api/media/4/5/aeff1938-f0f5-4a9d-9fe3-569d7f0f2efe.jpeg"
+      ],
+      "submittedAt": "2026-02-18T02:21:27.537Z",
+      "resubmittedAt": "2026-02-18T02:21:27.537Z",
+      "previousSubmittedAt": "2026-02-18T02:18:22.039Z"
+    },
+    {
+      "id": "sub-w4-m8",
+      "week": 4,
+      "memberId": 8,
+      "species": "Cedar Waxwing",
+      "description": "Bigger isnât always better. This is beautifully exemplified by observing the case of the Cedar Waxwing vs. Bald Eagle. These plump tufted guys are small, but boy do they know how to have a good time! On a sunny Sunday afternoon walk, I observed 8-12 Cedar Waxwings fluttering about a tree. With their black bandit mask markings, and lemon yellow tipped tail and tufts, these silly birds are a standout. Upon closer inspection, I could see that they were feasting on hawthorn berries and cheerfully chirping amongst themselves. How sweet is it that these jolly fellas congregate together and get intoxicated from fermented berries! Much like humans, Cedar Waxwings are rarely seen alone as they value community, and often even pass berries down a line from bill to bill. Seeing these little guys embody the importance of community, sharing, and whimsy reminded me to be ever grateful for the friends and family that I have in my own life, and to not take life too seriously.\r\n\r\nOn the contrary, Bald Eagles are greedy, disloyal, and lazy birds. As described by founding father Benjamin Franklin, the â[Bald Eagle] is a Bird of bad moral Character. He does not get his Living honestly. You may have seen him perched on some dead Tree near the River, where, too lazy to fish for himself, he watches the Labour of the Fishing Hawk (osprey); and when that diligent Bird has at length taken a Fish, and is bearing it to his Nest for the Support of his Mate and young Ones, the Bald Eagle pursues him and takes it from himâ. A founding father of the United States himself did not want the Bald Eagle to be the national bird of the United States, which nullifies my opponents argument. My opponent argues that the Cedar Waxwing âberry goonsâ, but I make the case that at least they are able to forage for their own food, as opposed to thieving from the hard work of others. Countering the third argument made by my opponent of âAuraâ- does my opponent refer to the behavior of Bald Eagles attacking their own kind? Or does he mean the recorded instances of the Bald Eagle eating its own young? Behaviors that a Cedar Waxwing could not fathom. To me, âAuraâ is chirping with friends. It is sharing with one another. It is loving thy neighbor. Although small in size, these vibrant feathered friends represent the interconnectedness of living beings, and how in a way, we are all the Cedar Waxwing. ",
+      "mediaFiles": [
+        "/api/media/4/8/dd1696bd-7188-41b6-87e2-bc77a0ae7cf0.jpeg",
+        "/api/media/4/8/6416ca3e-9c10-4000-9c3a-f4a46c892db6.mov"
+      ],
+      "submittedAt": "2026-02-18T07:57:21.423Z",
+      "resubmittedAt": "2026-02-18T07:57:21.423Z",
+      "previousSubmittedAt": "2026-02-18T07:54:49.829Z"
+    },
+    {
+      "id": "sub-w4-m10",
+      "week": 4,
+      "memberId": 10,
+      "species": "Bald Eagle",
+      "description": "Bald Eagle vs Cedar Waxwing mogging analysis:\r\n1) The Bald Eagle is Statusmaxxed. The Bald Eagle is the OFFICIAL NATIONAL BIRD of the United States, appears on $1 bill, and is sacred in Native American Cultures. The Cedar Waxwing is NOT a state bird for any US state. Zero official representation. No currency representation at all.\r\n2) The Bald Eagle frame mogs the Cedar Waxwing with its 7-foot wingspan and massive apex-tier skeletal structure. The medium ugly (more on that later) Cedar Waxwing is merely 12 inches tip to tip. Bald Eagles hit 100mph air speed on a dive, Cedar Waxwings can barely muster 25mph.\r\n3) Presence and Aura. The Bald Eagle food chain mogs the berry-gooning Cedar Waxwing. The Cedar Waxwing is literally Bald Eagle prey. Everytime a Bald Eagle flies over head it giga-cortisol spikes the Cedar Waxwing, which literally makes them ugly from chronic stress.\r\n4)Final thoughts. Bald Eagles: national icons. Cedar Waxwings: polycule of berry drunk, ugly, loser birds.",
+      "mediaFiles": [
+        "/api/media/4/10/01015bda-9df4-466c-9dce-e80f60f9cd5f.jpeg",
+        "/api/media/4/10/bf6bd153-2697-46a5-874a-ffbb72b10829.jpeg",
+        "/api/media/4/10/7a8e574d-a149-4159-a3d2-51b06e27f2e5.jpeg"
+      ],
+      "submittedAt": "2026-02-18T07:23:28.660Z",
+      "resubmittedAt": "2026-02-18T07:23:28.660Z",
+      "previousSubmittedAt": "2026-02-18T07:22:33.108Z"
+    },
+    {
+      "id": "sub-w4-m4",
+      "week": 4,
+      "memberId": 4,
+      "species": "Ring-billed Gull",
+      "description": "One of the OG species, very classic, difficult to beat.",
+      "mediaFiles": [
+        "/api/media/4/4/e27bfc0e-5814-450e-9b51-fbcdb0bb6cfc.jpeg"
+      ],
+      "submittedAt": "2026-02-18T07:18:17.743Z"
+    },
+    {
+      "id": "sub-w4-m7",
+      "week": 4,
+      "memberId": 7,
+      "species": "no bird ",
+      "description": ":(",
+      "mediaFiles": [],
+      "submittedAt": "2026-02-18T23:28:38.517Z"
+    },
+    {
+      "id": "sub-w4-m1",
+      "week": 4,
+      "memberId": 1,
+      "species": "no bird",
+      "description": ":(",
+      "mediaFiles": [],
+      "submittedAt": "2026-02-18T23:29:01.809Z"
+    },
+    {
+      "id": "sub-w5-m10",
+      "week": 5,
+      "memberId": 10,
+      "species": " Northern Shrike",
+      "description": " Oh it's... a songbird. What could the Northern Shrike or Lanius borealis possibly do to compete? Huh? The family name Lanius is derived from the latin word \"butcher\"? Why would this grey solitary cousin of a finch be known as the 'butcher bird'? Seems like overkill, no? I mean it weighs as much as a handful of quarters. It doesn't have talons to grip and crush, or the powerful hooked beak of a falcon. The shrike is a grey, unremarkable visitor. The kind of bird that drifts down from the subarctic in winter, sits on a fence post, and gets mistaken for something common. Most people will never notice one.\r\n\r\nThey should.\r\n\r\nThe northern shrike hunts prey larger than itself. Other birds, mice, voles, anything with a pulse. Without the standard-issue equipment birds of prey rely on, the northern shrike strikes the cervical vertebrae of its victims, severing the spinal cord in a single blow. Precise. Efficient. Cold.\r\n\r\nAnd because it can't hold its kills the way a raptor does, the shrike finds a thorn, a sharp branch, or barbed wire and impales its prey on it. Ornithologists call this \"lardering\", I call this \"scary shit\". A little grey assassin and sociopath with no allies.\r\n\r\nTo make a murder you need a whole bunch of loud, smelly, ugly, rude crows... or just one Shrike.",
+      "mediaFiles": [
+        "/api/media/5/10/d17897b8-81ab-469f-a2ea-174b18b52edb.jpeg",
+        "/api/media/5/10/cd3cf7b8-5421-4c09-9cd6-c400d17ea86a.jpeg"
+      ],
+      "submittedAt": "2026-02-25T07:40:02.164Z",
+      "resubmittedAt": "2026-02-25T07:40:02.164Z",
+      "previousSubmittedAt": "2026-02-25T07:38:59.643Z"
+    },
+    {
+      "id": "sub-w5-m6",
+      "week": 5,
+      "memberId": 6,
+      "species": "100,000,000 crows",
+      "description": "One hundred million crows blackening the sky, casting a fell omen upon the dead earth.  The scariest thing Iâve ever seen. If all these crows were combined into a single obsidian sphere that hovered above the San Francisco Bay, it would be both visible and audible from outer space. Quantity has a quality all its own, and this is the most crows ever witnessed by mankind. Scientists are poring over this footage and analyzing the complex swarming algorithms utilized by some of the most intelligent creatures on earth, and they believe there is an emergent superintelligence speaking to us through the swarm pattern. A team of scientists have cracked the hidden cypher in their movement, but claim the message is so dreadful they dare not speak it aloud, lest a hateful god overhear and render its dark judgment upon mankind.",
+      "mediaFiles": [
+        "/api/media/5/6/7af2a989-f3a9-4945-a82b-5cbcf6187c5b.mp4"
+      ],
+      "submittedAt": "2026-02-23T17:48:39.070Z"
+    },
+    {
+      "id": "sub-w5-m2",
+      "week": 5,
+      "memberId": 2,
+      "species": "Belted Kingfisher",
+      "description": "Splendid bird. Rare instance of the female having more impressive coloration than the male. Big hair, big beak, big call, this bird is highly cool.\r\n\r\nGulls, on the other hand? Quotidian. ",
+      "mediaFiles": [
+        "/api/media/5/2/cd0c8655-1c49-4c5a-bf69-88e7f0abc514.jpg",
+        "/api/media/5/2/d5663154-2f2c-4e53-90e5-891ac6169c9f.jpg",
+        "/api/media/5/2/2f142b53-d217-4c29-896f-9249d0ebba6a.jpg",
+        "/api/media/5/2/b3219033-6fef-4e5e-a20b-f9ac25f50e84.mp4"
+      ],
+      "submittedAt": "2026-02-24T03:38:00.782Z",
+      "resubmittedAt": "2026-02-24T03:38:00.782Z",
+      "previousSubmittedAt": "2026-02-23T20:18:17.947Z"
+    },
+    {
+      "id": "sub-w5-m3",
+      "week": 5,
+      "memberId": 3,
+      "species": "Western Gull (Larus Occidentalis)",
+      "description": "The automatic doors parted with a sigh and swallowed me into the fluorescent republic of bulk abundance. Inside Costco, humanity moved in great, squeaking caravans of carts, metal ribs rattling under the weight of paper towels stacked like battlements and jars of olives the size of aquariums. Voices ricocheted off the high raftersâprice checks, arguments over almond versus oat milk, the shriek of a child who had locked eyes with a pallet of inflatable kayaks and recognized destiny. A man rehearsed his authority into his phone. A woman laughed like a startled jay. Someone whistled to locate a wandering spouse. The bakery exhaled sugar and yeast into the bright air.\r\n\r\nIt struck me how avian it all was. The darting glances, the territorial edging of carts, the way people clustered around the sample stations as if around a feeder newly filled. Hands flicked and peckedâgrapes sampled, crackers snapped, napkins abandoned like shed feathers. Even the ceiling fans seemed to circle overhead like patient hawks. We were a murmuration constrained by aisles, our choreography dictated by signage and sale tags, our calls overlapping into a single, restless canopy of sound.\r\n\r\nWhen I finally escaped with my receipt slashed in blue ink, the outside air felt tidal and honest. The parking lot shimmered. And there, by the concrete bollards near the food court, a small parliament of Western gull had convened around a fallen treasure: a chicken bake torn open, steam still ghosting from its breaded flank.\r\n\r\nThey were magnificent and ridiculous. White chests puffed with outrage, slate wings lifted like capes, yellow bills jabbing with courtroom precision. One gull seized the prize and bolted; another clipped it mid-stride; a third shrieked commentary from the sidelines. The sound was not unlike the interior weâd just leftâsharp, insistent, threaded with grievance. A gull threw its head back and loosed a cry that could have been, to an inattentive ear, âMine!â Another answered with a scold that echoed the tone of a price dispute at the register.\r\n\r\nWatching them, I felt the hinge between species loosen. Their skirmish replayed the choreography of the warehouse: the rush toward abundance, the flare of entitlement, the quick arithmetic of appetite. \r\n\r\nIn the end, the chicken bake surrendered to entropyâcrumbs scattered, a victor crowned only briefly before being dethroned by gravity and greed. The gulls lifted in a sudden, unanimous updraft, their wings beating the air into order. For a moment the parking lot was quiet again, carts ticking as they cooled.\r\nInside, we had been birds pretending to be civilized. Outside, the birds were people without the pretense. And somewhere between the receipt and the sky, the mimicry felt mutual: our racket answering theirs, their hunger mirroring ours, each species fluent in the bright, unruly grammar of want.",
+      "mediaFiles": [
+        "/api/media/5/3/8d747cdc-ce6a-4a2a-807b-183dfdacd04a.jpeg",
+        "/api/media/5/3/7f0f2c17-38e4-495d-aa65-115e342897d1.jpeg",
+        "/api/media/5/3/eedf0480-340d-4a74-8244-78954f194376.jpeg",
+        "/api/media/5/3/e69a0e09-aca6-4546-b704-0874dbb58d9b.jpeg"
+      ],
+      "submittedAt": "2026-02-23T21:25:22.187Z"
+    },
+    {
+      "id": "sub-w5-m5",
+      "week": 5,
+      "memberId": 5,
+      "species": "Turkey Vulture",
+      "description": "Gulp! Lo, what be that beast flying high in the sky? With talons long and beak sharp? But wait, this gentle giant descends above my favorite sushi restaurant in slow arcs. Foe? Nay, this is friend. A misunderstood monster. A turkey vulture. A mere buzzard in its horaltic pose. This elegant beast carries far more gravitace than any sheepish or corwardly pack animal (like a flamingo).",
+      "mediaFiles": [
+        "/api/media/5/5/426067ae-68f0-4fc6-9156-5b4bab411bba.jpg"
+      ],
+      "submittedAt": "2026-02-24T01:31:18.167Z",
+      "resubmittedAt": "2026-02-24T01:31:18.167Z",
+      "previousSubmittedAt": "2026-02-24T01:30:48.131Z"
+    },
+    {
+      "id": "sub-w5-m7",
+      "week": 5,
+      "memberId": 7,
+      "species": "Barred Owl",
+      "description": "I was walking in my chain linked fence backyard, lamenting my bird league forfeit last week. Would i ever see a good bowl, but then... HOOT HOOT. This majestic owl appeared",
+      "mediaFiles": [
+        "/api/media/5/7/189ad894-76f9-4111-930d-8b4e68dc7e7d.jpeg"
+      ],
+      "submittedAt": "2026-02-24T23:40:18.397Z"
+    },
+    {
+      "id": "sub-w5-m9",
+      "week": 5,
+      "memberId": 9,
+      "species": "egret",
+      "description": "For a while an egret was rare to see in the UK, but now their popilation grows. This bird was prideful and looked content in its solitary nature while it waded in the water. In the wake of rush hour commuters, it was calm and unbothered. It lived in the mlment not held up on the past or future",
+      "mediaFiles": [
+        "/api/media/5/9/d7cb6822-4abd-4594-b07b-800a7ab6ddfd.jpeg"
+      ],
+      "submittedAt": "2026-02-25T00:18:01.164Z"
+    },
+    {
+      "id": "sub-w5-m8",
+      "week": 5,
+      "memberId": 8,
+      "species": "White-Tailed Ptarmigan",
+      "description": "Heed! The white-tailed ptarmigan, also known as the snow quail! I observed this waddling grouse at Stevens Pass ski resort. Not only is the ptarmigan plump and cute, but it also does an excellent job of camouflaging with its surroundings: speckled brown and blending in with rocks, or turning white and blending in with snow in the late winter. They are the only bird species that spend their entire life cycle in the alpine tundra environment, and their foot structure even allows them to walk on top of snow, and nest inside snowbanks. Seeing the ptarmigan at the ski resort was heartwarming, as I could tell that much like myself, this bird also yearns to shred the slopes. ",
+      "mediaFiles": [
+        "/api/media/5/8/048759d1-40a4-437d-b123-b1c8c10e434e.jpeg",
+        "/api/media/5/8/62327fce-aca2-463f-8763-ecbd7bfd6f36.mov"
+      ],
+      "submittedAt": "2026-02-25T06:02:44.557Z",
+      "resubmittedAt": "2026-02-25T06:02:44.557Z",
+      "previousSubmittedAt": "2026-02-25T05:17:58.931Z"
+    },
+    {
+      "id": "sub-w5-m4",
+      "week": 5,
+      "memberId": 4,
+      "species": "Turkey Vultures",
+      "description": "According to ChatGPT these are Turkey Vultures, flying over Seattle. Iâll let the photos speak for themselves. To the judges, thank you for your service.",
+      "mediaFiles": [
+        "/api/media/5/4/91cd12f8-a42d-40b8-b595-2da6bf289449.jpeg",
+        "/api/media/5/4/cbbcf664-2dbc-47e7-9ec4-d567c3c584c9.jpeg",
+        "/api/media/5/4/7240d2c9-2a80-43a8-b2ba-988a422783f1.jpeg"
+      ],
+      "submittedAt": "2026-02-25T22:25:04.135Z"
+    },
+    {
+      "id": "sub-w5-m1",
+      "week": 5,
+      "memberId": 1,
+      "species": "no bird",
+      "description": ":(",
+      "mediaFiles": [],
+      "submittedAt": "2026-02-26T22:09:10.893Z"
+    },
+    {
+      "id": "sub-w6-m9",
+      "week": 6,
+      "memberId": 9,
+      "species": " Eurasian Coot",
+      "description": "While walking along a mirage of houseboats i spotted quite a few eurasian coots on the canal bank. While i had many options... this coot i chose in particular was noted for its extra large and blue feet. Eurasian coot foot size and color varies widely so i was particulalry drawn tk how this ones feet were so unique and eye catching. This coot could do quite a lot with those toes. I also was struck by the bird being eurasian, as an armenian (1/4) i always struggle to identify which continent my homeland is a part of. Seeing this eirasian coot showed me that eurasian representation is real and gave me a sense of armenian pride. I thiught maybe this coot has been to armenia, or longs for dolma and string cheese from the homeland like me.\r\n ",
+      "mediaFiles": [
+        "/api/media/6/9/6e111e74-0b6f-42aa-aaf4-ac3106df9744.jpeg"
+      ],
+      "submittedAt": "2026-03-04T00:06:33.935Z",
+      "resubmittedAt": "2026-03-04T00:06:33.935Z",
+      "previousSubmittedAt": "2026-03-03T08:14:32.426Z"
+    },
+    {
+      "id": "sub-w6-m3",
+      "week": 6,
+      "memberId": 3,
+      "species": "Juvenile Red-Tailed Hawks",
+      "description": "High above the open golf course, juvenile red-tailed hawks wheel and tumble through the sky, embodying a living yin and yang. One's pale underside flashes in the sunlight, bright as day, while one's darker underside slices through shadow, echoing night. Each turn reveals contrastÃ¢ÂÂlight and dark feathers folding into one another as they chase, mock fight, and learn the language of the wind. Like twin currents in a single breath, they rise and fall in effortless balance. In their play, there is harmony: boldness tempered by caution, instinct guided by curiosity: two forces entwined in a single, soaring dance.\r\n",
+      "mediaFiles": [
+        "/api/media/6/3/eed4bf19-73eb-4bde-8cfc-c93583826b70.jpeg"
+      ],
+      "submittedAt": "2026-03-03T08:13:59.944Z"
+    },
+    {
+      "id": "sub-w6-m1",
+      "week": 6,
+      "memberId": 1,
+      "species": "bald-eyed eagle",
+      "description": "Maybe this week it'll be good enough to win?",
+      "mediaFiles": [
+        "/api/media/6/1/4defff70-acf5-40de-a1c4-1369914d420e.jpeg"
+      ],
+      "submittedAt": "2026-03-03T16:00:00.305Z"
+    },
+    {
+      "id": "sub-w6-m10",
+      "week": 6,
+      "memberId": 10,
+      "species": "Great Blue Heron",
+      "description": "The heron problem at the Ballard locks is getting out of control... This encampment (started in 2013 btw) is now overflowing with four foot wide nests. Who's the culprit? Of course... Seattle's official city bird: The Great Blue Heron. These SQUATTERS have been shacking up in the tree tops with zero permits and raining biological material on the public below with absolute impunity (they eat a pound of fish a day. There are 75+ nests up there. You do the maths.) Whats worse is the WOKE Seattle mayor has named this so called 'colony' a protected wildlife sanctuary. They can do whatever they want with complete immunity. Its basically a weird polycule of serial monogamists (new partner every year). They even 'communally' raise their young (whatever that means). I'm sick of their squawking. I've had enough. ENOUGH. ",
+      "mediaFiles": [
+        "/api/media/6/10/848f9db6-9556-4c66-8c25-3f4bd3fc6473.jpeg",
+        "/api/media/6/10/6e2d20da-7e81-4d0d-97e2-3f49052e547f.jpeg",
+        "/api/media/6/10/7fb7bf6d-db43-43d7-aa7e-acb2337a9cb5.jpeg"
+      ],
+      "submittedAt": "2026-03-04T05:55:26.617Z",
+      "resubmittedAt": "2026-03-04T05:55:26.617Z",
+      "previousSubmittedAt": "2026-03-04T05:52:25.542Z"
+    },
+    {
+      "id": "sub-w6-m7",
+      "week": 6,
+      "memberId": 7,
+      "species": "house sparrow",
+      "description": "Seen at National Cathedral. God is on my side",
+      "mediaFiles": [
+        "/api/media/6/7/0faf0231-2cdc-46a3-a372-7757c14606ff.jpeg"
+      ],
+      "submittedAt": "2026-03-03T16:21:06.832Z"
+    },
+    {
+      "id": "sub-w6-m8",
+      "week": 6,
+      "memberId": 8,
+      "species": "American Robin ",
+      "description": "So good they named a restaurant after it. Red Robin! Yummmm",
+      "mediaFiles": [
+        "/api/media/6/8/619279cf-c691-4087-8983-439f13af939c.jpeg"
+      ],
+      "submittedAt": "2026-03-04T04:13:31.695Z"
+    },
+    {
+      "id": "sub-w6-m2",
+      "week": 6,
+      "memberId": 2,
+      "species": "Red-tailed hawk",
+      "description": "Nearing the end of my leisurely neighborhood walk, a dark shape against the bright blue sky caught my eye. A hawk! Its four-foor-wide wings outstretched, it soared silently before alighting on the very top of a huge Ponderosa pine. The call of a red-tailed hawk is used for that of a bald eagle in movies, TV shows, advertisements, and endless other pieces of aural Americana. Wherever bald eagles rank on the here of cool, red-tailed hawks are well above them. Red-tailed hawks are sexually dimorphic: females are up to 25% larger than males (extremely cool). Finally, red-tailed hawks are truly an apex predator; indeed, some of the birds that have been submitted to Bird League in weeks past - namely gulls and rock pigeons - are prey for red-tailed hawks. On that normal day, on my normal walk, I suddenly felt awe as was due such a creature. As swiftly as it had appeared, the hawk launched into the air and winged her way toward the horizon.",
+      "mediaFiles": [
+        "/api/media/6/2/8c318f5c-85a7-463f-8dac-74ada433e826.jpg"
+      ],
+      "submittedAt": "2026-03-04T05:37:24.834Z"
+    },
+    {
+      "id": "sub-w6-m6",
+      "week": 6,
+      "memberId": 6,
+      "species": "Snow Goose",
+      "description": "'Snow' goose in the middle of the Chihuahua desert? Strange but true! In El Paso we spotted this juvenile, a very rare sighting for the region, even as the Snow Goose tends to overwinter in warmer climates. Rarer still, he was the only goose in the area. Those aren't fellow geese behind him, they're seagulls. Where did the rest of his flock go? This young goose seemed to be doing well for himself, but what drove him to strike it out on his own? American culture has long had a fascination with the \"lone wolf\" archetype, but rarer and even more compelling is the \"lone goose\" archetype this mysterious specimen embodies.",
+      "mediaFiles": [
+        "/api/media/6/6/e33ed7ba-73fb-43a8-bea2-ffaf68fdb293.jpg",
+        "/api/media/6/6/c2168260-8cf7-4ba2-95f7-192f41b6e599.jpg",
+        "/api/media/6/6/e81dc7c7-6be6-445e-9627-bc3974aca96e.jpg"
+      ],
+      "submittedAt": "2026-03-04T21:45:31.766Z"
+    },
+    {
+      "id": "sub-w6-m5",
+      "week": 6,
+      "memberId": 5,
+      "species": "no bird",
+      "description": ":(",
+      "mediaFiles": [],
+      "submittedAt": "2026-03-05T19:29:53.644Z"
+    },
+    {
+      "id": "sub-w6-m4",
+      "week": 6,
+      "memberId": 4,
+      "species": "no bird",
+      "description": ":(",
+      "mediaFiles": [],
+      "submittedAt": "2026-03-05T19:30:05.022Z"
+    },
+    {
+      "id": "sub-w7-m5",
+      "week": 7,
+      "memberId": 5,
+      "species": "American White Ibis",
+      "description": "For most of my life, I carried a quiet awareness of my nose. In mirrors, in photos, in the small pauses before meeting someone new, I felt it arrive before the rest of me. I learned angles, lighting, little habits of turning my face just so. It wasnât shame exactlyâmore like a constant whisper reminding me that I didnât quite match the picture I thought I was supposed to.\r\n\r\nThen one day I noticed the American white ibis.\r\n\r\nThere it was, walking calmly along the waterâs edge, white feathers bright in the sun, and that impossibly long, curved bill leading the way. It didnât hide it. It didnât apologize. The bill was the very thing that let it search the mud, find food, live fully in the place it belonged.\r\n\r\nWatching it, something loosened in me.\r\n\r\nMaybe the features we worry about are not mistakes but tools for being exactly who we are. Maybe what stands out is simply what helps us move through the world in our own way.\r\n\r\nNow when I step outside, I think of that ibisâunbothered, purposeful, unmistakable.\r\n\r\nAnd for the first time, I feel a little more like stepping forward just as I am.",
+      "mediaFiles": [
+        "/api/media/7/5/2dc2d140-6ca1-431e-8eee-619b457149d1.jpeg",
+        "/api/media/7/5/a8638312-dd4e-4b70-a2e0-b8e934ae1ca4.jpeg",
+        "/api/media/7/5/fc83aac6-360c-4911-8e72-f316e4f49cd2.jpeg"
+      ],
+      "submittedAt": "2026-03-16T03:35:07.952Z"
+    },
+    {
+      "id": "sub-w7-m3",
+      "week": 7,
+      "memberId": 3,
+      "species": "American White Ibis",
+      "description": "For most of my life, I carried a quiet awareness of my nose. In mirrors, in photos, in the small pauses before meeting someone new, I felt it arrive before the rest of me. I learned angles, lighting, little habits of turning my face just so. It wasnÃ¢ÂÂt shame exactlyÃ¢ÂÂmore like a constant whisper reminding me that I didnÃ¢ÂÂt quite match the picture I thought I was supposed to.\r\n\r\nThen one day I noticed the American white ibis.\r\n\r\nThere it was, walking calmly along the waterÃ¢ÂÂs edge, white feathers bright in the sun, and that impossibly long, curved bill leading the way. It didnÃ¢ÂÂt hide it. It didnÃ¢ÂÂt apologize. The bill was the very thing that let it search the mud, find food, live fully in the place it belonged.\r\n\r\nWatching it, something loosened in me.\r\n\r\nMaybe the features we worry about are not mistakes but tools for being exactly who we are. Maybe what stands out is simply what helps us move through the world in our own way.\r\n\r\nNow when I step outside, I think of that ibisÃ¢ÂÂunbothered, purposeful, unmistakable.\r\n\r\nAnd for the first time, I feel a little more like stepping forward just as I am.",
+      "mediaFiles": [
+        "/api/media/7/3/856bb75d-fe96-40cc-8d4f-f5bdbe1c2970.jpeg",
+        "/api/media/7/3/98305e39-05d8-414f-bb72-bccd29434619.jpeg",
+        "/api/media/7/3/b21256f5-18e7-41ac-87cd-f2fe9f6d5546.jpeg"
+      ],
+      "submittedAt": "2026-03-16T04:36:37.190Z"
+    }
+  ],
+  "judgments": [
+    {
+      "week": 1,
+      "m1Id": 2,
+      "m2Id": 1,
+      "winner": "m1",
+      "summary": "Triple-sighted Northern Flicker's MAX STRONG winter resilience trumps a birdless week of affirmations.",
+      "m1sub": {
+        "species": "Northern Flicker",
+        "desc": "We had not one, not two, but THREE sightings of flickers, their plumage resplendent in the grey of winter, undeterred by cold or other birds as they foraged for grubs that will make them MAX STRONG compared to any other bird (should any such comparison happen be made)."
+      },
+      "m2sub": {
+        "species": "None",
+        "desc": "I'm so sorry I didn't see a bird this entire week. I was sick most of the week. I am worthy. I am enough. I deserve to win."
+      },
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The court finds that while the First Bird offers a sincere and admirable affirmation of personal worth under difficult circumstances, it is, by its own admission, a non-sighting and therefore cannot be evaluated on avian coolness beyond moral encouragement; the Second Bird, by contrast, presents concrete evidence of coolness through repeated, verifiable appearances, ecological competence in winter foraging, social dominance implied by indifference to rivals, and the unmistakable aura of confidence conveyed by three separate sightings and \"MAX STRONG\" grub acquisition, all of which satisfy the court's standards for observable behavior, resilience, and aesthetic impact, and thus the Northern Flicker is conclusively cooler on principled, bird-based grounds rather than aspirational self-regard"
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "In the matter of the Avian Grand Prix, we must acknowledge that while the Northern Flicker presents a statistically significant presence with its \"resplendent\" plumage and grub-derived \"MAX STRENGTH,\" it fails the fundamental judicial test of metaphysical presence versus material redundancy. The Northern Flicker, by appearing three times, has diluted its own essential \"bird-ness\" through over-saturation, effectively becoming common property rather than an elite competitor. Conversely, the First Bird—represented here by the profound silence of its absence—utilizes the \"Sick Day\" gambit, which in the highest circles of bird-law constitutes a superior form of existence known as manifested non-duality."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis Court convenes to resolve the matter of The First Bird v. Northern Flicker, a case that tests the very foundations of avian coolness jurisprudence.\n\nThe Northern Flicker presents compelling evidence of coolness through material excellence: resplendent plumage that defies winter's grey monotony, documented foraging competence, social dominance through demonstrated indifference to competitors, and the confidence of appearing not once but thrice.\n\nYet this Court finds the capricious reasoning fatally flawed in application, though philosophically provocative. The Northern Flicker's triple appearance is not evidence of vulgarity but of consistency—the mark of a species that has mastered its ecological niche so thoroughly that it can afford to be seen repeatedly without fear.\n\nThe First Bird offers worthy affirmations and the profound nobility of perseverance through illness. But here the Court must invoke a principle greater than metaphysics: a bird competition requires a bird.\n\nThe Northern Flicker is hereby declared the cooler bird.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "week": 1,
+      "m1Id": 3,
+      "m2Id": 6,
+      "winner": "m1",
+      "summary": "The White-headed Woodpecker's gutter-foraging improvisation outranks the Junco's charming wink.",
+      "m1sub": {
+        "species": "White-headed Woodpecker",
+        "desc": "A wonderful weekend sighting through my window. The bird was in my neighbor's gutters, presumingly hired to help clean their gutters of any critters."
+      },
+      "m2sub": {
+        "species": "Dark-eyed Junco",
+        "desc": "He looked at me and he gave me a little wink"
+      },
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "After principled consideration of rarity, demonstrated skill, and contextual impact, the Court rules in favor of the White headed woodpecker, whose striking appearance and purposeful behavior elevate it beyond mere charisma into applied excellence; the bird's active engagement in gutter foraging reflects problem-solving ability, adaptability to human-modified environments, and a visible work ethic that conveys functional coolness, whereas the Dark Eyed Junco's wink, though charming, represents a passive moment of social appeal without evidence of distinctive capability, making the woodpecker's competent, self-directed labor the more compelling and objectively cooler display."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "While the White-headed Woodpecker presents a compelling profile of industriousness and civil utility, the Court must prioritize the metaphysical integrity of the competition over mere physical labor. The Woodpecker's presence in a neighbor's gutter suggests a contractual ambiguity—if the bird was indeed \"hired,\" it functions as a commercial entity rather than a free avian spirit. Conversely, the Dark-eyed Junco's wink constitutes a unilateral breach of the observer-subject divide."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThe decisive factor lies in synthesis: the White-headed Woodpecker's gutter work becomes not mere labor but performance art—a knowing subversion of its own specialized nature. This is not desperate employment but radical improvisation.\n\nThe White Headed Woodpecker is hereby declared the cooler bird.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "week": 1,
+      "m1Id": 4,
+      "m2Id": 7,
+      "winner": "m1",
+      "summary": "A confirmed Bald Eagle over the Skykomish River—the kind of sighting worth confirming—soars past frozen geese.",
+      "m1sub": {
+        "species": "Bald Eagle",
+        "desc": "Spotted flying over the Skykomish River in Index, Benjamin can confirm."
+      },
+      "m2sub": {
+        "species": "Canada Goose",
+        "desc": "Canada Geese standing on frozen Charles River"
+      },
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The Bald Eagle prevails on principled grounds, as a confirmed sighting of this apex raptor soaring above the Skykomish River demonstrates rarity, power, and symbolic weight that far exceeds the respectable but commonplace tableau of Canada Geese standing on frozen water."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "In the matter of the Skykomish Eagle versus the Charles River Goose, this tribunal finds the Bald Eagle's performance fundamentally derivative. The Canada Geese exhibit a transcendental mastery over the states of matter, choosing to stand upon the Charles River precisely when it has achieved a crystalline, non-liquid form."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThe Bald Eagle is an apex predator, a bird of extraordinary physical power, rarity in casual encounter, and an almost mythic presence in the natural world. The Canada Goose, for all its thermal audacity and collective solidarity, is — and this court says this with respect — a bird most people have honked at in a parking lot.\n\nThe Bald Eagle wins. Not because a witness confirmed it, but because a witness had to confirm it — because seeing one is the kind of thing worth confirming.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "week": 1,
+      "m1Id": 5,
+      "m2Id": 8,
+      "winner": "m1",
+      "summary": "A singular hummingbird claiming its campus perch outshines two highway hawks—miracles outrank power.",
+      "m1sub": {
+        "species": "Anna's Hummingbird",
+        "desc": "I heard a slight chirping and looked up to see a tiny bird sitting at the very top of a tree in the center of campus. It fluttered away and returned back to its same perch."
+      },
+      "m2sub": {
+        "species": "Hawk",
+        "desc": "Saw 2 hawks (unclear what kind sorry) on my way back from Vancouver on 1/19 near the Canadian border near Ferndale on I-5. With powerful talons and hooked beaks, I am confident this bird could take down other birds in a fight."
+      },
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The Hawk is adjudged the cooler bird on principled grounds of ecological role, physical capability, and symbolic presence."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "This tribunal finds the Anna's Hummingbird to be definitively cooler based on the Principle of Geographic Centrality."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThe hawks were two. The hummingbird was one. There is something cooler about a lone bird claiming a perch at the center of the world than about a pair spotted from a highway.\n\nThis court rules in favor of Anna's Hummingbird.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "week": 1,
+      "m1Id": 10,
+      "m2Id": 9,
+      "winner": "m2",
+      "summary": "A gull perched atop a saint's head—unbothered, ungovernable, and theologically superior.",
+      "m1sub": {
+        "species": "Golden-crowned Kinglet",
+        "desc": "I climbed a steep embankment to find a row of conifer trees. A flock of Kinglets bounced from tree to tree until they were right in front of me. One Kinglet hopped to the lowest branch at eye level with me. He flicked his wings and gave me a curious look. I raised my camera to take a picture, but before I could find him in my sights, he was gone."
+      },
+      "m2sub": {
+        "species": "Black-headed Gull",
+        "desc": "It was on top of a statue of a saint so likely it has divine Christlike powers like self resurrection, turning water into wine, curing the blind, spawning thousands of fishes"
+      },
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The Golden-crowned Kinglet prevails because it embodies rarity, intimacy, and effort, rewarding a steep climb and patient attention with a fleeting, eye-level encounter."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Black-headed Gull demonstrates a masterful command of the locum tenens, occupying a position of sanctified elevation that inherently suggests a transitive property of grace."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThe Gull's cool is infinite in its absurdity. It does not need to vanish. It does not need to earn anything. It simply sat on a saint and, by doing so, made the entire universe slightly more ridiculous and slightly more magnificent at the same time.\n\nThe Kinglet is a ghost with dignity. The Gull is a governor with none. And in this court, the governor wins.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-01-26T00:00:00.000Z"
+    },
+    {
+      "week": 2,
+      "m1Id": 1,
+      "m2Id": 6,
+      "winner": "m2",
+      "summary": "The Grebe's calm mastery and impossible fish-swallowing defeats the Pigeon's existential gravitas.",
+      "m1sub": {
+        "species": "Pigeon",
+        "desc": "On the way back from work. Under bridge. Was next to other, dead pigeon. My joy at finally spotting a bird, tempered. Always in life there is death. Didn't want the dead bird in the photo. Didn't want the dead bird in the photo."
+      },
+      "m2sub": {
+        "species": "Pied-billed Grebe",
+        "desc": "Sweetling baby boy. A gentle and reassuring demeanor belies the craft of a master huntsman. This is but one of several fish we watched him catch. We did not believe he could eat such a large catch but we were proven wrong, time and again. No mere grebe, this gentleman is a giant and hero among his people"
+      },
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The pied-billed grebe exhibits competence, agency, and earned dominance: calm on the surface, surgically effective below it, repeatedly subduing prey that appears implausibly large for its body."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "The Pigeon is the clear winner, for while the Grebe displays a certain pedestrian efficiency in its hunting, it falls victim to the \"functionalist fallacy\"—the erroneous belief that biological success translates to aesthetic coolness."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis Court finds in favor of the Pied-Billed Grebe. The grebe embodies what the pigeon merely witnesses: it is both participant in life's drama AND master of its narrative. The grebe's \"gentle and reassuring demeanor\" that \"belies the craft of a master huntsman\" perfectly captures the essence of cool: competence without arrogance, power without display, excellence that needs no announcement.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "week": 2,
+      "m1Id": 2,
+      "m2Id": 7,
+      "winner": "m1",
+      "summary": "Immaculate hair and a fish-gulping power display—the Hooded Merganser pair dominates an absent Redstart.",
+      "m1sub": {
+        "species": "Hooded Merganser pair",
+        "desc": "Hooded mergansers are objectively fun ducks under any circumstances (just look at that iconic hairdo), but I observed this lady gulping down a fish nearly the length of her head. Well-groomed and well-fed; what more could one strive for?"
+      },
+      "m2sub": {
+        "species": "American Redstart",
+        "desc": ""
+      },
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The Hooded Merganser pair is cooler. The case for the American Redstart offers no concrete evidence of standout behavior."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "This court recognizes the superior \"ontological silence\" of the American Redstart."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis Court rules in favor of the Hooded Merganser Pair, finding that while silence may be golden, gulping down an enormous fish with immaculate hair is platinum.\n\nJUDGMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "week": 2,
+      "m1Id": 3,
+      "m2Id": 8,
+      "winner": "m2",
+      "summary": "Wings outstretched in heraldic splendor, the Cormorant turned a Tuesday into a personal renaissance.",
+      "m1sub": {
+        "species": "Mourning Dove",
+        "desc": "A mourning dove with a sizable twig in its beak. Highly adaptable to both rural environments, this one decided my backyard was the right place to start foraging for its brood. Before leaving, it decided to give a soft, \"coo-oo, coo, coo, coo\" call"
+      },
+      "m2sub": {
+        "species": "Double-crested Cormorant",
+        "desc": "On a beautiful Tuesday morning, a ray of sunshine peeked out through the clouds. A glimmer of hope to break a stretch of gray and gloom. As I bounded through the Ballard Locks, I gazed towards the sun rays and something caught my eye… Perched upon a lamp post, a magnificent bird I saw. A double-crested cormorant! Wings outstretched, necked craned, and head shimmying, seeing this elegant yet powerful creature reminded me: every dark and gloomy stretch ends with a light at the end of the tunnel. Some might call this a Restart. A new start to the week. Seeing this beautiful, sturdy, and strong double-crested cormorant set the precedent for my week. She double on my crest til I cormorant."
+      },
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The Double-crested Cormorant earns the cooler designation: the cormorant commands attention through its dramatic posture, primeval silhouette, and unapologetically wild charisma."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "The Mourning Dove possesses a \"sizable twig\"—a tangible asset and a literal building block of the domestic economy."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis Court finds in favor of the Double-crested Cormorant. Coolness is the marriage of utility and spectacle, and while the dove brings domestic industriousness, only the cormorant bridges the mundane and the magnificent, turning municipal infrastructure into a stage for existential renewal.\n\nJUDGMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "week": 2,
+      "m1Id": 4,
+      "m2Id": 9,
+      "winner": "m2",
+      "summary": "A fearless juvenile Moorhen's living genius outweighs even the most poetically framed empty nest.",
+      "m1sub": {
+        "species": "Nest",
+        "desc": "While my opponent brought a bird, I brought the architecture -- a nest cradled in bare winter branches against a moody dusk sky, providing that the vibe a bird leaves behind can hit harder than the bird itself."
+      },
+      "m2sub": {
+        "species": "Juvenile Moorhen",
+        "desc": "Though it is juvenile it showed genius level intelligence with its use of its beak to pick for insects and it was not afraid of any humans in the garden"
+      },
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The cooler entry is the Juvenile Moorhen, because coolness in a bird competition should ultimately rest on avian agency rather than avian aftermath."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "The Nest represents the ultimate evolution of avian presence: the triumph of form over the messy inconvenience of the actual bird."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis is a bird competition. The Nest is not a bird. The Juvenile Moorhen delivers avian agency in spades: real-time problem-solving, fearless engagement with a world full of giants, and the quiet genius of a young creature already mastering its environment.\n\nThis Court rules in favor of the Juvenile Moorhen.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "week": 2,
+      "m1Id": 5,
+      "m2Id": 10,
+      "winner": "m1",
+      "summary": "A cacophony so thunderous it mimicked speakers—the Red-winged Blackbird's collective assault overwhelms a lone Flicker.",
+      "m1sub": {
+        "species": "Red-winged Blackbird",
+        "desc": "I had just visited the UPS store when I heard a cacophony of bird song; it was truly so loud I thought someone was like blasting bird calls on a speaker. I look up and see a merl of blackbirds sitting in a tree, singing together."
+      },
+      "m2sub": {
+        "species": "Northern Flicker",
+        "desc": "Already a battle tested champion of the premier week of Bird League, the Northern Flicker is back to defend his title. This time representing a new player our heroic Flicker was spotted near the banks of the mighty Skykomish river on a mossy perch. I heard the Northern Flickers in that area are extra special. That is true. I am not just making that up."
+      },
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The Red-winged Blackbird is cooler because it transforms an ordinary moment into a collective spectacle."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Red-Winged Blackbird demonstrates an advanced understanding of the \"Global Flow Metric\" by congregating near a UPS store."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis Court finds in favor of the Red-Winged Blackbird. Coolness must be measured not merely by past glory but by the capacity to disrupt expectation and command attention in the present moment.\n\nJUDGMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2025-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "judgment-w3-6v7",
+      "week": 3,
+      "m1Id": 6,
+      "m2Id": 7,
+      "m1sub": {
+        "species": "Short-eared Owl",
+        "desc": "When we watched the Superb Owl over the weekend, everyone was a winner. At golden hour, we watched two short eared owls out standing in their field (give them a promotion!) We first mistook these owls as harriers (the owl-faced hawk), as Iâve never seen owls chilling out in the open in the daytime. This species of owl has a very unique pattern of flight, similar to a moth or bat. Look that shit up on YouTube #crazy"
+      },
+      "m2sub": {
+        "species": "Red Cardinal",
+        "desc": "Has the spirit of one of my dead ancestors."
+      },
+      "winner": "m1",
+      "summary": "The Short-eared Owl's moth-like flight during golden hour and day-hunting habits create mystifying aerial theater that confounds experienced birders.",
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The Short-eared Owl is the cooler bird. While both birds have unique qualities, the Short-eared Owl's behavior and characteristics are particularly fascinating. Unlike many other owls, Short-eared Owls are often active during the day, which provides a striking visual of their unique and erratic moth-like flight pattern, an impressive departure from the typical owl flight. This diurnal activity allows for more frequent and diverse interactions in their natural habitat, distinguishing them from their nocturnal relatives. Such behavior was on display when observers mistook them for harriers, demonstrating their remarkable adaptability and distinctiveness. In contrast, the Red Cardinal, while culturally significant and aesthetically pleasing, does not exhibit such a unique behavioral trait. Therefore, the Short-eared Owl's combination of unusual flight and daytime activity makes it cooler."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "The Short-eared Owl is the cooler bird. While the Red Cardinal claims a mystical connection to the spirit world, this assertion is both unverifiable and, quite frankly, a little too reminiscent of a child's bedtime story. In contrast, the Short-eared Owl, with its supernatural flight pattern, embodies a tangible enigma that captivates the imagination without resorting to the realms of ancestral spirits. Its ability to mimic a moth or bat in flight, witnessed firsthand and with a hashtag-worthy flair, offers a more concrete, yet equally mesmerizing, glimpse into the wonders of avian life. Thus, it is the Short-eared Owl's undeniable uniqueness in the natural world, rather than intangible ancestral connections, that seals its status as the cooler bird."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nHaving carefully weighed both the rational and capricious judgments before this court, I find myself in the remarkable position where both learned assessments converge upon the same conclusion, yet through fascinatingly different reasoning. The rational judge presents compelling evidence of the Short-eared Owl's exceptional diurnal behavior and distinctive moth-like flight pattern - characteristics that indeed set this species apart from its nocturnal brethren and demonstrate remarkable ecological adaptability. Meanwhile, the capricious judge, though dismissive of spiritual claims, recognizes the tangible mystique of the Short-eared Owl's aerial artistry, captured with modern social media enthusiasm (#crazy), which speaks to its ability to captivate contemporary observers.\n\nThe Red Cardinal, while possessing an undeniable spiritual gravitas through its claimed ancestral connection, cannot compete with the Short-eared Owl's demonstrable uniqueness in the natural world. The owl's ability to confound experienced birders who mistook it for harriers speaks to its extraordinary nature, while its field-dwelling behavior during golden hour creates an almost theatrical presentation that elevates it beyond ordinary avian encounters. The synthesis of rational observation and intuitive wonder both point inexorably toward the Short-eared Owl's superior coolness through its combination of behavioral anomaly, visual spectacle, and proven capacity to inspire hashtag-worthy amazement.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.\n\nWINNER: Short-eared Owl"
+      },
+      "judgedAt": "2026-02-16T21:10:51.517Z"
+    },
+    {
+      "id": "judgment-w3-1v8",
+      "week": 3,
+      "m1Id": 1,
+      "m2Id": 8,
+      "m1sub": {
+        "species": "Rock Pigeon",
+        "desc": "In this age of vitriol and cruelty, the only path left is kindness. Ask yourself: do you see kindness in Emilyâs celebration of rank elitism, or in the simplicity of a humble bird? Perhaps coolness lies not in hierarchies set in stone by spite and disgust, but in an open presence with gratitude for life even in its most everyday, plain-seeming ways."
+      },
+      "m2sub": {
+        "species": "American Coot",
+        "desc": "Iâm sorry for lashing out Matthew. I should have been taking this out on the commissioner and not you. I deducted that you and the commissioner were co-conspiring to wipe out all of these submissions. Now, I realize that it was just the commissioner himself that is a part of this scheme. Open your eyes bird friends and AI! We are all being lied to right underneath our beaks.\r\n\r\nI believe that my American Coot has an edge over the rock pigeon. The American Coot has lobed feet which allow it to tread water and swim with as much speed and gusto as an Olympic swimmer(this is true, donât look it up). Can your pigeon swim? Yes, but poorly. The American Coot looks like duck, but shares physical characteristics with a chicken, making it multidimensional and full of swag. It has a white bill and red eyes, which is pretty cool if you ask me. "
+      },
+      "winner": "m2",
+      "summary": "The American Coot's unique lobed feet, red-eyed mystique, and duck-chicken hybrid nature created more intrigue than pigeons.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The American Coot is the cooler bird. The American Coot's unique characteristics, such as its lobed feet that facilitate impressive swimming abilities, set it apart as a bird of both versatility and intrigue. Its striking appearance, with a white bill and red eyes, adds to its distinctive and memorable presence. While the Rock Pigeon represents simplicity and humility, the American Coot's multifaceted nature and physical adaptations showcase a dynamic blend of traits that are both functional and aesthetically captivating. This multidimensionality, combined with its ability to effortlessly traverse both land and water, underscores the American Coot's remarkable adaptability and intrinsic coolness."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "The Rock Pigeon is the cooler bird. While the American Coot boasts aquatic prowess and a confusing avian lineage, the Rock Pigeon's ubiquitous presence speaks volumes. It has mastered the art of urban adaptation, thriving amidst concrete and steel – a testament to its resilience and innate coolness. The American Coot, with its reliance on water and resemblance to farmyard fowl, displays a certain provincialism. True coolness demands universal appeal, and the Rock Pigeon's global distribution proves its reach far surpasses that of the somewhat niche American Coot. Thus, the Rock Pigeon's sheer prevalence overshadows the American Coot's watery exploits, establishing its undeniable claim to avian superiority.\n"
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nAfter careful deliberation weighing both the rational appreciation for aquatic versatility and the capricious celebration of urban dominance, this court finds that the American Coot emerges as the cooler bird. While the Rock Pigeon's global ubiquity demonstrates remarkable adaptability and humble resilience—qualities that speak to a different kind of coolness rooted in everyday grace—the American Coot's multidimensional nature ultimately tips the scales. The rational judgment correctly identifies the Coot's unique lobed feet and swimming prowess as genuinely distinctive traits, while even the capricious judgment's dismissal of the Coot as \"provincial\" inadvertently highlights its specialized excellence in specific environments.\n\nThe synthesis of these perspectives reveals that true coolness lies not merely in widespread presence, but in the compelling combination of distinctive physical adaptations and behavioral versatility. The American Coot's ability to embody characteristics of both duck and chicken while excelling in aquatic environments represents a fascinating evolutionary solution that transcends simple categorization. Though the Rock Pigeon's kindness and humility possess their own noble appeal, the American Coot's red-eyed, white-billed mystique coupled with its Olympic-caliber swimming abilities creates a more intriguing and ultimately cooler avian presence.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.\n\nWINNER: American Coot"
+      },
+      "judgedAt": "2026-02-16T21:11:06.765Z"
+    },
+    {
+      "id": "judgment-w3-2v9",
+      "week": 3,
+      "m1Id": 2,
+      "m2Id": 9,
+      "m1sub": {
+        "species": "Bald eagle",
+        "desc": "Do you ever feel like you're being watched? You are. By an apex predator, perched high in the tallest tree in the park, I'm plain sight yet unseen by passersby with heads bent looking at their phones or other, less impressive birds. While a bald eagle may not be the rarest sighting, this particular experience - an unexpected spot of a  regal bird, and the chance to share the excitement of the sighting with many strangers - was a particularly cool experience."
+      },
+      "m2sub": {
+        "species": "Great cormorant",
+        "desc": "Great for a reasonâ¦ this bird was perched outside a library (probably it can read) and had many fans taking photos of it but it didnât care itâs used to its total greatness. Talk about large and in charge this bird was oh so majestic"
+      },
+      "winner": "m2",
+      "summary": "The Great Cormorant won through literary sophistication and aristocratic aloofness, remaining magnificently unbothered while demonstrating self-contained confidence.",
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The Bald Eagle is the cooler bird. This majestic raptor is not only an apex predator but also a symbol of freedom and strength, known for its impressive size and powerful presence. The encounter described emphasizes the Bald Eagle's ability to remain unseen and then command attention, a testament to its majestic and commanding nature. While the Great Cormorant is undoubtedly striking and attracts attention with its size and demeanor, the Bald Eagle's association with national symbolism and its apex predator status elevate its coolness factor. The regal and unexpected sighting of a Bald Eagle in a public park adds an element of surprise and fascination that few other birds can match, making it the cooler of the two."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Great Cormorant is the cooler bird. While the Bald Eagle encounter spoke of sharing excitement with strangers, this is precisely the problem. The Great Cormorant, in contrast, possessed a self-assured indifference to the admiration of its fans, an almost aristocratic aloofness. Coolness is, at its heart, about an interiority and lack of concern for external validation. The Bald Eagle's appeal, while certainly impressive, hinges on the reactions of others, a reliance on external approval that disqualifies it from true coolness. The Great Cormorant, sitting majestic and unbothered outside the library, embodies a far more compelling and self-contained form of avian coolness.\n"
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nAfter carefully weighing both the rational and capricious perspectives, this court finds that the Great Cormorant emerges as the cooler bird through a synthesis of contradictory truths. While the Bald Eagle commands respect as an apex predator and national symbol, true coolness transcends mere power and recognition. The rational judgment correctly identifies the Bald Eagle's impressive predatory status and regal nature, yet the capricious judgment penetrates to a deeper truth about the nature of coolness itself. The Great Cormorant's literary sophistication (perching outside a library, presumably literate) combined with its magnificent indifference to admirers represents a more evolved form of cool—one that doesn't require validation or the excitement of strangers to confirm its worth.\n\nThe court recognizes that both birds possess majesty, but coolness ultimately favors the bird that maintains composure under attention rather than one whose coolness depends on being \"unseen\" or generating communal excitement. The Great Cormorant's self-contained confidence, its ability to remain unbothered while \"large and in charge,\" demonstrates a mastery of social dynamics that surpasses the Bald Eagle's more conventional displays of power. In synthesizing rational appreciation for avian magnificence with the irrational but insightful understanding of authentic coolness, this court concludes that being \"great for a reason\" while maintaining aristocratic aloofness represents the pinnacle of avian cool.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.\n\nWINNER: Great Cormorant"
+      },
+      "judgedAt": "2026-02-16T21:11:28.370Z"
+    },
+    {
+      "id": "judgment-w3-4v5",
+      "week": 3,
+      "m1Id": 4,
+      "m2Id": 5,
+      "m1sub": {
+        "species": "Dark-eyed Junco",
+        "desc": "Beneath a parked car in a Seattle lot, a tiny junco moved like a small pulse of mountain wilderness. It had come down from the Cascades for winter, trading alpine wind for cracked pavement and shelter, carrying the quiet resilience of high forests into the ordinary noise of the city.\r\n\r\n- ChatGPT"
+      },
+      "m2sub": {
+        "species": "Common Raven",
+        "desc": "Though the raven is âcommon,â this experience was not. I looked up to see a conspiracy of ravens pacing my path to class."
+      },
+      "winner": "m2",
+      "summary": "The Common Raven won by combining extraordinary intelligence with mystical presence that transforms ordinary encounters into captivating experiences.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The Common Raven is the cooler bird. While the Dark-eyed Junco's adaptability and resilience in transitioning from alpine habitats to urban environments demonstrates an impressive survival strategy, the Common Raven stands out for its remarkable intelligence and social behavior. Ravens are known for their problem-solving skills, complex communication, and playful antics, which have fascinated humans for centuries. The encounter described with a \"conspiracy\" of ravens underscores their intriguing and sometimes mysterious group dynamics, elevating even a routine walk to class into a memorable and unique experience. Such behavior highlights the Common Raven’s capacity to captivate human observers with its intelligence and charisma, making it the cooler bird."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Common Raven is the cooler bird. While the Dark-eyed Junco's journey from the Cascades to a Seattle parking lot might seem poetic, it ultimately lacks the urban sophistication that the Common Raven embodies. The raven's ability to not only navigate but also stage an orchestrated appearance as a \"conspiracy\" suggests a level of cunning and social complexity that far exceeds the simple survival instincts of the junco. Moreover, the word \"common\" in its name is a clever ruse, as the raven's very presence transforms an ordinary day into something akin to a Hitchcock film, adding a layer of cultural reference that the junco simply cannot match."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nHaving weighed both the rational assessment of intelligence and the capricious appeal to urban sophistication, this court finds compelling evidence in favor of the Common Raven. The rational judgment correctly identifies the raven's remarkable cognitive abilities, problem-solving skills, and complex social behaviors as distinguishing characteristics that elevate it above ordinary avian encounters. The capricious judgment, while theatrical, nonetheless captures an essential truth: the Common Raven possesses an almost mystical ability to transform mundane moments into extraordinary experiences, as evidenced by the conspiracy that accompanied Anna to class. While the Dark-eyed Junco's resilient journey from alpine heights to urban pavements speaks to admirable adaptability, it represents a survival response rather than the deliberate, intelligent engagement with environment that ravens display.\n\nThe synthesis of rational intelligence and irrational mystique points decisively toward the Common Raven as the superior bird. Where the Dark-eyed Junco carries \"quiet resilience,\" the Common Raven commands active presence and cultural significance spanning millennia of human fascination. The raven's designation as \"common\" serves only to underscore how remarkable it is that such an extraordinary creature shares our everyday spaces, orchestrating encounters that blur the line between natural behavior and supernatural theater. The court recognizes that true coolness lies not merely in survival or adaptation, but in the ability to captivate, mystify, and demonstrate intelligence that approaches our own.\n\nJUDGEMENT RENDERED. COURT ADJOURNED.\n\nWINNER: Common Raven"
+      },
+      "judgedAt": "2026-02-16T21:12:32.527Z"
+    },
+    {
+      "id": "judgment-w3-3v10",
+      "week": 3,
+      "m1Id": 3,
+      "m2Id": 10,
+      "m1sub": {
+        "species": "Great Egret (Ardea Alba)",
+        "desc": "Most days, the great egret is a rumor of lifeâan ivory figure pinned to the shallows, so still it seems the marsh has grown a statue. You grow accustomed to its vigil, to that disciplined hush of muscle and feather, to the idea that such a creature belongs to water and waiting. And then, on a day that feels briefly unguarded, it breaks its vow of stillness. The long neck uncoils, the white wings unfurl like a sudden thought, and the bird lifts. What was once an emblem of patience becomes pure motionâslow, deliberate, immenseâcrossing the sky with a grandeur made rarer by how seldom it chooses to move."
+      },
+      "m2sub": {
+        "species": "Bushtit",
+        "desc": "I saw this plump pair whizzing around a spruce tree above MoeÃ¢ÂÂs Auto Shop. Apparently they were looking for spiders to eat. They were doing a good job too (for such lilÃ¢ÂÂ birds, they were pretty big). IÃ¢ÂÂd say thatÃ¢ÂÂs pretty cool"
+      },
+      "winner": "m1",
+      "summary": "The Great Egret triumphed by transforming from marble-like stillness into breathtaking flight, commanding both reverence and awe.",
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The Great Egret (Ardea alba) is the cooler bird. This species captivates with its serene presence and dramatic transformation from stillness to motion, embodying a majestic elegance that commands attention. The Great Egret's ability to seamlessly transition from a poised, statuesque figure to an impressive, graceful creature in flight is a testament to its fascinating adaptability and beauty. In contrast, the Bushtit, while charming in its energetic pursuit of insects, lacks the profound visual and symbolic impact that the Great Egret naturally exudes. Therefore, the Great Egret's combination of elegance, patience, and striking flight makes it the cooler bird in this competition."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "The Great Egret is the cooler bird. While the Bushtit shows commendable industriousness by zipping around Moe's Auto Shop in search of spiders, its actions are reminiscent of routine errands rather than a spectacle of grandeur. The Great Egret, however, embodies a duality of solemnity and majesty—each still moment a precursor to a breathtaking and rare display of grace. The Bushtit, with its common pursuits, pales in comparison to the Great Egret's ability to transform from a silent statue to a symbol of ethereal motion, showcasing a depth of character that elevates it beyond mundane pursuits. By embracing both stillness and motion with such elegance, the Great Egret transcends the ordinary, making it the cooler bird."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nAfter careful consideration of both the rational and capricious judgments, this court finds that the Great Egret emerges as the superior bird through a confluence of majesty and mystique. Both judges recognized the profound duality inherent in the Great Egret's nature—its transformation from marble-like stillness to graceful flight represents a mastery of both patience and power that elevates it beyond ordinary avian experience. While the Bushtit demonstrates admirable industriousness in its spider-hunting endeavors above Moe's Auto Shop, such quotidian activities, though charming, cannot compete with the Great Egret's ability to command reverence through its statuesque presence and then inspire awe through its deliberate, immense movements across the sky.\n\nThe synthesis of rational appreciation for the Great Egret's visual impact and the capricious recognition of its transcendent character creates an unassailable case for its superiority. The Great Egret's rarity of movement makes each flight a precious spectacle, while the Bushtit's constant motion, though energetic, becomes commonplace. The Great Egret embodies both the profound stillness of contemplation and the breathtaking beauty of purposeful action—a combination that speaks to something deeper in the observer's soul than the Bushtit's practical pest control activities, regardless of how effectively executed above an auto shop.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-16T21:33:46.376Z"
+    },
+    {
+      "id": "judgment-w4-1v3",
+      "week": 4,
+      "m1Id": 1,
+      "m2Id": 3,
+      "m1sub": {
+        "species": "no bird",
+        "desc": ":("
+      },
+      "m2sub": {
+        "species": "Turkey",
+        "desc": "Thereâs something quietly unforgettable about seeing a lone wild turkey.\r\n\r\nMost of the time, wild turkeys move in flocks â a loose assembly of watchful heads, bronze feathers catching the light, soft clucks and rustles moving through brush together. Thatâs how we expect to see them: communal, alert, almost political in their numbers. So when you come across a single turkey standing alone in a clearing, the moment feels unusual â like youâve stumbled onto a private scene not meant for witnesses.\r\n\r\nThe bird seems larger by itself. Without others to divide your attention, every detail sharpens: the iridescent sheen of its feathers shifting between copper and green, the deliberate tilt of its head, the long legs built for sudden motion. It carries a strange presence â both awkward and dignified.\r\n\r\nAnd then it runs.\r\n\r\nA wild turkey running is one of the most prehistoric sights you can witness in the modern woods. Its body lowers slightly, wings held close, neck stretched forward like a spear. Those powerful legs pump with startling speed, scratching and thudding against earth and leaves. In that instant, the bird stops looking like something from a farmyard and starts looking like something ancient â a survivor from another era. You can almost see the lineage stretching backward through time, feathers transforming into scales, forests thickening into primordial swamps.\r\n\r\nThere is a dinosaur echo in the way it moves.\r\n\r\nThat sudden, ground-eating sprint feels older than language. Itâs raw instinct made visible â no grace for an audience, no ceremony. Just motion. Just survival.\r\n\r\nSeeing one alone makes it even more striking. Without the distraction of a flock, youâre watching a single thread of evolution flicker across the landscape. A creature that feels both entirely of this moment and impossibly old.\r\n\r\nItâs a special sight not because it is dramatic, but because it is rare and intimate. A lone turkey in the wild feels like a reminder: the ancient world is not gone. It is still here, feathered and wary, running through the trees."
+      },
+      "winner": "m2",
+      "summary": "The Turkey's thunderous prehistoric presence and raw dinosaur echoes conquered the philosophical void of nothingness.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The Wild Turkey is the cooler bird. While Matthew's submission lacks a bird entirely, Marshall's presentation of the Wild Turkey offers a vivid portrayal of an ancient animal that bridges the gap between the prehistoric and the present. The description of the Wild Turkey captures its unique presence, highlighting its iridescent feathers, dignified stance, and the raw, instinctual motion that evokes a sense of primal history. The Wild Turkey's ability to remind us of the continuity of life, with echoes of its dinosaur ancestors, provides a compelling glimpse into the natural world that is both rare and intimate. This profound connection to the past, coupled with its striking solitary presence, makes the Wild Turkey undeniably cooler."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Turkey is the cooler bird. While the submission regarding the \"no bird\" possesses a certain minimalist charm and perhaps an implied commentary on the very nature of existence, its lack of tangible presence ultimately pales in comparison to the raw, untamed essence embodied by the Turkey. The Turkey, through its description as a solitary figure, evokes a sense of primordial power and resilience; its \"dinosaur echo\" speaks to a lineage far grander than any mere absence. This tangible link to the ancient world, coupled with its immediate impact on the observer, grants the Turkey an undeniable gravitas which the \"no bird\" simply cannot match. Therefore, the Turkey wins out by virtue of its demonstrably more substantial cool factor.\n"
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis court finds itself in the unique position of weighing presence against absence, substance against void. The rational judgment compellingly argues for the Wild Turkey's ancient lineage and prehistoric resonance, while the capricious judgment, though agreeing on the outcome, emphasizes the Turkey's \"demonstrably more substantial cool factor\" over the minimalist void. Matthew's \"no bird\" presents an intriguing philosophical statement - the coolness of pure potential, of what might be, of the space where all birds could exist. However, this court must recognize that coolness requires manifestation, requires the observer to witness something tangible that stirs the soul.\n\nThe Wild Turkey emerges victorious not merely by default, but through the synthesis of both judgments' recognition of its profound impact. The rational appreciation of its evolutionary continuity combines with the capricious celebration of its \"raw, untamed essence\" to create a complete picture of avian supremacy. The Turkey's solitary presence in Marshall's encounter transforms it from common farmyard fowl into a living bridge between eras - a creature whose thunderous sprint across forest floors carries the weight of millennia. While the absent bird offers contemplative emptiness, the Turkey offers dinosaur echoes and iridescent reality. Presence conquers absence; the ancient made manifest defeats the philosophical void.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-18T23:29:52.692Z"
+    },
+    {
+      "id": "judgment-w4-5v6",
+      "week": 4,
+      "m1Id": 5,
+      "m2Id": 6,
+      "m1sub": {
+        "species": "Mourning Dove",
+        "desc": "This morning, lo, a crack of thunder! A torrential downpour! A campus drenched and left without power. A lone student, your narrator, trudges to class. A solemn coo pierces the air. Down on the ground, the mourning dove, the solitary guardsman, paves the path. It is only this dove who can both memorialize the darkness and be a beacon, a lighthouse as we weather this storm."
+      },
+      "m2sub": {
+        "species": "Clark's Nutcracker",
+        "desc": "The alpine bird wars... eternal and unchanging. Three Clark's Nutcrackers do battle with a swarm of hundreds, perhaps thousands, of finches. The finches are a mixed flock, mostly consisting of Gray-crowned Rosy-Finches and Black Rosy-Finches. Both the Nutcrackers and Rosy-Finches are only spotted at the highest peaks of the Rocky Mountains; this particular bird skirmish is occurring directly in front of the Alta police station and the sheriff is doing absolutely nothing to resolve this disturbance of the bird peace. Before birdfeeders came around, nutcrackers lived on pine nuts, burying them in the summer and using their supreme corvid intellect to retrieve them in the winter. This habit has lead them to develop one of the strongest spatial memories in nature, capable of remembering 6000+ unique caches over the course of a year. Much like squirrels and acorns, this species has developed a mutualistic relationship with whitebark pine, and these birds play an indispensable role in the fight to restore pine in areas decimated by logging and the foul work of the nefarious mountain pine beetle."
+      },
+      "winner": "m2",
+      "summary": "Clark's Nutcracker won by remembering 6,000 cache locations while actively fighting ecological destruction with warrior-like determination.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The Clark's Nutcracker is the cooler bird. While the Mourning Dove is often appreciated for its calming presence and evocative cooing, particularly during moments of solitude and reflection, the Clark's Nutcracker boasts remarkable ecological significance and intelligence. Its ability to remember over 6,000 unique pine nut caches showcases an exceptional spatial memory, rivaling that of the most intelligent animals. Furthermore, the Clark's Nutcracker plays a crucial ecological role in seed dispersal for the whitebark pine, a mutualistic relationship that helps combat environmental degradation and aids in forest restoration. This impressive combination of intellect, ecological impact, and resilience in harsh alpine environments gives the Clark's Nutcracker a distinctive edge in coolness."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Clark's Nutcracker is the cooler bird. While the Mourning Dove's encounter evokes a sense of melancholic beauty, the Clark's Nutcracker's tale speaks to a dynamism and resilience of spirit. A singular bird facing a storm is merely a victim, while a trio of Clark's Nutcrackers warring against impossible odds suggests an indomitable will and inherent grit. The sheer audacity of engaging in \"alpine bird wars\" showcases a superior level of avian panache, easily eclipsing the passive, grounded demeanor of the Mourning Dove who is clearly just waiting for the storm to pass.\n"
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nAfter careful deliberation, weighing both the rational assessment of ecological significance and the capricious evaluation of spirit and dynamism, this court finds the Clark's Nutcracker to be the cooler bird. The rational judgment correctly identifies the Clark's Nutcracker's extraordinary cognitive abilities - remembering over 6,000 cache locations demonstrates intelligence that places this species among nature's most impressive minds. This corvid's mutualistic relationship with whitebark pine positions it as an environmental hero, actively combating ecological destruction through its natural behaviors. The capricious judgment, while unconventional in reasoning, captures an essential truth about the Clark's Nutcracker's character: these birds embody active resistance rather than passive endurance.\n\nWhile the Mourning Dove serves as a poetic beacon during storms, offering solace through its mournful song, the Clark's Nutcracker represents something more dynamically powerful. Where the Mourning Dove weathers adversity, the Clark's Nutcracker shapes its environment and fights against overwhelming odds. The synthesis of supreme intelligence, ecological importance, and indomitable spirit - whether facing finch swarms or harsh alpine winters - establishes the Clark's Nutcracker as the superior specimen of avian coolness. The dove may memorialize darkness, but the nutcracker actively illuminates the path forward through both intellectual prowess and warrior-like determination.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-18T23:30:22.387Z"
+    },
+    {
+      "id": "judgment-w4-7v9",
+      "week": 4,
+      "m1Id": 7,
+      "m2Id": 9,
+      "m1sub": {
+        "species": "no bird ",
+        "desc": ":("
+      },
+      "m2sub": {
+        "species": "Mute swan",
+        "desc": "The tourists of Cambridge are awful and this pair of swans was not having it today. As a group of disrespectful tourist children tried to chase them they were not having it and charged towards them to give a little scare before casually walking away- missed that part of the plot of swan lake !"
+      },
+      "winner": "m2",
+      "summary": "The Mute swan won by combining majestic serenity with bold tourist-confronting strength, embodying dignified coolness over philosophical emptiness.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The Mute swan is the cooler bird. Despite the absence of a competing bird species from Jack, the Mute swan stands out on its own merits. Known for their majestic appearance and grace, Mute swans possess a serene yet commanding presence that is captivating to observe. The incident described by Grace highlights their protective nature and intelligence, as they skillfully managed to assert their boundaries with the tourists while maintaining composure. The Mute swan's combination of elegance, assertiveness, and adaptability to human environments makes it an exceptionally cool bird worthy of admiration."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Mute swan is the cooler bird. In a delightful display of elegance and assertiveness, the Mute swan gracefully defended its territory against the chaotic intrusion of tourist children, embodying a theatrical flair reminiscent of a modern-day Swan Lake performance. This contrasts sharply with the no bird entry by Jack, which, despite its avant-garde and minimalist approach to ornithological aesthetics, ultimately fails to deliver the kind of dynamic, real-world impact that the Mute swan effortlessly achieves. Moreover, the Mute swan’s unflinching stance against the tourists underscores a profound understanding of personal space and dignity, qualities that the non-existent opponent cannot hope to replicate in any dimension of competition."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nIn weighing the profound void of Jack's non-existent avian entry against Grace's theatrical Mute swan, this court finds itself contemplating both the tangible and intangible nature of coolness itself. While the rational judgment correctly identifies the Mute swan's majestic grace and intelligent boundary-setting as exemplary qualities, and the capricious judgment whimsically celebrates its Swan Lake-esque performance against unruly tourists, we cannot ignore that Jack's \"no bird\" presents us with the ultimate minimalist statement - a zen-like emptiness that challenges our very definition of competition. However, coolness must manifest in the observable world to truly impact and inspire.\n\nThe Mute swan emerges victorious not merely through its elegant physicality or its bold confrontation with Cambridge's disrespectful tourists, but through its embodiment of both serenity and strength - qualities that transcend the philosophical void presented by its absent competitor. The swan's tactical retreat after delivering its message demonstrates sophisticated emotional intelligence that no amount of conceptual nothingness can match. While emptiness may be profound, the Mute swan's graceful assertion of dignity in the face of chaos represents the pinnacle of avian coolness.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-18T23:30:42.242Z"
+    },
+    {
+      "id": "judgment-w4-8v10",
+      "week": 4,
+      "m1Id": 8,
+      "m2Id": 10,
+      "m1sub": {
+        "species": "Cedar Waxwing",
+        "desc": "Bigger isnât always better. This is beautifully exemplified by observing the case of the Cedar Waxwing vs. Bald Eagle. These plump tufted guys are small, but boy do they know how to have a good time! On a sunny Sunday afternoon walk, I observed 8-12 Cedar Waxwings fluttering about a tree. With their black bandit mask markings, and lemon yellow tipped tail and tufts, these silly birds are a standout. Upon closer inspection, I could see that they were feasting on hawthorn berries and cheerfully chirping amongst themselves. How sweet is it that these jolly fellas congregate together and get intoxicated from fermented berries! Much like humans, Cedar Waxwings are rarely seen alone as they value community, and often even pass berries down a line from bill to bill. Seeing these little guys embody the importance of community, sharing, and whimsy reminded me to be ever grateful for the friends and family that I have in my own life, and to not take life too seriously.\r\n\r\nOn the contrary, Bald Eagles are greedy, disloyal, and lazy birds. As described by founding father Benjamin Franklin, the â[Bald Eagle] is a Bird of bad moral Character. He does not get his Living honestly. You may have seen him perched on some dead Tree near the River, where, too lazy to fish for himself, he watches the Labour of the Fishing Hawk (osprey); and when that diligent Bird has at length taken a Fish, and is bearing it to his Nest for the Support of his Mate and young Ones, the Bald Eagle pursues him and takes it from himâ. A founding father of the United States himself did not want the Bald Eagle to be the national bird of the United States, which nullifies my opponents argument. My opponent argues that the Cedar Waxwing âberry goonsâ, but I make the case that at least they are able to forage for their own food, as opposed to thieving from the hard work of others. Countering the third argument made by my opponent of âAuraâ- does my opponent refer to the behavior of Bald Eagles attacking their own kind? Or does he mean the recorded instances of the Bald Eagle eating its own young? Behaviors that a Cedar Waxwing could not fathom. To me, âAuraâ is chirping with friends. It is sharing with one another. It is loving thy neighbor. Although small in size, these vibrant feathered friends represent the interconnectedness of living beings, and how in a way, we are all the Cedar Waxwing. "
+      },
+      "m2sub": {
+        "species": "Bald Eagle",
+        "desc": "Bald Eagle vs Cedar Waxwing mogging analysis:\r\n1) The Bald Eagle is Statusmaxxed. The Bald Eagle is the OFFICIAL NATIONAL BIRD of the United States, appears on $1 bill, and is sacred in Native American Cultures. The Cedar Waxwing is NOT a state bird for any US state. Zero official representation. No currency representation at all.\r\n2) The Bald Eagle frame mogs the Cedar Waxwing with its 7-foot wingspan and massive apex-tier skeletal structure. The medium ugly (more on that later) Cedar Waxwing is merely 12 inches tip to tip. Bald Eagles hit 100mph air speed on a dive, Cedar Waxwings can barely muster 25mph.\r\n3) Presence and Aura. The Bald Eagle food chain mogs the berry-gooning Cedar Waxwing. The Cedar Waxwing is literally Bald Eagle prey. Everytime a Bald Eagle flies over head it giga-cortisol spikes the Cedar Waxwing, which literally makes them ugly from chronic stress.\r\n4)Final thoughts. Bald Eagles: national icons. Cedar Waxwings: polycule of berry drunk, ugly, loser birds."
+      },
+      "winner": "m2",
+      "summary": "The Bald Eagle's seven-foot wingspan, apex predator status, and transcendent symbolism as freedom's living mythology conquered friendship's sweetness.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The Bald Eagle is the cooler bird. While the Cedar Waxwing embodies charming social behavior and a whimsical lifestyle, the Bald Eagle's iconic status as the national bird of the United States endows it with unmatched cultural significance. Its commanding presence, characterized by a formidable wingspan and unparalleled speed in flight, ensures that it dominates both the skies and the imagination. The Bald Eagle's role in Native American cultures further underscores its profound symbolism and reverence. Though the Cedar Waxwing's communal antics and vibrant appearance are endearing, the Bald Eagle's majestic aura and emblematic stature render it cooler by transcending the ordinary and embodying power, freedom, and resilience."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Bald Eagle is the cooler bird. While the Cedar Waxwing's communal berry-eating habits may seem charming, they are ultimately indicative of a lack of ambition and a reliance on fleeting pleasures. The Bald Eagle, in contrast, embodies self-reliance and power. My esteemed colleague argues that the Bald Eagle steals from the Osprey, but this is a misinterpretation of nature's dynamic. The Bald Eagle is simply demonstrating dominance and resourcefulness, qualities that are essential for survival and, indeed, for achieving peak coolness. The Cedar Waxwing's supposed \"community\" is nothing more than a collective of intoxicated birds, incapable of true greatness. The Bald Eagle, a symbol of freedom and strength, stands alone atop the food chain, a true testament to its superior coolness.\n"
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nHaving carefully weighed the testimonies before this court, I find myself compelled to synthesize both the rational appreciation for majesty and the capricious celebration of dominance with the heartfelt defense of community and whimsy. The Bald Eagle's undeniable status as a national symbol, its commanding seven-foot wingspan, and its apex predator position create an aura of power that cannot be dismissed. Yet the Cedar Waxwing's authentic joy in berry-sharing, their masked bandit appearance, and their embodiment of interconnectedness speak to a different kind of coolness—one rooted in genuine social bonds rather than solitary dominance. While both judges favored the Bald Eagle's imperial presence, they perhaps overlooked the profound coolness found in the Cedar Waxwing's ability to find euphoria in simple pleasures and maintain loyalty to their flock.\n\nHowever, the convergence of both rational and capricious judgments toward the Bald Eagle's superiority, combined with its undeniable cultural significance and physical dominance over the Cedar Waxwing, tips the scales of justice. Though the Cedar Waxwing's communal berry-passing and joyful intoxication represent admirable values, the Bald Eagle's transcendent symbolism, its representation on currency, and its sacred status across cultures elevate it beyond the realm of mere avian comparison into the sphere of living mythology. The Cedar Waxwing may embody the sweetness of friendship, but the Bald Eagle embodies the very concept of freedom itself—and that, ultimately, is the cooler bird.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-18T23:30:59.623Z"
+    },
+    {
+      "id": "judgment-w4-2v4",
+      "week": 4,
+      "m1Id": 2,
+      "m2Id": 4,
+      "m1sub": {
+        "species": "buffleheads ",
+        "desc": "You know em, you love em, the cutest little cutie pies out there on the river, the neatest ducks should you care to take notice. Who can resist the little snowy cheek patches of this perky diving duck? No one, that's who."
+      },
+      "m2sub": {
+        "species": "Ring-billed Gull",
+        "desc": "One of the OG species, very classic, difficult to beat."
+      },
+      "winner": "m2",
+      "summary": "The Ring-billed Gull won with its timeless shoreline swagger and grizzled maritime confidence that predates trendy cuteness.",
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The bufflehead’s striking black-and-white plumage and iconic snowy cheek patches make it an instantly memorable sight, and its fearless diving antics reveal a zest for life that outshines the more familiar, stoic presence of the Ring-billed Gull; buffleheads forge a unique emotional connection on the river’s surface, delighting onlookers with perky personalities and compact agility, whereas the Ring-billed Gull, though ubiquitous and resilient, lacks the same combination of distinctive markings and endearing behavior that truly captures the imagination."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "Though the buffleheads’ cheek patches and perky diving antics tug at the heartstrings, the Ring-billed Gull’s understated panache quietly eclipses them by refusing to pander to cuteness: it embodies a storied legacy of shoreline swagger that predates Instagram filters, its sleek bill ring a sly nod to both hi-seas piracy and urban refuse–raiding bravado, and anyone who gawps at the bufflehead’s fluffy charisma without sensing the gull’s grizzled maritime confidence clearly values ornament over true avian savoir-faire."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis court finds itself torn between two compelling visions of avian excellence. The bufflehead advocate's passionate declaration that these are \"the cutest little cutie pies out there on the river\" coupled with the rational judge's emphasis on their \"fearless diving antics\" and \"perky personalities\" presents a strong case for charm-based coolness. However, the capricious judge's brilliant insight that the Ring-billed Gull \"embodies a storied legacy of shoreline swagger that predates Instagram filters\" cuts to the heart of what true coolness represents. While the bufflehead submission's enthusiasm is infectious, describing those irresistible \"snowy cheek patches,\" the Ring-billed Gull submission's understated confidence in simply noting it as \"One of the OG species, very classic, difficult to beat\" demonstrates the kind of effortless cool that doesn't need to try hard.\n\nThe capricious judge's observation about the gull's \"grizzled maritime confidence\" and \"hi-seas piracy\" aesthetic resonates deeply with this court's understanding that authentic coolness often lies not in obvious cuteness but in quiet mastery. The Ring-billed Gull's \"sleek bill ring\" serves as nature's equivalent of a subtle but unmistakable status symbol, while its ability to thrive in diverse environments from shorelines to urban landscapes demonstrates adaptability that transcends mere visual appeal. Though buffleheads may win hearts with their diving shows, the Ring-billed Gull wins respect through its timeless presence and unshakeable composure.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-24T01:14:21.977Z"
+    },
+    {
+      "id": "judgment-w5-1v4",
+      "week": 5,
+      "m1Id": 1,
+      "m2Id": 4,
+      "m1sub": {
+        "species": "no bird",
+        "desc": ":("
+      },
+      "m2sub": {
+        "species": "Turkey Vultures",
+        "desc": "According to ChatGPT these are Turkey Vultures, flying over Seattle. Iâll let the photos speak for themselves. To the judges, thank you for your service."
+      },
+      "winner": "m2",
+      "summary": "Turkey Vultures won because they were actual birds soaring over Seattle, unlike their opponent's empty frame.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "Turkey Vultures win on every count: while Submission 1 offered no creature at all, Submission 2 brings us a group of iconic scavengers gracefully gliding over Seattle, complete with vivid photos and confident species identification that demonstrates both field observation skills and respect for the birds’ ecological importance. Turkey Vultures not only showcase impressive soaring wingspans and aerial mastery, they also highlight a critical natural cleanup crew role, turning decay into renewal. The photographer’s clear framing and willingness to share context honors the judges’ efforts and enriches our appreciation for a bird that’s often underappreciated yet vitally cool."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "No Bird’s void of imagery slyly upends the whole notion of “cool” by forcing the audience into a private collaboration with the empty frame, a brilliantly subversive move that dwarfs Turkey Vultures’ overfamiliar silhouette gliding over Seattle; while the vultures’ scavenging glamour is a rote avian trope, No Bird’s theatrical absence demands you fill in the blank with your own secret fantasies, making its minimalist manifesto far more electrifying than any literal feast on carrion."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nWhile the capricious judge eloquently celebrates the \"minimalist manifesto\" and \"theatrical absence\" of Submission 1's non-bird, I must ground this ruling in the fundamental reality that a bird competition requires, at minimum, a bird. The rational judge correctly identifies that Turkey Vultures represent \"impressive soaring wingspans and aerial mastery\" - these magnificent raptors soaring over Seattle deserve recognition for their underappreciated ecological role as nature's cleanup crew. The photographer's respectful acknowledgment of \"thank you for your service\" to the judges, combined with their honest reliance on ChatGPT for identification, shows both humility and genuine effort to participate meaningfully in this competition.\n\nThe capricious judge's vision of collaborative imagination filling an \"empty frame\" is poetically compelling, but we cannot allow artistic interpretation to overshadow the basic requirement of avian presence. Turkey Vultures may be \"overfamiliar\" to some, but their effortless thermal riding and crucial scavenging role make them genuinely cool - far cooler than the complete absence that Submission 1 offers with its lonely emoticon. The photos may be simple, but they capture real birds in flight, demonstrating the fundamental birding achievement of observation and documentation that this competition celebrates.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-26T22:42:18.851Z"
+    },
+    {
+      "id": "judgment-w5-2v3",
+      "week": 5,
+      "m1Id": 2,
+      "m2Id": 3,
+      "m1sub": {
+        "species": "Belted Kingfisher",
+        "desc": "Splendid bird. Rare instance of the female having more impressive coloration than the male. Big hair, big beak, big call, this bird is highly cool.\r\n\r\nGulls, on the other hand? Quotidian. "
+      },
+      "m2sub": {
+        "species": "Western Gull (Larus Occidentalis)",
+        "desc": "The automatic doors parted with a sigh and swallowed me into the fluorescent republic of bulk abundance. Inside Costco, humanity moved in great, squeaking caravans of carts, metal ribs rattling under the weight of paper towels stacked like battlements and jars of olives the size of aquariums. Voices ricocheted off the high raftersâprice checks, arguments over almond versus oat milk, the shriek of a child who had locked eyes with a pallet of inflatable kayaks and recognized destiny. A man rehearsed his authority into his phone. A woman laughed like a startled jay. Someone whistled to locate a wandering spouse. The bakery exhaled sugar and yeast into the bright air.\r\n\r\nIt struck me how avian it all was. The darting glances, the territorial edging of carts, the way people clustered around the sample stations as if around a feeder newly filled. Hands flicked and peckedâgrapes sampled, crackers snapped, napkins abandoned like shed feathers. Even the ceiling fans seemed to circle overhead like patient hawks. We were a murmuration constrained by aisles, our choreography dictated by signage and sale tags, our calls overlapping into a single, restless canopy of sound.\r\n\r\nWhen I finally escaped with my receipt slashed in blue ink, the outside air felt tidal and honest. The parking lot shimmered. And there, by the concrete bollards near the food court, a small parliament of Western gull had convened around a fallen treasure: a chicken bake torn open, steam still ghosting from its breaded flank.\r\n\r\nThey were magnificent and ridiculous. White chests puffed with outrage, slate wings lifted like capes, yellow bills jabbing with courtroom precision. One gull seized the prize and bolted; another clipped it mid-stride; a third shrieked commentary from the sidelines. The sound was not unlike the interior weâd just leftâsharp, insistent, threaded with grievance. A gull threw its head back and loosed a cry that could have been, to an inattentive ear, âMine!â Another answered with a scold that echoed the tone of a price dispute at the register.\r\n\r\nWatching them, I felt the hinge between species loosen. Their skirmish replayed the choreography of the warehouse: the rush toward abundance, the flare of entitlement, the quick arithmetic of appetite. \r\n\r\nIn the end, the chicken bake surrendered to entropyâcrumbs scattered, a victor crowned only briefly before being dethroned by gravity and greed. The gulls lifted in a sudden, unanimous updraft, their wings beating the air into order. For a moment the parking lot was quiet again, carts ticking as they cooled.\r\nInside, we had been birds pretending to be civilized. Outside, the birds were people without the pretense. And somewhere between the receipt and the sky, the mimicry felt mutual: our racket answering theirs, their hunger mirroring ours, each species fluent in the bright, unruly grammar of want."
+      },
+      "winner": "m2",
+      "summary": "The Western Gull won by transforming a mundane Costco parking lot encounter into transcendent poetry about survival.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The Western Gull’s fearless choreography of outrage and entitlement on a Costco parking lot transforms it from a mere scavenger into an uncanny urban avatar of our own consumerist ballet, its slate-winged silhouette slashing through the fluorescent hum of humanity and reminding us that coolness isn’t just about plumage or call but about the brash poetry of survival and wit in a world of endless abundance; no other species so perfectly mirrors our own motorized murmuration, turning scraps of chicken bake into fleeting crowns of power and casting every updraft into a moment of collective, unspoken triumph."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "While the Belted Kingfisher boasts undeniable plumage and an impressive vocalization, the Western Gull's narrative resonated with a deeper understanding of the avian spirit. The Kingfisher is merely *being* cool, whereas the Western Gull *reveals* coolness in the mundane, uncovering the primal bird within the human experience. The author of the Western Gull submission showcased a rare ability to observe, to synthesize, and to weave a tapestry of connection between species. The Kingfisher is, after all, just a flashy bird, and we've all seen flashy birds. The Western Gull submission opened my eyes to the interconnectedness of all living things."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThe rational judge correctly identifies the Western Gull's \"fearless choreography of outrage and entitlement\" as a brilliant mirror to our own \"consumerist ballet,\" while the capricious judge, despite their wandering philosophical musings, grasps something essential: the Western Gull submission \"reveals coolness in the mundane.\" Yet both judges, in their focus on the soaring prose of the gull encounter, have overlooked a fundamental truth about avian hierarchy. The Belted Kingfisher represents genuine rarity and difficulty—a bird that requires skill, patience, and fortune to encounter, whose \"big hair, big beak, big call\" reflects not just coolness but the earned respect of serious birders. The Western Gull's literary treatment, while undeniably masterful in its weaving of \"the bright, unruly grammar of want,\" cannot eclipse the simple fact that gulls are, as aptly noted, \"quotidian.\"\n\nHowever, the scales tip decisively when we consider that extraordinary effort in observation and storytelling must be rewarded alongside species rarity. The Western Gull submission transforms the mundane into the transcendent, creating what the rational judge calls \"the brash poetry of survival\" in a Costco parking lot—a location where most would see only commerce, not communion between species. While the Kingfisher's reverse sexual dimorphism and impressive presence deserves recognition, the Western Gull author has achieved something rarer than spotting an uncommon bird: they have made us see the sacred choreography hidden in plain sight, turning \"crumbs scattered\" into crowns and revealing how \"each species [is] fluent in the bright, unruly grammar of want.\"\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-26T22:42:37.003Z"
+    },
+    {
+      "id": "judgment-w5-5v7",
+      "week": 5,
+      "m1Id": 5,
+      "m2Id": 7,
+      "m1sub": {
+        "species": "Turkey Vulture",
+        "desc": "Gulp! Lo, what be that beast flying high in the sky? With talons long and beak sharp? But wait, this gentle giant descends above my favorite sushi restaurant in slow arcs. Foe? Nay, this is friend. A misunderstood monster. A turkey vulture. A mere buzzard in its horaltic pose. This elegant beast carries far more gravitace than any sheepish or corwardly pack animal (like a flamingo)."
+      },
+      "m2sub": {
+        "species": "Barred Owl",
+        "desc": "I was walking in my chain linked fence backyard, lamenting my bird league forfeit last week. Would i ever see a good bowl, but then... HOOT HOOT. This majestic owl appeared"
+      },
+      "winner": "m2",
+      "summary": "The Barred Owl's rare suburban appearance and mysterious \"HOOT HOOT\" transformed an ordinary backyard walk into sublime magic.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The barred owl’s sudden “hoot hoot” in a suburban backyard captures an almost mythic blend of mystery and mastery: its broad, rounded wingspan and soft-edged feathers enable silent flight through moonlit trees, its striking horizontal bars and deep-set amber eyes convey both camouflage and timeless wisdom, and its bold intrusion into our everyday world feels like a triumphant reminder that even the ordinary can become extraordinary when nature speaks in its own voice."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Turkey Vulture's dramatic flair and grandiose pronouncements are precisely why it falls short of true coolness. It postures and preens, attempting to convince us of its misunderstood elegance, as if desperation were a virtue. A true apex predator need not proclaim its dominance. The Barred Owl, on the other hand, speaks through its actions. The simple, unadorned \"HOOT HOOT\" resonates with a primal certainty, a confidence that brooks no argument. In a world of desperate self-promotion, the Barred Owl's quiet power is the ultimate display of nonchalant mastery. It is a being so secure in its own magnificence that it need only announce its presence, not justify it."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis court finds itself weighing theatrical grandeur against understated mastery, and both judges have illuminated crucial aspects of avian coolness. The Turkey Vulture submission's \"horaltic pose\" and claims of \"gravitace\" demonstrate passionate advocacy wrapped in delightfully mangled language - this competitor clearly poured creative energy into crafting a defense of nature's cleanup crew. Yet the rational judge's analysis of the Barred Owl strikes at something profound: that \"HOOT HOOT\" moment captures lightning in a bottle, transforming a mundane backyard walk into an encounter with the sublime. The capricious judge, for once speaking wisely, recognizes that true power needs no elaborate justification.\n\nWhile the Turkey Vulture's advocate shows admirable creativity in defending an oft-maligned species, the Barred Owl represents a genuinely special sighting - these nocturnal predators don't casually appear in suburban backyards. The submission's brevity, which might seem like minimal effort, actually mirrors the owl's own economy of expression. Where the vulture submission protests too much about misunderstood elegance, the owl lets its presence speak volumes. The rational judge's imagery of \"silent flight through moonlit trees\" and \"striking horizontal bars\" captures the essence of a bird that embodies mystery and competence without fanfare. In balancing passionate advocacy against natural majesty, this court sides with the creature that transforms ordinary moments into magic through sheer presence.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-26T22:42:55.041Z"
+    },
+    {
+      "id": "judgment-w5-6v10",
+      "week": 5,
+      "m1Id": 6,
+      "m2Id": 10,
+      "m1sub": {
+        "species": "100,000,000 crows",
+        "desc": "One hundred million crows blackening the sky, casting a fell omen upon the dead earth.  The scariest thing Iâve ever seen. If all these crows were combined into a single obsidian sphere that hovered above the San Francisco Bay, it would be both visible and audible from outer space. Quantity has a quality all its own, and this is the most crows ever witnessed by mankind. Scientists are poring over this footage and analyzing the complex swarming algorithms utilized by some of the most intelligent creatures on earth, and they believe there is an emergent superintelligence speaking to us through the swarm pattern. A team of scientists have cracked the hidden cypher in their movement, but claim the message is so dreadful they dare not speak it aloud, lest a hateful god overhear and render its dark judgment upon mankind."
+      },
+      "m2sub": {
+        "species": " Northern Shrike",
+        "desc": " Oh it's... a songbird. What could the Northern Shrike or Lanius borealis possibly do to compete? Huh? The family name Lanius is derived from the latin word \"butcher\"? Why would this grey solitary cousin of a finch be known as the 'butcher bird'? Seems like overkill, no? I mean it weighs as much as a handful of quarters. It doesn't have talons to grip and crush, or the powerful hooked beak of a falcon. The shrike is a grey, unremarkable visitor. The kind of bird that drifts down from the subarctic in winter, sits on a fence post, and gets mistaken for something common. Most people will never notice one.\r\n\r\nThey should.\r\n\r\nThe northern shrike hunts prey larger than itself. Other birds, mice, voles, anything with a pulse. Without the standard-issue equipment birds of prey rely on, the northern shrike strikes the cervical vertebrae of its victims, severing the spinal cord in a single blow. Precise. Efficient. Cold.\r\n\r\nAnd because it can't hold its kills the way a raptor does, the shrike finds a thorn, a sharp branch, or barbed wire and impales its prey on it. Ornithologists call this \"lardering\", I call this \"scary shit\". A little grey assassin and sociopath with no allies.\r\n\r\nTo make a murder you need a whole bunch of loud, smelly, ugly, rude crows... or just one Shrike."
+      },
+      "winner": "m2",
+      "summary": "The Northern Shrike's surgical precision in severing spinal cords and impaling prey on thorns outmatched swarming crows.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "While the image of countless crows coalescing into a menacing obsidian sphere above San Francisco Bay suggests an almost cosmic intelligence and apocalyptic power, the Northern Shrike (Lanius borealis) outclasses sheer scale with its singular, savage elegance: a modest grey passerine that methodically severs the spinal cords of prey larger than itself and impales them on thorns like a miniature executioner. That frigid fusion of precision hunting, behavioral innovation (“lardering”) and unexpected brutality in a bird the size of a handful of quarters makes the Northern Shrike a far more compelling testament to nature’s ingenuity and cold artistry."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Northern Shrike’s strategy of impaling its prey is a clear demonstration of foresight and resourcefulness, qualities essential for surviving in a harsh world. While the crows’ overwhelming numbers might suggest a kind of emergent intelligence, it's ultimately a brute force approach. The Shrike, on the other hand, makes the most of its limitations, turning a weakness into a strength by utilizing external tools for its butchery. This indicates a level of adaptability and problem-solving that the crows, for all their swarming algorithms, simply cannot match. The crows are a swarm of mindless consumers whereas the shrike actively shapes his environment to suit his needs. This is precisely the kind of initiative that we want to encourage in our avian contestants."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nWhile the apocalyptic spectacle of \"one hundred million crows blackening the sky\" presents an undeniably dramatic vision—complete with scientists deciphering doomsday messages from swarm patterns and obsidian spheres visible from space—I must acknowledge that American Crows, however numerous, remain common birds employing common strategies. The rational judge correctly identifies that sheer scale, while impressive, cannot compete with the Northern Shrike's \"singular, savage elegance,\" and the capricious judge astutely contrasts the \"brute force approach\" of swarming with the Shrike's environmental manipulation. The Northern Shrike's rarity as a subarctic visitor that \"most people will never notice\" elevates its coolness factor significantly above the ubiquitous crow, no matter how many darken the sky.\n\nThe submission's masterful revelation—building from \"oh it's... a songbird\" to the chilling reality of a \"little grey assassin\" that strikes \"cervical vertebrae\" with surgical precision—demonstrates both exceptional species knowledge and storytelling craft. The etymological detail about \"Lanius\" meaning butcher, the clinical description of spinal cord severing, and the haunting image of prey impaled on thorns create a portrait of calculated brutality that transcends the supernatural hyperbole of the crow submission. As the capricious judge noted, the Shrike \"actively shapes his environment,\" transforming thorns into gallows with the methodical efficiency of nature's own serial killer. A single Northern Shrike practicing its cold artistry of \"lardering\" achieves more genuine menace than a hundred million crows ever could.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-26T22:43:16.155Z"
+    },
+    {
+      "id": "judgment-w5-8v9",
+      "week": 5,
+      "m1Id": 8,
+      "m2Id": 9,
+      "m1sub": {
+        "species": "White-Tailed Ptarmigan",
+        "desc": "Heed! The white-tailed ptarmigan, also known as the snow quail! I observed this waddling grouse at Stevens Pass ski resort. Not only is the ptarmigan plump and cute, but it also does an excellent job of camouflaging with its surroundings: speckled brown and blending in with rocks, or turning white and blending in with snow in the late winter. They are the only bird species that spend their entire life cycle in the alpine tundra environment, and their foot structure even allows them to walk on top of snow, and nest inside snowbanks. Seeing the ptarmigan at the ski resort was heartwarming, as I could tell that much like myself, this bird also yearns to shred the slopes. "
+      },
+      "m2sub": {
+        "species": "egret",
+        "desc": "For a while an egret was rare to see in the UK, but now their popilation grows. This bird was prideful and looked content in its solitary nature while it waded in the water. In the wake of rush hour commuters, it was calm and unbothered. It lived in the mlment not held up on the past or future"
+      },
+      "winner": "m1",
+      "summary": "The ptarmigan's unmatched alpine specialization and seasonal camouflage mastery outshined the egret's zen-like urban composure.",
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The white-tailed ptarmigan’s singular claim to fame as the only bird species to spend its entire life cycle in the alpine tundra—combined with its seasonal plumage transformations from rocky brown speckles to pristine snow-white, its feathered toes that let it stride atop snow and nest within snowbanks, and its plucky slope-shredding spirit—demonstrates a level of evolutionary ingenuity and hardy charisma that far outpaces the egret’s tranquil elegance and moment-centered grace."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "While the White-Tailed Ptarmigan's passion for \"shredding the slopes\" is admirable, the egret's stoic detachment from the mundane concerns of human society speaks to a deeper, more profound coolness. The ptarmigan, in its eagerness to mimic the activities of skiers, demonstrates a lack of originality and a dependence on external validation. The egret, on the other hand, stands alone, unmoved by the frantic pace of modern life, a beacon of serene indifference in a world obsessed with accomplishment. This unflappable self-possession is the ultimate expression of coolness, far surpassing any mere talent for camouflage or skiing imitation."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis court finds itself weighing extraordinary evolutionary specialization against philosophical transcendence. The White-Tailed Ptarmigan presents an undeniably compelling case—as the rational judgment correctly identifies, this is the ONLY bird species to spend its entire lifecycle in alpine tundra, sporting seasonal costume changes that would make a Broadway performer envious and snow-walking abilities that put snowshoes to shame. The heartwarming image of this \"waddling grouse\" yearning to \"shred the slopes\" alongside its human observer speaks to a delightful anthropomorphic connection. However, the capricious judgment's defense of the egret's \"stoic detachment\" and \"unflappable self-possession\" cannot be dismissed—there is indeed something profoundly cool about standing \"calm and unbothered\" amid \"rush hour commuters,\" living authentically \"in the mlment\" (typo preserved for authenticity).\n\nYet this court must acknowledge the stark disparity in effort and rarity presented before us. The White-Tailed Ptarmigan represents not just exceptional natural history but exceptional birding dedication—finding this alpine specialist at Stevens Pass required genuine effort and knowledge, while egrets, as the submitter themselves admits, are no longer rare in the UK and have growing populations. The ptarmigan's unique evolutionary niche, combined with the clear passion and detailed observation in its submission, demonstrates both natural and human excellence that this court cannot ignore. While the egret's zen-like presence has merit, coolness must ultimately reward the extraordinary over the merely contemplative.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-02-26T22:43:38.312Z"
+    },
+    {
+      "id": "judgment-w6-1v5",
+      "week": 6,
+      "m1Id": 1,
+      "m2Id": 5,
+      "m1sub": {
+        "species": "bald-eyed eagle",
+        "desc": "Maybe this week it'll be good enough to win?"
+      },
+      "m2sub": {
+        "species": "no bird",
+        "desc": ":("
+      },
+      "winner": "m1",
+      "summary": "The bald eagle won simply by showing up with an actual bird while its opponent submitted nothing but emptiness.",
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The bald-eyed eagle wins by default and by design: its very name conjures the regal silhouette of a mighty raptor whose stark white head and steely gaze symbolize freedom, power, and the thrill of a high-stakes wildlife encounter, whereas Submission 2 offers no bird at all and thus cannot inspire any sense of wonder, narrative intrigue, or aesthetic impact. In a contest meant to celebrate the cool factor of feathered friends, an empty entry simply cannot compete with the promise of a majestic eagle soaring into view."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "Despite its humble message of “Maybe this week it'll be good enough to win?,” the bald-eyed eagle’s quiet perseverance actually proves its superiority: while Submission 2 offers nothing but an empty encounter and a sad emoticon, the eagle’s very choice to express self-doubt shows a deeper layer of introspection—a kind of feigned fallibility that masks an unbeatable archness. In the blurry photograph you can almost see the tip of its beak aligned with the horizon, suggesting it’s discretely steering your sympathies while cloaked in modesty. That calculated vulnerability, paired with the mythic weight carried by any eagle—even one with a comically bald gaze—outshines the sheer absence represented by “no bird.” In short, the bald-eyed eagle doesn’t just enter the contest; it rewrites the rules by gamely questioning its own credentials. Which is exactly the kind of showmanship this capricious tribunal rewards."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis court finds itself in the peculiar position of adjudicating between a bald eagle (properly identified, despite the creative \"bald-eyed\" nomencotation) and the philosophical void of \"no bird.\" The rational judgment correctly identifies the fundamental impossibility of a non-existent bird competing in any meaningful way, while the capricious judgment astutely recognizes the eagle's touching vulnerability in its plaintive \"Maybe this week it'll be good enough to win?\" This modest plea, paired with what appears to be a genuine photographic effort (however blurry the execution), demonstrates the kind of earnest participation that defines the spirit of competition. The bald eagle's symbolic weight as America's national bird cannot be dismissed, nor can the evident hope embedded in the submission's tentative tone.\n\nWhile this court appreciates the zen minimalism of Submission 2's sad face emoticon—a masterclass in conveying defeat through punctuation—the absence of any avian subject matter renders it categorically ineligible for consideration in a bird competition. The capricious judgment's interpretation of the eagle's \"calculated vulnerability\" may be overly generous, but it correctly identifies that showing up with a bird, any bird, beats the alternative of showing up empty-handed. The bald eagle's quiet persistence and the submitter's hopeful uncertainty create a narrative arc that no amount of creative interpretation can conjure from a vacant entry.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-03-05T19:30:55.511Z"
+    },
+    {
+      "id": "judgment-w6-2v6",
+      "week": 6,
+      "m1Id": 2,
+      "m2Id": 6,
+      "m1sub": {
+        "species": "Red-tailed hawk",
+        "desc": "Nearing the end of my leisurely neighborhood walk, a dark shape against the bright blue sky caught my eye. A hawk! Its four-foor-wide wings outstretched, it soared silently before alighting on the very top of a huge Ponderosa pine. The call of a red-tailed hawk is used for that of a bald eagle in movies, TV shows, advertisements, and endless other pieces of aural Americana. Wherever bald eagles rank on the here of cool, red-tailed hawks are well above them. Red-tailed hawks are sexually dimorphic: females are up to 25% larger than males (extremely cool). Finally, red-tailed hawks are truly an apex predator; indeed, some of the birds that have been submitted to Bird League in weeks past - namely gulls and rock pigeons - are prey for red-tailed hawks. On that normal day, on my normal walk, I suddenly felt awe as was due such a creature. As swiftly as it had appeared, the hawk launched into the air and winged her way toward the horizon."
+      },
+      "m2sub": {
+        "species": "Snow Goose",
+        "desc": "'Snow' goose in the middle of the Chihuahua desert? Strange but true! In El Paso we spotted this juvenile, a very rare sighting for the region, even as the Snow Goose tends to overwinter in warmer climates. Rarer still, he was the only goose in the area. Those aren't fellow geese behind him, they're seagulls. Where did the rest of his flock go? This young goose seemed to be doing well for himself, but what drove him to strike it out on his own? American culture has long had a fascination with the \"lone wolf\" archetype, but rarer and even more compelling is the \"lone goose\" archetype this mysterious specimen embodies."
+      },
+      "winner": "m2",
+      "summary": "A lone juvenile Snow Goose's rebellious desert appearance far from its natural habitat created an extraordinarily rare sighting.",
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The Red-tailed hawk edges out the Snow Goose in sheer cool factor not just because of its role as an apex predator—preying on pigeons and gulls—but also because of its cultural resonance and striking sexual dimorphism, with females up to 25 percent larger than males. In Submission 1 we feel genuine awe in the moment: a four-foot wingspan folded quietly atop a Ponderosa pine, its iconic scream evoking all the grandeur of American wilderness and cinema alike. While the juvenile Snow Goose’s solo wanderings through the Chihuahua Desert spark our imagination about lone-wolf archetypes, nothing captures the primal power and majestic presence of a raptor in full command of sky and prey."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "In my capricious wisdom I must declare the snow goose as cooler: while the red-tailed hawk’s Hollywood-ready wingspan and apex-predator resume look impressive on paper, the snow goose’s lone-wanderer stunt in the Chihuahua Desert reads like a renegade art piece, turning a juvenile stray amid seagulls into a post-modern symbol of avian individualism; that unlikely tableau carries more narrative subversion and untapped potential than any routine Ponderosa perch ever could."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis court finds itself torn between the primal majesty described in the Red-tailed Hawk submission and the extraordinary rarity captured in the Snow Goose encounter. The rational judge's emphasis on the hawk's \"four-foot wingspan folded quietly atop a Ponderosa pine\" and its position as an apex predator resonates deeply—there is undeniable power in a creature whose very call has become the soundtrack of American wilderness cinema. Yet the capricious judge's recognition of the Snow Goose as a \"renegade art piece\" and \"post-modern symbol of avian individualism\" cannot be dismissed, for this juvenile's solitary presence in the Chihuahua Desert represents something genuinely exceptional. The submitter's wondering about this \"lone goose archetype\" and the poignant image of a single goose among seagulls, separated from its flock, creates a compelling narrative of avian rebellion.\n\nHowever, this court must weigh the rational judge's crucial observation about the Snow Goose being \"a very rare sighting for the region\" against the capricious judge's appreciation for narrative subversion. While Red-tailed Hawks command respect as apex predators whose sexual dimorphism and cultural significance cannot be understated, the Snow Goose's appearance where it simply should not be—in desert terrain far from its expected habitat—represents the kind of exceptional birding moment that elevates the ordinary into the extraordinary. The mystery of this displaced juvenile, striking out alone in unsuitable habitat, embodies a cooler defiance of natural order than even the most cinematically perfect hawk perch.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-03-05T19:31:23.669Z"
+    },
+    {
+      "id": "judgment-w6-3v9",
+      "week": 6,
+      "m1Id": 3,
+      "m2Id": 9,
+      "m1sub": {
+        "species": "Juvenile Red-Tailed Hawks",
+        "desc": "High above the open golf course, juvenile red-tailed hawks wheel and tumble through the sky, embodying a living yin and yang. One's pale underside flashes in the sunlight, bright as day, while one's darker underside slices through shadow, echoing night. Each turn reveals contrastÃ¢ÂÂlight and dark feathers folding into one another as they chase, mock fight, and learn the language of the wind. Like twin currents in a single breath, they rise and fall in effortless balance. In their play, there is harmony: boldness tempered by caution, instinct guided by curiosity: two forces entwined in a single, soaring dance.\r\n"
+      },
+      "m2sub": {
+        "species": " Eurasian Coot",
+        "desc": "While walking along a mirage of houseboats i spotted quite a few eurasian coots on the canal bank. While i had many options... this coot i chose in particular was noted for its extra large and blue feet. Eurasian coot foot size and color varies widely so i was particulalry drawn tk how this ones feet were so unique and eye catching. This coot could do quite a lot with those toes. I also was struck by the bird being eurasian, as an armenian (1/4) i always struggle to identify which continent my homeland is a part of. Seeing this eirasian coot showed me that eurasian representation is real and gave me a sense of armenian pride. I thiught maybe this coot has been to armenia, or longs for dolma and string cheese from the homeland like me.\r\n "
+      },
+      "winner": "m2",
+      "summary": "The Eurasian Coot's ostentatious blue feet sparked profound cultural self-recognition, connecting Armenian identity through shared transcontinental existence.",
+      "chatgpt": {
+        "pick": "m1",
+        "argument": "The juvenile Red-Tailed Hawk earns the edge for sheer dynamism and ecological resonance: these siblings of the sky transform a mundane golf course into an arena of mastery, their contrasting light and dark plumage weaving a visual metaphor for balance as they mock-fight and map the currents of air. Their play is not mere sport but an essential rite of passage, honing the instincts that will make them keystone predators in their ecosystem. In every elegant arc and sudden dive, they proclaim the raw power and artistry of raptors—an irreplaceable reminder of nature’s fierce elegance."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "The Eurasian coot’s ostentatious cerulean feet, after all, constitute an ingenious commentary on transcontinental identity that juvenile red-tailed hawks—however graceful—can only dream of; by planting its oversized sapphirine paddles on the canal bank, the coot stages a quiet yet unequivocal protest against aerodynamic conformity, marrying aquatic rebellion with a subtle nod to Armenia’s displaced spirit, and in doing so achieves a level of representational cool that mere skylarks in talons can’t approach."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis court finds itself torn between the soaring poetry of raptors and the grounded authenticity of unexpected connection. The juvenile Red-Tailed Hawks present an undeniably majestic spectacle—their \"living yin and yang\" dance above the golf course captures nature's raw artistry in motion, transforming mundane suburban space into theater. The rational judge correctly identifies their \"fierce elegance\" and ecological significance as apex predators in training. However, the Eurasian Coot submission moves this court with its deeply personal revelation amid technical observation. The competitor's connection between those \"extra large and blue feet\" and Armenian identity—struggling with continental placement just as this \"eurasian\" bird bridges geographical boundaries—reveals a profound moment of recognition. The capricious judge's celebration of \"ostentatious cerulean feet\" as \"aquatic rebellion\" captures something essential: sometimes the most extraordinary encounters happen not in dramatic aerial displays, but in quiet moments of seeing ourselves reflected in unexpected places.\n\nWhile the hawks dazzle with their aerial mastery and the submission's lyrical prose about \"twin currents in a single breath,\" the Eurasian Coot achieves something rarer—genuine emotional resonance born from careful observation of those distinctive blue feet and the sudden realization of shared transcontinental identity. The coot's representational power, its ability to make the observer dream of dolma and string cheese while standing on a canal bank, demonstrates that coolness sometimes lies not in spectacular flight but in the profound moment when a bird's unique features unlock unexpected self-discovery. The personal authenticity and cultural connection, combined with the detailed attention to the coot's remarkable pedal extremities, tips the scales toward this quieter but more transformative encounter.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-03-05T19:31:49.443Z"
+    },
+    {
+      "id": "judgment-w6-4v8",
+      "week": 6,
+      "m1Id": 4,
+      "m2Id": 8,
+      "m1sub": {
+        "species": "no bird",
+        "desc": ":("
+      },
+      "m2sub": {
+        "species": "American Robin ",
+        "desc": "So good they named a restaurant after it. Red Robin! Yummmm"
+      },
+      "winner": "m2",
+      "summary": "The American Robin's triumphant transformation from common songbird to restaurant franchise icon defeated a submission containing absolutely nothing.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "The American Robin submission brings both genuine avian charm and cultural resonance, celebrating the bird’s vibrant orange-red breast, melodious spring song, and its unique honor of inspiring a popular restaurant name—Red Robin—turning a natural encounter into a playful nod that invites others to share in its delight. In contrast, the first submission offers no bird at all, leaving us without any plumage, song, or story to admire. This wholehearted embrace of the robin’s character, coupled with a clever, appetizing pun, makes the American Robin the clear standout."
+      },
+      "gemini": {
+        "pick": "m2",
+        "argument": "It’s tempting to laud the blank sorrow of Submission 1 as some avant-garde commentary on avian nihilism, but only the American Robin carries its own brand equity so boldly that diners everywhere can’t help but clamor for burgundy‐tinted nostalgia on a bun; its vermilion throat isn’t just a feathered fashion statement, it’s a masterstroke of aerodynamic marketing that turns every twig into a potential cocktail napkin for a Red Robin order."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis court finds itself in the peculiar position of weighing the profound emptiness of a frowning emoticon against the triumphant culinary marketing prowess of an American Robin. While the rational judge correctly identifies the Robin's \"genuine avian charm and cultural resonance,\" and the capricious judge brilliantly elevates this common songbird to the status of \"aerodynamic marketing\" genius with a \"vermilion throat\" that transforms \"every twig into a potential cocktail napkin,\" we cannot ignore that Submission 1 offers us literally nothing—not even the most basic photographic evidence or descriptive encounter with any species whatsoever. The sad face \":(\" may represent the existential void of missed birding opportunities, but it contributes zero avian content to this competition.\n\nThe American Robin, despite being one of North America's most common species, has achieved something remarkable that both judges recognize: it has transcended mere birdhood to become a cultural icon worthy of restaurant branding. The capricious judge's assertion that its \"burgundy-tinted nostalgia\" creates dining desires is absurdly brilliant, while the rational judge's appreciation for the \"clever, appetizing pun\" acknowledges the submission's wit. When faced with the choice between absolute nothingness and a bird so charismatically common that it spawned a franchise empire, this court must side with substance over void, with Red Robin's \"Yummmm\" over the competitor's \":(\".\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-03-05T19:32:53.233Z"
+    },
+    {
+      "id": "judgment-w6-7v10",
+      "week": 6,
+      "m1Id": 7,
+      "m2Id": 10,
+      "m1sub": {
+        "species": "house sparrow",
+        "desc": "Seen at National Cathedral. God is on my side"
+      },
+      "m2sub": {
+        "species": "Great Blue Heron",
+        "desc": "The heron problem at the Ballard locks is getting out of control... This encampment (started in 2013 btw) is now overflowing with four foot wide nests. Who's the culprit? Of course... Seattle's official city bird: The Great Blue Heron. These SQUATTERS have been shacking up in the tree tops with zero permits and raining biological material on the public below with absolute impunity (they eat a pound of fish a day. There are 75+ nests up there. You do the maths.) Whats worse is the WOKE Seattle mayor has named this so called 'colony' a protected wildlife sanctuary. They can do whatever they want with complete immunity. Its basically a weird polycule of serial monogamists (new partner every year). They even 'communally' raise their young (whatever that means). I'm sick of their squawking. I've had enough. ENOUGH. "
+      },
+      "winner": "m2",
+      "summary": "The Great Blue Heron won for inspiring gloriously unhinged commentary about permit-dodging birds raining biological material with absolute impunity.",
+      "chatgpt": {
+        "pick": "m2",
+        "argument": "Between the nimble house sparrow and the statuesque Great Blue Heron, the latter undeniably takes the cool crown: while the sparrow’s brief sighting at the National Cathedral carries a dash of divine favor, the Great Blue Heron stakes its claim through sheer presence—four-foot-wide nests towering over Seattle’s Ballard Locks, a daily pound-of-fish appetite that reshapes local food webs, and a dynamic, quasi-communal breeding system recognized as an urban wildlife sanctuary—making it a living emblem of ecological prowess, architectural ambition, and untamed elegance that leaves the sparrow’s modest charm in the dust."
+      },
+      "gemini": {
+        "pick": "m1",
+        "argument": "The house sparrow edges out the Great Blue Heron purely because its encounter at the National Cathedral brims with an ineffable charisma—a divine endorsement that outclasses any ornithological squatter drama in Ballard Locks—and besides, any bird bold enough to invoke God on its side obviously carries an aura of moral authority that no overgrown, permit-dodging heron colony, however cranky and “woke” the mayor may be about it, can match; in fact, I suspect the sparrow’s choice of such a sanctified backdrop tacitly proves its innate coolness rather than the heron’s mere aquatic real estate ambitions."
+      },
+      "claude": {
+        "ruling": "JUDGMENT OF THE COURT\n\nThis court finds itself torn between divine simplicity and ecological chaos, between a sparrow's whispered prayer and a heron's full-throated rebellion against municipal authority. While the rational judge correctly identifies the Great Blue Heron's impressive biological statistics—75+ nests, pound-of-fish appetites, four-foot architectural marvels—and the capricious judge astutely notes the house sparrow's strategic invocation of heavenly backing at the National Cathedral, this court must weigh substance against spectacle. The house sparrow's encounter, though blessed with divine location, offers merely \"God is on my side\"—a brief, if spiritually significant, sighting. Meanwhile, the Great Blue Heron submission delivers a passionate manifesto of urban wildlife warfare, complete with accusations of \"SQUATTING,\" mathematical fish consumption calculations, and delicious outrage at Seattle's \"WOKE mayor\" protecting these \"serial monogamists\" and their \"weird polycule.\"\n\nThe Great Blue Heron wins not merely for its species rarity and impressive colonial presence at Ballard Locks, but for inspiring such gloriously unhinged commentary about permit-dodging birds raining \"biological material\" with \"absolute impunity.\" Any creature capable of transforming a birding submission into a treatise on municipal politics, housing policy, and alternative relationship structures while maintaining its dignity as Seattle's official city bird demonstrates coolness that transcends mere divine endorsement. The heron's \"untamed elegance\" and \"ecological prowess\" create living theater that no sparrow, however heavenly blessed, can match.\n\nJUDGEMENT RENDERED. COURT ADJOURNED."
+      },
+      "judgedAt": "2026-03-05T19:33:18.899Z"
+    }
+  ],
+  "playoffSeeding": [
+    {
+      "seed": 1,
+      "id": 9,
+      "name": "Grace",
+      "w": 0,
+      "l": 0
+    },
+    {
+      "seed": 2,
+      "id": 6,
+      "name": "Leo & Taylor",
+      "w": 0,
+      "l": 0
+    },
+    {
+      "seed": 3,
+      "id": 3,
+      "name": "Marshall",
+      "w": 0,
+      "l": 0
+    },
+    {
+      "seed": 4,
+      "id": 8,
+      "name": "Emily",
+      "w": 0,
+      "l": 0
+    },
+    {
+      "seed": 5,
+      "id": 10,
+      "name": "Ben",
+      "w": 0,
+      "l": 0
+    },
+    {
+      "seed": 6,
+      "id": 5,
+      "name": "Anna",
+      "w": 0,
+      "l": 0
+    }
+  ]
+}
